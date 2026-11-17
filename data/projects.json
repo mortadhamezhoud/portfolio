@@ -42,18 +42,18 @@
     "images": []
   },
   {
-    "slug": "anypli-fullstack-2025",
-    "title": "ANYPLI Full-Stack Application",
-    "subtitle": "Full-stack application with a REST API and Power BI dashboards",
+    "slug": "anypli-car-rental-2025",
+    "title": "ANYPLI Car Rental Platform",
+    "subtitle": "Car rental platform with a REST API and Power BI dashboards",
     "featured": false,
     "period": "Jun 2025 – Aug 2025",
     "company": "ANYPLI",
     "role": "Full-Stack Developer Intern",
     "stack": ["NestJS", "React", "TypeScript", "Material UI", "Redux Toolkit", "RTK Query", "JWT", "MySQL", "TypeORM", "Power BI"],
-    "context": "Internship project at ANYPLI in Monastir.",
+    "context": "Summer internship project at ANYPLI in Monastir: design and development of a car rental platform.",
     "problem": "",
     "solution": [
-      "Developed the backend with NestJS and the frontend with React, TypeScript and Material UI.",
+      "Designed and developed the car rental platform: backend with NestJS, frontend with React, TypeScript and Material UI.",
       "Managed application state with Redux Toolkit and RTK Query.",
       "Built a REST API with JWT authentication on a MySQL database using TypeORM.",
       "Created data analysis reports and dashboards with Power BI."
@@ -71,7 +71,7 @@
     "company": "ANYPLI",
     "role": "Full-Stack Developer Intern",
     "stack": ["React", "TypeScript", "Redux", "Material UI", "NewsAPI"],
-    "context": "Internship project at ANYPLI in Monastir.",
+    "context": "Summer internship project at ANYPLI in Monastir.",
     "problem": "Readers had no single place to follow real-time news by category.",
     "solution": [
       "Built a real-time news website with React and TypeScript, with categories for Sport, Health, General, BBC News and BBC Sport.",

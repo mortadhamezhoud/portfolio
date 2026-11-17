@@ -20,8 +20,8 @@ Nothing below has been invented. Fill these in when available.
 - [ ] `stack` — technologies used
 - [ ] `result`
 
-### anypli-fullstack-2025
-- [ ] `problem` — the problem this application solved
+### anypli-car-rental-2025
+- [ ] `problem` — the problem the car rental platform solved
 - [ ] `result`
 
 ### anypli-news-2024

@@ -63,9 +63,9 @@
       "company": "ANYPLI",
       "location": "Monastir, Tunisia",
       "period": "Jun 2025 – Aug 2025",
-      "type": "Internship",
+      "type": "Summer internship",
       "highlights": [
-        "Developed the backend with NestJS and the frontend with React, TypeScript and Material UI, with state managed through Redux Toolkit and RTK Query.",
+        "Designed and developed a car rental platform: backend with NestJS, frontend with React, TypeScript and Material UI, and state managed through Redux Toolkit and RTK Query.",
         "Built a REST API with JWT authentication on a MySQL database using TypeORM.",
         "Created data analysis reports and dashboards with Power BI."
       ]
@@ -76,7 +76,7 @@
       "company": "ANYPLI",
       "location": "Monastir, Tunisia",
       "period": "Jul 2024 – Aug 2024",
-      "type": "Internship",
+      "type": "Summer internship",
       "highlights": [
         "Built a real-time news website with React and TypeScript, organized by category (Sport, Health, General, BBC News, BBC Sport).",
         "Integrated NewsAPI and managed application state with Redux.",
