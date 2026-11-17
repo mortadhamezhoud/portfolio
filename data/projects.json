@@ -1,0 +1,85 @@
+[
+  {
+    "slug": "cybersuivi-gat",
+    "title": "CyberSuivi GAT",
+    "subtitle": "Cybersecurity awareness tracking platform with BI dashboards and phishing-risk prediction",
+    "featured": true,
+    "period": "Feb 2026 – Jul 2026",
+    "company": "GAT Assurances",
+    "role": "Full-Stack & Data Engineer (Final-year project)",
+    "stack": ["React", "NestJS", "JWT", "Power Query", "Power BI", "DAX", "Machine Learning"],
+    "context": "Final-year engineering project (PFE) carried out at GAT Assurances in Tunis to track cybersecurity awareness across the company.",
+    "problem": "Awareness data (quizzes, trainings, phishing campaigns and vulnerabilities) was scattered, and the company could not identify the employees most exposed to phishing.",
+    "solution": [
+      "Built a full-stack platform with React and NestJS, including JWT authentication and role-based access control.",
+      "Designed the ETL with Power Query and the data model behind the reporting layer.",
+      "Developed Power BI dashboards with DAX measures and KPIs for quizzes, trainings, phishing campaigns and vulnerabilities.",
+      "Developed a Machine Learning model that predicts each employee's phishing risk.",
+      "Developed an AI-based cybersecurity chatbot and a cyber-watch module."
+    ],
+    "result": "Final-year project graduated with Très Bien (Very Good) honors.",
+    "links": { "demo": "", "github": "", "video": "" },
+    "images": []
+  },
+  {
+    "slug": "admissity",
+    "title": "ADMISSITY",
+    "subtitle": "BI platform for admissions and graduate employability",
+    "featured": false,
+    "period": "Jan 2025 – May 2025",
+    "company": "ESPRIT",
+    "role": "",
+    "stack": [],
+    "context": "Academic project at ESPRIT.",
+    "problem": "Applicant and alumni data was scattered, and the school could not track the employability of its graduates.",
+    "solution": [
+      "Centralized applicant and alumni data in a single platform.",
+      "Built predictive models and KPI dashboards.",
+      "Developed a job recommendation feature for graduates, based on CV analysis and LinkedIn scraping."
+    ],
+    "result": "",
+    "links": { "demo": "", "github": "", "video": "" },
+    "images": []
+  },
+  {
+    "slug": "anypli-fullstack-2025",
+    "title": "ANYPLI Full-Stack Application",
+    "subtitle": "Full-stack application with a REST API and Power BI dashboards",
+    "featured": false,
+    "period": "Jun 2025 – Aug 2025",
+    "company": "ANYPLI",
+    "role": "Full-Stack Developer Intern",
+    "stack": ["NestJS", "React", "TypeScript", "Material UI", "Redux Toolkit", "RTK Query", "JWT", "MySQL", "TypeORM", "Power BI"],
+    "context": "Internship project at ANYPLI in Monastir.",
+    "problem": "",
+    "solution": [
+      "Developed the backend with NestJS and the frontend with React, TypeScript and Material UI.",
+      "Managed application state with Redux Toolkit and RTK Query.",
+      "Built a REST API with JWT authentication on a MySQL database using TypeORM.",
+      "Created data analysis reports and dashboards with Power BI."
+    ],
+    "result": "",
+    "links": { "demo": "", "github": "", "video": "" },
+    "images": []
+  },
+  {
+    "slug": "anypli-news-2024",
+    "title": "ANYPLI Real-Time News Website",
+    "subtitle": "Real-time news website organized by category",
+    "featured": false,
+    "period": "Jul 2024 – Aug 2024",
+    "company": "ANYPLI",
+    "role": "Full-Stack Developer Intern",
+    "stack": ["React", "TypeScript", "Redux", "Material UI", "NewsAPI"],
+    "context": "Internship project at ANYPLI in Monastir.",
+    "problem": "Readers had no single place to follow real-time news by category.",
+    "solution": [
+      "Built a real-time news website with React and TypeScript, with categories for Sport, Health, General, BBC News and BBC Sport.",
+      "Integrated NewsAPI and managed application state with Redux.",
+      "Designed a responsive interface with Material UI."
+    ],
+    "result": "",
+    "links": { "demo": "", "github": "", "video": "" },
+    "images": []
+  }
+]

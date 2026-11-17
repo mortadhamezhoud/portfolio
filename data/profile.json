@@ -2,5 +2,114 @@
   "name": "Mortadha Mazhoud",
   "title": "BI, Data & Full-Stack Engineer",
   "status": "Open to work · Based in Tunis · Open to remote and relocation worldwide",
-  "ctaLabel": "See my work"
+  "ctaLabel": "See my work",
+  "tagline": "I design BI, Data and Web solutions.",
+  "location": "Ariana, Tunis, Tunisia",
+  "availability": "Available immediately · Open to remote work and relocation worldwide",
+  "about": "Software engineer specialized in Business Intelligence, passionate about data, software development and digital transformation. Experienced in designing BI, Data and Web solutions. Organized, adaptable and a fast learner, seeking BI, Data or Full-Stack roles.",
+  "contact": {
+    "email": "mortadha.mezhoud04@gmail.com",
+    "phone": "+216 90 181 335",
+    "whatsapp": "+216 90 181 335",
+    "linkedin": "",
+    "github": ""
+  },
+  "stats": [
+    { "value": "3", "label": "Professional experiences" },
+    { "value": "4", "label": "Projects" },
+    { "value": "Très Bien", "label": "Final-year project honors" },
+    { "value": "3", "label": "Languages" }
+  ],
+  "skills": [
+    {
+      "group": "BI & Data",
+      "items": ["Power BI", "DAX", "Power Query", "Talend", "SSIS", "Machine Learning"]
+    },
+    {
+      "group": "Databases",
+      "items": ["SQL", "PL/SQL", "MySQL", "PostgreSQL", "SQL Server"]
+    },
+    {
+      "group": "Backend",
+      "items": ["NestJS", ".NET", "REST API", "JWT", "TypeORM"]
+    },
+    {
+      "group": "Frontend",
+      "items": ["React", "Angular", "Redux Toolkit", "RTK Query", "Material UI"]
+    },
+    {
+      "group": "Languages",
+      "items": ["JavaScript", "TypeScript", "Java", "C"]
+    }
+  ],
+  "experience": [
+    {
+      "id": "gat-pfe",
+      "role": "Full-Stack & Data Engineer",
+      "company": "GAT Assurances",
+      "location": "Tunis, Tunisia",
+      "period": "Feb 2026 – Jul 2026",
+      "type": "Final-year project (PFE)",
+      "highlights": [
+        "Built a full-stack platform to track cybersecurity awareness with React and NestJS, including JWT authentication and role-based access control.",
+        "Designed a Data/BI solution: ETL with Power Query, data modeling, Power BI dashboards, and DAX measures and KPIs covering quizzes, trainings, phishing campaigns and vulnerabilities.",
+        "Developed a Machine Learning model that predicts employees' phishing risk.",
+        "Developed an AI-based cybersecurity chatbot and a cyber-watch module."
+      ]
+    },
+    {
+      "id": "anypli-2025",
+      "role": "Full-Stack Developer Intern",
+      "company": "ANYPLI",
+      "location": "Monastir, Tunisia",
+      "period": "Jun 2025 – Aug 2025",
+      "type": "Internship",
+      "highlights": [
+        "Developed the backend with NestJS and the frontend with React, TypeScript and Material UI, with state managed through Redux Toolkit and RTK Query.",
+        "Built a REST API with JWT authentication on a MySQL database using TypeORM.",
+        "Created data analysis reports and dashboards with Power BI."
+      ]
+    },
+    {
+      "id": "anypli-2024",
+      "role": "Full-Stack Developer Intern",
+      "company": "ANYPLI",
+      "location": "Monastir, Tunisia",
+      "period": "Jul 2024 – Aug 2024",
+      "type": "Internship",
+      "highlights": [
+        "Built a real-time news website with React and TypeScript, organized by category (Sport, Health, General, BBC News, BBC Sport).",
+        "Integrated NewsAPI and managed application state with Redux.",
+        "Designed a responsive interface with Material UI."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "National Engineering Degree in Computer Science",
+      "school": "ESPRIT",
+      "location": "Tunisia",
+      "period": "2023 – 2026",
+      "specialty": "Business Intelligence",
+      "note": "Final-year project graduated with Très Bien (Very Good) honors."
+    },
+    {
+      "degree": "Bachelor's Degree in Computer Science",
+      "school": "ISIMM",
+      "location": "Monastir, Tunisia",
+      "period": "2019 – 2023",
+      "specialty": "Embedded Systems",
+      "note": ""
+    }
+  ],
+  "languages": [
+    { "name": "Arabic", "level": "Native" },
+    { "name": "French", "level": "B2" },
+    { "name": "English", "level": "Intermediate" }
+  ],
+  "volunteering": [
+    { "organization": "ITHAR Association", "year": "2018" },
+    { "organization": "Red Crescent", "year": "2020" },
+    { "organization": "ISIE electoral staff member", "year": "2024" }
+  ]
 }
