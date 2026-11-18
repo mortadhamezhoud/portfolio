@@ -2,10 +2,6 @@
   "hero": {
     "contactLabel": "Me contacter"
   },
-  "sections": {
-    "projects": "Projets",
-    "contact": "Contact"
-  },
   "loader": {
     "text": "> initialisation du portfolio...",
     "skip": "Passer"
@@ -21,5 +17,13 @@
     "label": "Langue",
     "en": "English",
     "fr": "Français"
+  },
+  "nav": {
+    "label": "Navigation principale",
+    "about": "À propos",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "credentials": "Attestations",
+    "contact": "Contact"
   }
 }

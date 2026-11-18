@@ -30,7 +30,10 @@ export default function Hero({ profile }: { profile: HeroProfile }) {
   const introDone = useIntroDone();
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-6 lg:px-16">
+    <section
+      id="top"
+      className="relative flex min-h-screen items-center overflow-hidden px-6 lg:px-16"
+    >
       <GlobeBackground />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent" />
       <motion.div
