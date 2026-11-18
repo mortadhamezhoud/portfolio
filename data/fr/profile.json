@@ -1,0 +1,186 @@
+{
+  "name": "Mortadha Mazhoud",
+  "title": "Ingénieur BI, Data & Full-Stack",
+  "status": "Disponible · Basé à Tunis · Ouvert au remote et à la relocalisation dans le monde entier",
+  "ctaLabel": "Voir mes projets",
+  "photo": "/images/profile.webp",
+  "photoCutout": "",
+  "photoAlt": "Portrait de Mortadha Mazhoud",
+  "tagline": "Je conçois des solutions BI, Data et Web.",
+  "location": "Ariana, Tunis, Tunisie",
+  "availability": "Disponible immédiatement · Ouvert au remote et à la relocalisation dans le monde entier",
+  "about": "Ingénieur logiciel spécialisé en Business Intelligence, passionné par la data, le développement logiciel et la transformation digitale. Expérimenté dans la conception de solutions BI, Data et Web. Organisé, adaptable et rapide à apprendre, je recherche des postes en BI, Data ou Full-Stack.",
+  "contact": {
+    "email": "mortadha.mezhoud04@gmail.com",
+    "phone": "+216 90 181 335",
+    "whatsapp": "+216 90 181 335",
+    "linkedin": "https://www.linkedin.com/in/mortadha-mazhoud-6440a0311",
+    "github": ""
+  },
+  "stats": [
+    {
+      "value": "3",
+      "label": "Expériences professionnelles"
+    },
+    {
+      "value": "4",
+      "label": "Projets"
+    },
+    {
+      "value": "Très Bien",
+      "label": "Mention du projet de fin d'études"
+    },
+    {
+      "value": "3",
+      "label": "Langues"
+    }
+  ],
+  "featuredSkills": [
+    "Power BI",
+    "SQL",
+    "Python",
+    "React",
+    "NestJS"
+  ],
+  "skills": [
+    {
+      "group": "BI & Data",
+      "items": [
+        "Power BI",
+        "DAX",
+        "Power Query",
+        "Talend",
+        "SSIS",
+        "Machine Learning"
+      ]
+    },
+    {
+      "group": "Bases de données",
+      "items": [
+        "SQL",
+        "PL/SQL",
+        "MySQL",
+        "PostgreSQL",
+        "SQL Server"
+      ]
+    },
+    {
+      "group": "Backend",
+      "items": [
+        "NestJS",
+        ".NET",
+        "REST API",
+        "JWT",
+        "TypeORM"
+      ]
+    },
+    {
+      "group": "Frontend",
+      "items": [
+        "React",
+        "Angular",
+        "Redux Toolkit",
+        "RTK Query",
+        "Material UI"
+      ]
+    },
+    {
+      "group": "Langages",
+      "items": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Java",
+        "C"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "gat-pfe",
+      "role": "Ingénieur Full-Stack & Data",
+      "company": "GAT Assurances",
+      "location": "Tunis, Tunisie",
+      "period": "Févr. 2026 – Juil. 2026",
+      "type": "Projet de fin d'études (PFE)",
+      "highlights": [
+        "Conception d'une plateforme full-stack de suivi de la sensibilisation à la cybersécurité avec React et NestJS, incluant l'authentification JWT et le contrôle d'accès par rôles.",
+        "Conception d'une solution Data/BI : ETL avec Power Query, modélisation, dashboards Power BI, mesures DAX et KPI couvrant les quiz, les formations, les campagnes de phishing et les vulnérabilités.",
+        "Développement d'un modèle de Machine Learning qui prédit le risque de phishing des employés.",
+        "Développement d'un chatbot de cybersécurité basé sur l'IA et d'un module de veille cyber."
+      ]
+    },
+    {
+      "id": "anypli-2025",
+      "role": "Stagiaire Développeur Full-Stack",
+      "company": "ANYPLI",
+      "location": "Monastir, Tunisie",
+      "period": "Juin 2025 – Août 2025",
+      "type": "Stage d'été",
+      "highlights": [
+        "Conception et développement d'une plateforme de location de voitures : backend avec NestJS, frontend avec React, TypeScript et Material UI, état géré avec Redux Toolkit et RTK Query.",
+        "Développement d'une API REST avec authentification JWT sur une base MySQL avec TypeORM.",
+        "Création de rapports et de dashboards d'analyse de données avec Power BI."
+      ]
+    },
+    {
+      "id": "anypli-2024",
+      "role": "Stagiaire Développeur Full-Stack",
+      "company": "ANYPLI",
+      "location": "Monastir, Tunisie",
+      "period": "Juil. 2024 – Août 2024",
+      "type": "Stage d'été",
+      "highlights": [
+        "Développement d'un site d'actualités en temps réel avec React et TypeScript, organisé par catégories (Sport, Santé, Général, BBC News, BBC Sport).",
+        "Intégration de NewsAPI et gestion de l'état de l'application avec Redux.",
+        "Conception d'une interface responsive avec Material UI."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Diplôme National d'Ingénieur en Informatique",
+      "school": "ESPRIT",
+      "location": "Tunisie",
+      "period": "2023 – 2026",
+      "specialty": "Business Intelligence",
+      "note": "Projet de fin d'études validé avec la mention Très Bien."
+    },
+    {
+      "degree": "Licence en Informatique",
+      "school": "ISIMM",
+      "location": "Monastir, Tunisie",
+      "period": "2019 – 2023",
+      "specialty": "Systèmes embarqués",
+      "note": ""
+    }
+  ],
+  "languages": [
+    {
+      "name": "Arabe",
+      "level": "Langue maternelle"
+    },
+    {
+      "name": "Français",
+      "level": "B2"
+    },
+    {
+      "name": "Anglais",
+      "level": "Intermédiaire"
+    }
+  ],
+  "volunteering": [
+    {
+      "organization": "Association ITHAR",
+      "year": "2018"
+    },
+    {
+      "organization": "Croissant-Rouge",
+      "year": "2020"
+    },
+    {
+      "organization": "Membre du personnel électoral de l'ISIE",
+      "year": "2024"
+    }
+  ]
+}

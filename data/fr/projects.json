@@ -1,0 +1,126 @@
+[
+  {
+    "slug": "cybersuivi-gat",
+    "title": "CyberSuivi GAT",
+    "subtitle": "Plateforme de suivi de la sensibilisation à la cybersécurité, avec dashboards BI et prédiction du risque de phishing",
+    "featured": true,
+    "period": "Févr. 2026 – Juil. 2026",
+    "company": "GAT Assurances",
+    "role": "Ingénieur Full-Stack & Data (Projet de fin d'études)",
+    "stack": [
+      "React",
+      "NestJS",
+      "JWT",
+      "Power Query",
+      "Power BI",
+      "DAX",
+      "Machine Learning"
+    ],
+    "context": "Projet de fin d'études (PFE) réalisé chez GAT Assurances à Tunis pour suivre la sensibilisation à la cybersécurité au sein de l'entreprise.",
+    "problem": "Les données de sensibilisation (quiz, formations, campagnes de phishing, vulnérabilités) étaient dispersées, et l'entreprise ne pouvait pas identifier les employés les plus exposés au phishing.",
+    "solution": [
+      "Conception d'une plateforme full-stack avec React et NestJS, incluant l'authentification JWT et le contrôle d'accès par rôles.",
+      "Conception de l'ETL avec Power Query et du modèle de données qui alimente la couche de reporting.",
+      "Développement de dashboards Power BI avec mesures DAX et KPI sur les quiz, les formations, les campagnes de phishing et les vulnérabilités.",
+      "Développement d'un modèle de Machine Learning qui prédit le risque de phishing de chaque employé.",
+      "Développement d'un chatbot de cybersécurité basé sur l'IA et d'un module de veille cyber."
+    ],
+    "result": "Projet de fin d'études validé avec la mention Très Bien.",
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
+    "images": []
+  },
+  {
+    "slug": "admissity",
+    "title": "ADMISSITY",
+    "subtitle": "Plateforme BI pour l'admission et l'employabilité des diplômés",
+    "featured": false,
+    "period": "Janv. 2025 – Mai 2025",
+    "company": "ESPRIT",
+    "role": "",
+    "stack": [],
+    "context": "Projet académique à ESPRIT.",
+    "problem": "Les données des candidats et des anciens élèves étaient dispersées, et l'école ne pouvait pas suivre l'employabilité de ses diplômés.",
+    "solution": [
+      "Centralisation des données des candidats et des anciens élèves sur une seule plateforme.",
+      "Développement de modèles prédictifs et de dashboards KPI.",
+      "Développement d'une fonctionnalité de recommandation d'emplois pour les diplômés, basée sur l'analyse de CV et le scraping LinkedIn."
+    ],
+    "result": "",
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
+    "images": []
+  },
+  {
+    "slug": "anypli-car-rental-2025",
+    "title": "Plateforme de location de voitures ANYPLI",
+    "subtitle": "Plateforme de location de voitures avec API REST et dashboards Power BI",
+    "featured": false,
+    "period": "Juin 2025 – Août 2025",
+    "company": "ANYPLI",
+    "role": "Stagiaire Développeur Full-Stack",
+    "stack": [
+      "NestJS",
+      "React",
+      "TypeScript",
+      "Material UI",
+      "Redux Toolkit",
+      "RTK Query",
+      "JWT",
+      "MySQL",
+      "TypeORM",
+      "Power BI"
+    ],
+    "context": "Projet de stage d'été chez ANYPLI à Monastir : conception et développement d'une plateforme de location de voitures.",
+    "problem": "",
+    "solution": [
+      "Conception et développement de la plateforme de location de voitures : backend avec NestJS, frontend avec React, TypeScript et Material UI.",
+      "Gestion de l'état de l'application avec Redux Toolkit et RTK Query.",
+      "Développement d'une API REST avec authentification JWT sur une base MySQL avec TypeORM.",
+      "Création de rapports et de dashboards d'analyse de données avec Power BI."
+    ],
+    "result": "",
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
+    "images": []
+  },
+  {
+    "slug": "anypli-news-2024",
+    "title": "Site d'actualités en temps réel ANYPLI",
+    "subtitle": "Site d'actualités en temps réel organisé par catégories",
+    "featured": false,
+    "period": "Juil. 2024 – Août 2024",
+    "company": "ANYPLI",
+    "role": "Stagiaire Développeur Full-Stack",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Redux",
+      "Material UI",
+      "NewsAPI"
+    ],
+    "context": "Projet de stage d'été chez ANYPLI à Monastir.",
+    "problem": "Les lecteurs n'avaient pas un seul endroit pour suivre l'actualité en temps réel par catégorie.",
+    "solution": [
+      "Développement d'un site d'actualités en temps réel avec React et TypeScript, avec des catégories Sport, Santé, Général, BBC News et BBC Sport.",
+      "Intégration de NewsAPI et gestion de l'état de l'application avec Redux.",
+      "Conception d'une interface responsive avec Material UI."
+    ],
+    "result": "",
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
+    "images": []
+  }
+]

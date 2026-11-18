@@ -3,11 +3,11 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
-import profile from "@/data/profile.json";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Loader from "@/components/hero/Loader";
 import CustomCursor from "@/components/ui/CustomCursor";
 import { routing } from "@/i18n/routing";
+import { getProfile } from "@/lib/content";
 import "../globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -29,10 +29,17 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: `${profile.name} · ${profile.title}`,
-  description: profile.status,
-};
+export async function generateMetadata({
+  params,
+}: LayoutProps<"/[locale]">): Promise<Metadata> {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  const profile = getProfile(locale);
+  return {
+    title: `${profile.name} · ${profile.title}`,
+    description: profile.status,
+  };
+}
 
 export default async function LocaleLayout({
   children,

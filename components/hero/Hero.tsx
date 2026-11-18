@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import GlobeBackground from "@/components/hero/GlobeBackground";
 import DecryptText from "@/components/ui/DecryptText";
 import MagneticButton from "@/components/ui/MagneticButton";
-import profile from "@/data/profile.json";
+import type { Profile } from "@/lib/types";
 import { useIntroDone } from "@/lib/intro";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 
@@ -19,7 +19,12 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-export default function Hero() {
+type HeroProfile = Pick<
+  Profile,
+  "status" | "name" | "title" | "tagline" | "ctaLabel"
+>;
+
+export default function Hero({ profile }: { profile: HeroProfile }) {
   const t = useTranslations("hero");
   const reduced = usePrefersReducedMotion();
   const introDone = useIntroDone();

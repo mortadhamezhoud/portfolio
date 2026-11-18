@@ -11,7 +11,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import DecryptText from "@/components/ui/DecryptText";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
-import profile from "@/data/profile.json";
+import type { Profile } from "@/lib/types";
 import OrbitBadge from "./OrbitBadge";
 import { useCardPointer } from "./useCardPointer";
 
@@ -85,7 +85,12 @@ function DuotoneFilter() {
 }
 
 /** Holographic ID card: portrait, duotone photo that turns to full color on hover. */
-export default function IdentityCard() {
+type CardProfile = Pick<
+  Profile,
+  "name" | "title" | "photo" | "photoAlt" | "featuredSkills"
+>;
+
+export default function IdentityCard({ profile }: { profile: CardProfile }) {
   const t = useTranslations("about");
   const reduced = usePrefersReducedMotion();
   const [phase, setPhase] = useState<Phase>("idle");

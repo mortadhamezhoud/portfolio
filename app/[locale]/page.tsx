@@ -4,17 +4,19 @@ import { notFound } from "next/navigation";
 import About from "@/components/about/About";
 import Hero from "@/components/hero/Hero";
 import { routing } from "@/i18n/routing";
+import { getProfile } from "@/lib/content";
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations("sections");
+  const profile = getProfile(locale);
 
   return (
     <>
-      <Hero />
-      <About />
+      <Hero profile={profile} />
+      <About profile={profile} />
       {/* Temporary placeholder sections so the hero buttons have a target */}
       <section
         id="projects"

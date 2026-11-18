@@ -1,8 +1,8 @@
-import profile from "@/data/profile.json";
 import { useTranslations } from "next-intl";
+import type { Profile } from "@/lib/types";
 import IdentityCard from "./IdentityCard";
 
-export default function About() {
+export default function About({ profile }: { profile: Profile }) {
   const t = useTranslations("about");
   return (
     <section
@@ -10,7 +10,7 @@ export default function About() {
       className="mx-auto grid overflow-x-clip min-h-screen w-full max-w-6xl items-center gap-12 px-6 py-24 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20 lg:px-16"
     >
       <div className="mx-auto w-[85%] max-w-sm lg:w-full lg:max-w-none">
-        <IdentityCard />
+        <IdentityCard profile={profile} />
       </div>
 
       <div className="flex flex-col gap-8">
