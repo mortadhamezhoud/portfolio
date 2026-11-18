@@ -18,7 +18,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
     <>
       <Hero profile={profile} />
       {/* Everything after the hero leaves room for the desktop sidebar */}
-      <div className="transition-[margin] duration-300 motion-reduce:transition-none lg:ms-[var(--sidebar-w)]">
+      <div className="pb-[calc(4rem+env(safe-area-inset-bottom))] transition-[margin] lg:pb-0 duration-300 motion-reduce:transition-none lg:ms-[var(--sidebar-w)]">
         <About profile={profile} />
         <SectionPlaceholder id="projects" title={t("projects")} />
         <SectionPlaceholder id="experience" title={t("experience")} />
