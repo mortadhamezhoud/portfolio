@@ -50,6 +50,10 @@ export interface Profile {
   title: string;
   status: string;
   ctaLabel: string;
+  photo: string;
+  /** Background-removed portrait; empty string when not available. */
+  photoCutout: string;
+  photoAlt: string;
   tagline: string;
   location: string;
   availability: string;

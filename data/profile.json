@@ -3,6 +3,9 @@
   "title": "BI, Data & Full-Stack Engineer",
   "status": "Open to work · Based in Tunis · Open to remote and relocation worldwide",
   "ctaLabel": "See my work",
+  "photo": "/images/profile.webp",
+  "photoCutout": "",
+  "photoAlt": "Portrait of Mortadha Mazhoud",
   "tagline": "I design BI, Data and Web solutions.",
   "location": "Ariana, Tunis, Tunisia",
   "availability": "Available immediately · Open to remote work and relocation worldwide",
@@ -39,7 +42,7 @@
     },
     {
       "group": "Languages",
-      "items": ["JavaScript", "TypeScript", "Java", "C"]
+      "items": ["JavaScript", "TypeScript", "Python", "Java", "C"]
     }
   ],
   "experience": [
