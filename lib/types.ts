@@ -60,6 +60,8 @@ export interface Profile {
   about: string;
   contact: Contact;
   stats: Stat[];
+  /** Skill names (must exist in `skills`) shown as orbiting badges on the identity card. */
+  featuredSkills: string[];
   skills: SkillGroup[];
   experience: Experience[];
   education: Education[];

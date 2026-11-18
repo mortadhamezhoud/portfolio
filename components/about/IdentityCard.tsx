@@ -12,9 +12,44 @@ import DecryptText from "@/components/ui/DecryptText";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 import profile from "@/data/profile.json";
 import messages from "@/messages/en.json";
+import OrbitBadge from "./OrbitBadge";
 import { useCardPointer } from "./useCardPointer";
 
 const MAX_TILT_DEG = 12;
+
+/** Orbit slots sit on the card edges so they never cover the face (center-top of the card). */
+const ORBIT_SLOTS = [
+  {
+    position: "left-[-4%] top-[-6%] lg:left-[-9%]",
+    depth: -60,
+    duration: 6,
+    delay: 0,
+  },
+  {
+    position: "right-[-4%] top-[14%] lg:right-[-10%]",
+    depth: 90,
+    duration: 7,
+    delay: 1.2,
+  },
+  {
+    position: "left-[-5%] top-[52%] lg:left-[-12%]",
+    depth: 45,
+    duration: 5.5,
+    delay: 0.6,
+  },
+  {
+    position: "right-[-5%] top-[60%] lg:right-[-8%]",
+    depth: -80,
+    duration: 6.5,
+    delay: 2,
+  },
+  {
+    position: "bottom-[-4%] right-[10%]",
+    depth: 55,
+    duration: 7.5,
+    delay: 0.3,
+  },
+] as const;
 const SCAN_MS = 1200;
 const VERIFIED_HOLD_MS = 2000;
 const VERIFIED_DECRYPT_MS = 1200;
@@ -62,6 +97,7 @@ export default function IdentityCard() {
   const rotateX = useTransform(pointer.y, (v) => -v * 2 * MAX_TILT_DEG);
   const glowX = useTransform(pointer.x, (v) => (v + 0.5) * 100);
   const glowY = useTransform(pointer.y, (v) => (v + 0.5) * 100);
+  const orbitSkills = profile.featuredSkills.slice(0, ORBIT_SLOTS.length);
   const reflection = useMotionTemplate`radial-gradient(circle at ${glowX}% ${glowY}%, rgba(62,230,193,0.28), rgba(91,140,255,0.18) 28%, rgba(168,85,247,0.14) 48%, transparent 68%)`;
 
   // Scan -> "identity verified" -> fade out
@@ -87,6 +123,17 @@ export default function IdentityCard() {
       onPointerMove={pointer.onPointerMove}
       onPointerLeave={pointer.onPointerLeave}
     >
+      {orbitSkills.map((label, i) => (
+        <OrbitBadge
+          key={label}
+          label={label}
+          {...ORBIT_SLOTS[i]}
+          floatDuration={ORBIT_SLOTS[i].duration}
+          floatDelay={ORBIT_SLOTS[i].delay}
+          pointerX={pointer.x}
+          pointerY={pointer.y}
+        />
+      ))}
       <motion.div
         className="card-border group w-full rounded-2xl p-px"
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}

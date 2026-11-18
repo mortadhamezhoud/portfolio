@@ -63,3 +63,17 @@ html.intro-seen .intro-loader {
     animation: none;
   }
 }
+
+/* Identity card: floating orbit badges */
+@keyframes orbit-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.orbit-float {
+  animation: orbit-float var(--float-duration, 6s) ease-in-out var(--float-delay, 0s) infinite;
+}

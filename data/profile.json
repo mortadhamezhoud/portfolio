@@ -23,6 +23,7 @@
     { "value": "Très Bien", "label": "Final-year project honors" },
     { "value": "3", "label": "Languages" }
   ],
+  "featuredSkills": ["Power BI", "SQL", "Python", "React", "NestJS"],
   "skills": [
     {
       "group": "BI & Data",
