@@ -26,6 +26,7 @@ export default function DecryptText({
 }: DecryptTextProps) {
   const reduced = usePrefersReducedMotion();
   const [display, setDisplay] = useState(text);
+  const [ready, setReady] = useState(false);
   const animate = start && !reduced;
 
   useEffect(() => {
@@ -49,6 +50,7 @@ export default function DecryptText({
         }
       }
       setDisplay(out);
+      setReady(true);
       if (!done) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
@@ -56,7 +58,10 @@ export default function DecryptText({
   }, [text, animate, delay, stagger]);
 
   return (
-    <span className={className} aria-label={text}>
+    <span
+      className={`${className ?? ""} ${reduced || ready ? "" : "invisible"}`}
+      aria-label={text}
+    >
       <span aria-hidden="true">{animate ? display : text}</span>
     </span>
   );

@@ -25,3 +25,13 @@ html.custom-cursor,
 html.custom-cursor * {
   cursor: none !important;
 }
+
+/* Loader is never shown again within a session, nor with reduced motion */
+html.intro-seen .intro-loader {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-loader {
+    display: none;
+  }
+}

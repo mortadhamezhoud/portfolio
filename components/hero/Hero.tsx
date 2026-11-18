@@ -5,6 +5,7 @@ import DecryptText from "@/components/ui/DecryptText";
 import MagneticButton from "@/components/ui/MagneticButton";
 import profile from "@/data/profile.json";
 import messages from "@/messages/en.json";
+import { useIntroDone } from "@/lib/intro";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 
 const container: Variants = {
@@ -19,6 +20,7 @@ const item: Variants = {
 
 export default function Hero() {
   const reduced = usePrefersReducedMotion();
+  const introDone = useIntroDone();
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 lg:px-16">
@@ -26,13 +28,13 @@ export default function Hero() {
         className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-6 text-center lg:mx-0 lg:items-start lg:text-left"
         variants={container}
         initial={reduced ? false : "hidden"}
-        animate="show"
+        animate={introDone ? "show" : "hidden"}
       >
         <motion.p variants={item} className="font-mono text-xs text-accent sm:text-sm">
           {profile.status}
         </motion.p>
         <h1 className="font-display text-5xl font-bold tracking-tight text-text sm:text-7xl xl:text-8xl">
-          <DecryptText text={profile.name} />
+          <DecryptText text={profile.name} start={introDone} />
         </h1>
         <motion.p variants={item} className="text-lg text-text sm:text-2xl">
           {profile.title}
