@@ -85,3 +85,20 @@ export interface Project {
   links: ProjectLinks;
   images: string[];
 }
+
+export interface GlobeRegion {
+  id: string;
+  /** [min, max] latitude in degrees */
+  lat: [number, number];
+  /** [min, max] longitude in degrees */
+  lon: [number, number];
+}
+
+export interface GlobeConfig {
+  origin: { lat: number; lon: number };
+  arcCount: number;
+  /** Minimum angular distance (degrees) between the origin and a target point */
+  minDistanceDeg: number;
+  regenerate: { minSeconds: number; maxSeconds: number; fadeSeconds: number };
+  regions: GlobeRegion[];
+}

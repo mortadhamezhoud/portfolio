@@ -1,0 +1,14 @@
+{
+  "origin": { "lat": 36.8065, "lon": 10.1815 },
+  "arcCount": 8,
+  "minDistanceDeg": 12,
+  "regenerate": { "minSeconds": 6, "maxSeconds": 8, "fadeSeconds": 1 },
+  "regions": [
+    { "id": "asia", "lat": [8, 50], "lon": [60, 135] },
+    { "id": "north-america", "lat": [25, 55], "lon": [-125, -70] },
+    { "id": "africa", "lat": [-30, 12], "lon": [10, 40] },
+    { "id": "south-america", "lat": [-35, 0], "lon": [-70, -40] },
+    { "id": "oceania", "lat": [-37, -20], "lon": [115, 150] },
+    { "id": "europe", "lat": [44, 58], "lon": [-8, 30] }
+  ]
+}
