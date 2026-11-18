@@ -78,15 +78,19 @@ html.intro-seen .intro-loader {
   animation: orbit-float var(--float-duration, 6s) ease-in-out var(--float-delay, 0s) infinite;
 }
 
-/* Sidebar width (desktop). Collapsed state is a class on <html>, set before paint by a head script. */
+/* Header height (the header shrinks from 5rem to 4rem once the page is scrolled) */
 :root {
-  --sidebar-w: 16rem;
+  --header-h: 4rem;
 }
-html.sidebar-collapsed {
-  --sidebar-w: 4.5rem;
+/* Anchored sections stop below the fixed header; the hero (#top) scrolls to the very top */
+section[id] {
+  scroll-margin-top: var(--header-h);
+}
+section#top {
+  scroll-margin-top: 0;
 }
 
-/* Sidebar avatar ring: thin cyan ring, spins slowly on hover */
+/* Header avatar ring: thin cyan ring, spins slowly on hover */
 .avatar-ring {
   background: conic-gradient(from var(--card-angle), #3ee6c1, #1c2742 45%, #3ee6c1);
 }

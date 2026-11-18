@@ -19,7 +19,7 @@ export interface SectionItem {
   shortcut: string;
 }
 
-/** Single source of truth for the sidebar, the mobile bar and the keyboard shortcuts. */
+/** Single source of truth for the header menu, the mobile menu and the keyboard shortcuts. */
 export const SECTIONS: readonly SectionItem[] = [
   { id: "about", labelKey: "about", icon: User, shortcut: "1" },
   { id: "projects", labelKey: "projects", icon: FolderGit2, shortcut: "2" },

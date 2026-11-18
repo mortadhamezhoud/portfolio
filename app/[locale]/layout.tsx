@@ -6,12 +6,10 @@ import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Loader from "@/components/hero/Loader";
 import CustomCursor from "@/components/ui/CustomCursor";
-import TopActions from "@/components/layout/TopActions";
-import Navigation from "@/components/nav/Navigation";
+import Header from "@/components/layout/Header";
 import { routing } from "@/i18n/routing";
 import { getAvailableCvs } from "@/lib/cv-files";
 import { getProfile } from "@/lib/content";
-import { RESTORE_SIDEBAR_SCRIPT } from "@/lib/sidebar-state";
 import "../globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -70,15 +68,14 @@ export default async function LocaleLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem("intro-seen")==="1")document.documentElement.classList.add("intro-seen")}catch(e){}${RESTORE_SIDEBAR_SCRIPT}`,
+            __html: `try{if(sessionStorage.getItem("intro-seen")==="1")document.documentElement.classList.add("intro-seen")}catch(e){}`,
           }}
         />
       </head>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <Loader />
-          <TopActions cvs={getAvailableCvs(profile.cv)} />
-          <Navigation profile={profile} />
+          <Header profile={profile} cvs={getAvailableCvs(profile.cv)} />
           <SmoothScroll>{children}</SmoothScroll>
           <CustomCursor />
         </NextIntlClientProvider>
