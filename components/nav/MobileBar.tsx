@@ -1,17 +1,14 @@
 "use client";
 
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { Download } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { CV_URL } from "@/lib/cv";
 import { SECTIONS, type SectionId } from "@/lib/sections";
 
 /** Scroll distance (px) ignored before the direction is considered to have changed. */
 const SCROLL_THRESHOLD = 8;
 
 interface MobileBarProps {
-  hasCv: boolean;
   activeId: SectionId | null;
   /** False while the hero is on screen: the bar stays hidden. */
   visible: boolean;
@@ -21,11 +18,7 @@ interface MobileBarProps {
  * Bottom bar for small screens (< 1024px). Hides while scrolling down, comes back
  * when scrolling up, and respects the iPhone bottom safe area.
  */
-export default function MobileBar({
-  hasCv,
-  activeId,
-  visible,
-}: MobileBarProps) {
+export default function MobileBar({ activeId, visible }: MobileBarProps) {
   const t = useTranslations("nav");
   const { scrollY } = useScroll();
   const [scrollingDown, setScrollingDown] = useState(false);
@@ -68,19 +61,6 @@ export default function MobileBar({
             </li>
           );
         })}
-        {hasCv && (
-          <li>
-            <a
-              href={CV_URL}
-              download
-              aria-label={t("downloadCv")}
-              title={t("downloadCv")}
-              className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-bg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              <Download className="h-5 w-5" aria-hidden="true" />
-            </a>
-          </li>
-        )}
       </ul>
     </nav>
   );

@@ -16,7 +16,8 @@
   "language": {
     "label": "Langue",
     "en": "English",
-    "fr": "Français"
+    "fr": "Français",
+    "ar": "العربية"
   },
   "nav": {
     "label": "Navigation principale",
@@ -26,12 +27,17 @@
     "credentials": "Attestations",
     "contact": "Contact",
     "role": "BI, Data & Full-Stack",
-    "downloadCv": "Télécharger mon CV",
     "collapse": "Réduire la barre latérale",
     "expand": "Développer la barre latérale",
     "backToTop": "Retour en haut",
     "email": "E-mail",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "topActions": {
+    "label": "Actions rapides",
+    "downloadCv": "Télécharger mon CV",
+    "cvMenuLabel": "Choisir la langue du CV",
+    "comingSoon": "Bientôt disponible"
   }
 }

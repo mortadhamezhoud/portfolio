@@ -6,10 +6,10 @@ import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Loader from "@/components/hero/Loader";
 import CustomCursor from "@/components/ui/CustomCursor";
+import TopActions from "@/components/layout/TopActions";
 import Navigation from "@/components/nav/Navigation";
-import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { routing } from "@/i18n/routing";
-import { cvExists } from "@/lib/cv-exists";
+import { getAvailableCvs } from "@/lib/cv-files";
 import { getProfile } from "@/lib/content";
 import { RESTORE_SIDEBAR_SCRIPT } from "@/lib/sidebar-state";
 import "../globals.css";
@@ -77,8 +77,8 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <Loader />
-          <LanguageSwitcher />
-          <Navigation profile={profile} hasCv={cvExists()} />
+          <TopActions cvs={getAvailableCvs(profile.cv)} />
+          <Navigation profile={profile} />
           <SmoothScroll>{children}</SmoothScroll>
           <CustomCursor />
         </NextIntlClientProvider>

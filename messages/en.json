@@ -16,7 +16,8 @@
   "language": {
     "label": "Language",
     "en": "English",
-    "fr": "Français"
+    "fr": "Français",
+    "ar": "العربية"
   },
   "nav": {
     "label": "Main navigation",
@@ -26,12 +27,17 @@
     "credentials": "Credentials",
     "contact": "Contact",
     "role": "BI, Data & Full-Stack",
-    "downloadCv": "Download CV",
     "collapse": "Collapse sidebar",
     "expand": "Expand sidebar",
     "backToTop": "Back to top",
     "email": "Email",
     "linkedin": "LinkedIn",
     "github": "GitHub"
+  },
+  "topActions": {
+    "label": "Quick actions",
+    "downloadCv": "Download CV",
+    "cvMenuLabel": "Choose the CV language",
+    "comingSoon": "Coming soon"
   }
 }

@@ -6,6 +6,10 @@
   "photo": "/images/profile.webp",
   "photoCutout": "",
   "photoAlt": "Portrait of Mortadha Mazhoud",
+  "cv": {
+    "en": "/cv/Mortadha-Mazhoud-CV-EN.pdf",
+    "fr": "/cv/Mortadha-Mazhoud-CV-FR.pdf"
+  },
   "tagline": "I design BI, Data and Web solutions.",
   "location": "Ariana, Tunis, Tunisia",
   "availability": "Available immediately · Open to remote work and relocation worldwide",
@@ -18,32 +22,81 @@
     "github": ""
   },
   "stats": [
-    { "value": "3", "label": "Professional experiences" },
-    { "value": "4", "label": "Projects" },
-    { "value": "Très Bien", "label": "Final-year project honors" },
-    { "value": "3", "label": "Languages" }
+    {
+      "value": "3",
+      "label": "Professional experiences"
+    },
+    {
+      "value": "4",
+      "label": "Projects"
+    },
+    {
+      "value": "Très Bien",
+      "label": "Final-year project honors"
+    },
+    {
+      "value": "3",
+      "label": "Languages"
+    }
   ],
-  "featuredSkills": ["Power BI", "SQL", "Python", "React", "NestJS"],
+  "featuredSkills": [
+    "Power BI",
+    "SQL",
+    "Python",
+    "React",
+    "NestJS"
+  ],
   "skills": [
     {
       "group": "BI & Data",
-      "items": ["Power BI", "DAX", "Power Query", "Talend", "SSIS", "Machine Learning"]
+      "items": [
+        "Power BI",
+        "DAX",
+        "Power Query",
+        "Talend",
+        "SSIS",
+        "Machine Learning"
+      ]
     },
     {
       "group": "Databases",
-      "items": ["SQL", "PL/SQL", "MySQL", "PostgreSQL", "SQL Server"]
+      "items": [
+        "SQL",
+        "PL/SQL",
+        "MySQL",
+        "PostgreSQL",
+        "SQL Server"
+      ]
     },
     {
       "group": "Backend",
-      "items": ["NestJS", ".NET", "REST API", "JWT", "TypeORM"]
+      "items": [
+        "NestJS",
+        ".NET",
+        "REST API",
+        "JWT",
+        "TypeORM"
+      ]
     },
     {
       "group": "Frontend",
-      "items": ["React", "Angular", "Redux Toolkit", "RTK Query", "Material UI"]
+      "items": [
+        "React",
+        "Angular",
+        "Redux Toolkit",
+        "RTK Query",
+        "Material UI"
+      ]
     },
     {
       "group": "Languages",
-      "items": ["JavaScript", "TypeScript", "Python", "Java", "C"]
+      "items": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Java",
+        "C"
+      ]
     }
   ],
   "experience": [
@@ -107,13 +160,31 @@
     }
   ],
   "languages": [
-    { "name": "Arabic", "level": "Native" },
-    { "name": "French", "level": "B2" },
-    { "name": "English", "level": "Intermediate" }
+    {
+      "name": "Arabic",
+      "level": "Native"
+    },
+    {
+      "name": "French",
+      "level": "B2"
+    },
+    {
+      "name": "English",
+      "level": "Intermediate"
+    }
   ],
   "volunteering": [
-    { "organization": "ITHAR Association", "year": "2018" },
-    { "organization": "Red Crescent", "year": "2020" },
-    { "organization": "ISIE electoral staff member", "year": "2024" }
+    {
+      "organization": "ITHAR Association",
+      "year": "2018"
+    },
+    {
+      "organization": "Red Crescent",
+      "year": "2020"
+    },
+    {
+      "organization": "ISIE electoral staff member",
+      "year": "2024"
+    }
   ]
 }

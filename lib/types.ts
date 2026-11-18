@@ -1,3 +1,5 @@
+import type { Locale } from "@/i18n/routing";
+
 export interface Stat {
   value: string;
   label: string;
@@ -54,6 +56,8 @@ export interface Profile {
   /** Background-removed portrait; empty string when not available. */
   photoCutout: string;
   photoAlt: string;
+  /** CV PDF per site language (public path). Only files that exist at build time are offered. */
+  cv: Record<Locale, string>;
   tagline: string;
   location: string;
   availability: string;

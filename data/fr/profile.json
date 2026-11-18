@@ -6,6 +6,10 @@
   "photo": "/images/profile.webp",
   "photoCutout": "",
   "photoAlt": "Portrait de Mortadha Mazhoud",
+  "cv": {
+    "en": "/cv/Mortadha-Mazhoud-CV-EN.pdf",
+    "fr": "/cv/Mortadha-Mazhoud-CV-FR.pdf"
+  },
   "tagline": "Je conçois des solutions BI, Data et Web.",
   "location": "Ariana, Tunis, Tunisie",
   "availability": "Disponible immédiatement · Ouvert au remote et à la relocalisation dans le monde entier",

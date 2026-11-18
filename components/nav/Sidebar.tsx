@@ -16,7 +16,6 @@ export type NavProfile = Pick<
 
 interface SidebarProps {
   profile: NavProfile;
-  hasCv: boolean;
   activeId: SectionId | null;
   /** False while the hero is on screen: the sidebar stays hidden. */
   visible: boolean;
@@ -27,7 +26,6 @@ interface SidebarProps {
 /** Fixed desktop sidebar (>= 1024px). Sits at the inline start, so it flips to the right in RTL. */
 export default function Sidebar({
   profile,
-  hasCv,
   activeId,
   visible,
   progress,
@@ -68,7 +66,7 @@ export default function Sidebar({
         </ul>
       </nav>
 
-      <SidebarActions contact={profile.contact} hasCv={hasCv} />
+      <SidebarActions contact={profile.contact} />
     </aside>
   );
 }
