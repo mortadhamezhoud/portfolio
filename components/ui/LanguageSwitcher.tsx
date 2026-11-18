@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import Flag from "@/components/ui/Flags";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 
@@ -36,10 +37,11 @@ export default function LanguageSwitcher() {
             aria-label={t(locale)}
             aria-current={active ? "true" : undefined}
             onClick={() => switchTo(locale)}
-            className={`rounded-lg px-2.5 py-1 uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+            className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               active ? "bg-surface text-accent" : "text-muted hover:text-text"
             }`}
           >
+            <Flag locale={locale} />
             {locale}
           </button>
         );
