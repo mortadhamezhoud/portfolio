@@ -1,0 +1,67 @@
+import type { Metadata } from "next";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { notFound } from "next/navigation";
+import profile from "@/data/profile.json";
+import SmoothScroll from "@/components/providers/SmoothScroll";
+import Loader from "@/components/hero/Loader";
+import CustomCursor from "@/components/ui/CustomCursor";
+import { routing } from "@/i18n/routing";
+import "../globals.css";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export const metadata: Metadata = {
+  title: `${profile.name} · ${profile.title}`,
+  description: profile.status,
+};
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: LayoutProps<"/[locale]">) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  setRequestLocale(locale);
+
+  return (
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("intro-seen")==="1")document.documentElement.classList.add("intro-seen")}catch(e){}`,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col">
+        <NextIntlClientProvider>
+          <Loader />
+          <SmoothScroll>{children}</SmoothScroll>
+          <CustomCursor />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}

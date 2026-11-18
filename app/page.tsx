@@ -1,19 +1,28 @@
-import About from "@/components/about/About";
-import Hero from "@/components/hero/Hero";
-import messages from "@/messages/en.json";
+// Static export has no server-side language detection: `/` redirects on the client,
+// using the saved choice first, then the browser language, then English.
+const redirectScript = `(function(){
+  var saved = null;
+  try { saved = localStorage.getItem("locale"); } catch (e) {}
+  var langs = navigator.languages || [navigator.language || ""];
+  var pick = saved === "fr" || saved === "en" ? saved : null;
+  for (var i = 0; !pick && i < langs.length; i++) {
+    if (/^fr/i.test(langs[i])) pick = "fr";
+    else if (/^en/i.test(langs[i])) pick = "en";
+  }
+  location.replace("/" + (pick || "en") + location.hash);
+})();`;
 
-export default function Home() {
+export default function RootRedirect() {
   return (
-    <>
-      <Hero />
-      <About />
-      {/* Temporary placeholder sections so the hero buttons have a target */}
-      <section id="projects" className="flex min-h-screen items-center justify-center px-6">
-        <h2 className="font-display text-4xl text-text">{messages.sections.projects}</h2>
-      </section>
-      <section id="contact" className="flex min-h-screen items-center justify-center px-6">
-        <h2 className="font-display text-4xl text-text">{messages.sections.contact}</h2>
-      </section>
-    </>
+    <html lang="en">
+      <head>
+        <meta name="robots" content="noindex" />
+        <noscript>
+          <meta httpEquiv="refresh" content="0;url=/en" />
+        </noscript>
+        <script dangerouslySetInnerHTML={{ __html: redirectScript }} />
+      </head>
+      <body style={{ background: "#05070D" }} />
+    </html>
   );
 }

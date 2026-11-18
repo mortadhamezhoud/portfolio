@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "contactLabel": "Me contacter"
+  },
+  "sections": {
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "loader": {
+    "text": "> initialisation du portfolio...",
+    "skip": "Passer"
+  },
+  "about": {
+    "title": "À propos",
+    "idLabel": "ID · MM-2026",
+    "online": "EN LIGNE",
+    "location": "Basé à Tunis · Ouvert à l'international",
+    "verified": "IDENTITÉ VÉRIFIÉE ✓"
+  }
+}
