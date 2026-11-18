@@ -1,0 +1,13 @@
+{
+  "hero": {
+    "contactLabel": "Contact me"
+  },
+  "sections": {
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "loader": {
+    "text": "> initializing portfolio...",
+    "skip": "Skip"
+  }
+}
