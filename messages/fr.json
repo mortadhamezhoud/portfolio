@@ -29,7 +29,10 @@
     "backToTop": "Retour en haut",
     "email": "E-mail",
     "linkedin": "LinkedIn",
-    "github": "GitHub"
+    "github": "GitHub",
+    "menuTitle": "Menu",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
   },
   "topActions": {
     "label": "Actions rapides",

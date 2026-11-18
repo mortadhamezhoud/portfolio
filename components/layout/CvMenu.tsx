@@ -7,13 +7,25 @@ import Flag from "@/components/ui/Flags";
 import type { CvOption } from "@/lib/cv-files";
 
 const BUTTON_CLASS =
-  "flex items-center gap-2 rounded-lg bg-accent px-2.5 py-1.5 text-xs font-semibold text-bg transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-3";
+  "flex items-center justify-center gap-2 rounded-lg bg-accent px-2.5 py-2 text-xs font-semibold text-bg transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:px-3 lg:py-1.5";
 
 /**
  * "Download CV" button. With several CV languages it opens a menu (current site language first);
  * with a single file it is a direct download; with none it renders nothing.
  */
-export default function CvMenu({ cvs }: { cvs: CvOption[] }) {
+interface CvMenuProps {
+  cvs: CvOption[];
+  /** "compact": icon only below lg (header). "full": always with its label (mobile menu). */
+  variant?: "compact" | "full";
+  /** Where the dropdown opens relative to the button. */
+  placement?: "bottom" | "top";
+}
+
+export default function CvMenu({
+  cvs,
+  variant = "compact",
+  placement = "bottom",
+}: CvMenuProps) {
   const t = useTranslations("topActions");
   const tLang = useTranslations("language");
   const locale = useLocale();
@@ -21,6 +33,8 @@ export default function CvMenu({ cvs }: { cvs: CvOption[] }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
+  const full = variant === "full";
+  const labelClass = full ? "inline" : "hidden lg:inline";
 
   // Current site language first
   const options = [...cvs].sort(
@@ -62,10 +76,10 @@ export default function CvMenu({ cvs }: { cvs: CvOption[] }) {
         download
         aria-label={t("downloadCv")}
         title={t("downloadCv")}
-        className={BUTTON_CLASS}
+        className={`${BUTTON_CLASS} ${full ? "w-full py-3 text-sm lg:w-full" : ""}`}
       >
         <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
-        <span className="hidden sm:inline">{t("downloadCv")}</span>
+        <span className={labelClass}>{t("downloadCv")}</span>
       </a>
     );
   }
@@ -87,7 +101,7 @@ export default function CvMenu({ cvs }: { cvs: CvOption[] }) {
   };
 
   return (
-    <div ref={rootRef} className="relative">
+    <div ref={rootRef} className={`relative ${full ? "w-full" : ""}`}>
       <button
         ref={buttonRef}
         type="button"
@@ -97,12 +111,12 @@ export default function CvMenu({ cvs }: { cvs: CvOption[] }) {
         aria-label={t("downloadCv")}
         title={t("downloadCv")}
         onClick={() => setOpen((v) => !v)}
-        className={BUTTON_CLASS}
+        className={`${BUTTON_CLASS} ${full ? "w-full py-3 text-sm lg:w-full" : ""}`}
       >
         <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
-        <span className="hidden sm:inline">{t("downloadCv")}</span>
+        <span className={labelClass}>{t("downloadCv")}</span>
         <ChevronDown
-          className={`hidden h-3.5 w-3.5 transition-transform sm:block ${open ? "rotate-180" : ""}`}
+          className={`h-3.5 w-3.5 transition-transform ${full ? "block" : "hidden lg:block"} ${open ? "rotate-180" : ""}`}
           aria-hidden="true"
         />
       </button>
@@ -113,7 +127,7 @@ export default function CvMenu({ cvs }: { cvs: CvOption[] }) {
           role="menu"
           aria-label={t("cvMenuLabel")}
           onKeyDown={onMenuKeyDown}
-          className="absolute end-0 top-full mt-2 min-w-44 rounded-xl border border-border bg-surface p-1 shadow-lg"
+          className={`absolute end-0 min-w-44 ${placement === "top" ? "bottom-full mb-2" : "top-full mt-2"} rounded-xl border border-border bg-surface p-1 shadow-lg`}
         >
           {options.map((option) => (
             <a

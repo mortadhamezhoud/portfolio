@@ -75,8 +75,10 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <Loader />
-          <Header profile={profile} cvs={getAvailableCvs(profile.cv)} />
-          <SmoothScroll>{children}</SmoothScroll>
+          <SmoothScroll>
+            <Header profile={profile} cvs={getAvailableCvs(profile.cv)} />
+            {children}
+          </SmoothScroll>
           <CustomCursor />
         </NextIntlClientProvider>
       </body>
