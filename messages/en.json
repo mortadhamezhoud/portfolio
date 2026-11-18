@@ -16,5 +16,10 @@
     "online": "ONLINE",
     "location": "Based in Tunis · Open worldwide",
     "verified": "IDENTITY VERIFIED ✓"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "fr": "Français"
   }
 }

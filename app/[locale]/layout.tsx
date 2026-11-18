@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Loader from "@/components/hero/Loader";
 import CustomCursor from "@/components/ui/CustomCursor";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { routing } from "@/i18n/routing";
 import { getProfile } from "@/lib/content";
 import "../globals.css";
@@ -38,6 +39,10 @@ export async function generateMetadata({
   return {
     title: `${profile.name} · ${profile.title}`,
     description: profile.status,
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { en: "/en", fr: "/fr", "x-default": "/en" },
+    },
   };
 }
 
@@ -65,6 +70,7 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <Loader />
+          <LanguageSwitcher />
           <SmoothScroll>{children}</SmoothScroll>
           <CustomCursor />
         </NextIntlClientProvider>
