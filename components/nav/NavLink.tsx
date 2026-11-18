@@ -29,7 +29,7 @@ export default function NavLink({
       href={`#${section.id}`}
       aria-current={active ? "true" : undefined}
       title={label}
-      className={`group/link relative isolate flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-[color,translate] duration-200 hover:translate-x-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none rtl:hover:-translate-x-1 in-[.sidebar-collapsed]:justify-center in-[.sidebar-collapsed]:px-0 ${
+      className={`group/link relative isolate flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-[color,translate] duration-200 hover:translate-x-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none motion-reduce:hover:translate-x-0 rtl:hover:-translate-x-1 in-[.sidebar-collapsed]:justify-center in-[.sidebar-collapsed]:px-0 ${
         active ? "text-accent" : "text-muted hover:text-text"
       }`}
     >
