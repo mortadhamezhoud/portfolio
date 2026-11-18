@@ -128,6 +128,7 @@ export default function MobileMenu({
         >
           <div className="flex h-16 shrink-0 items-center justify-between">
             <span
+              dir="ltr"
               aria-hidden="true"
               className="font-display text-lg font-bold tracking-tight text-white"
             >

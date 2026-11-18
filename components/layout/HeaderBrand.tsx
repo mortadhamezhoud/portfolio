@@ -17,6 +17,7 @@ export default function HeaderBrand({ profile }: { profile: BrandProfile }) {
       className="group flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
     >
       <span
+        dir="ltr"
         aria-hidden="true"
         className="font-display text-lg font-bold tracking-tight text-white"
       >
@@ -27,6 +28,7 @@ export default function HeaderBrand({ profile }: { profile: BrandProfile }) {
           <Image
             src={profile.photo}
             alt=""
+            priority
             width={28}
             height={28}
             sizes="28px"
