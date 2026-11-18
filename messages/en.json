@@ -24,6 +24,14 @@
     "projects": "Projects",
     "experience": "Experience",
     "credentials": "Credentials",
-    "contact": "Contact"
+    "contact": "Contact",
+    "role": "BI, Data & Full-Stack",
+    "downloadCv": "Download CV",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "backToTop": "Back to top",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
 }

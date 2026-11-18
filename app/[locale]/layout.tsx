@@ -6,8 +6,10 @@ import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Loader from "@/components/hero/Loader";
 import CustomCursor from "@/components/ui/CustomCursor";
+import Navigation from "@/components/nav/Navigation";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { routing } from "@/i18n/routing";
+import { cvExists } from "@/lib/cv-exists";
 import { getProfile } from "@/lib/content";
 import "../globals.css";
 
@@ -53,6 +55,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  const profile = getProfile(locale);
 
   return (
     <html
@@ -71,6 +74,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <Loader />
           <LanguageSwitcher />
+          <Navigation profile={profile} hasCv={cvExists()} />
           <SmoothScroll>{children}</SmoothScroll>
           <CustomCursor />
         </NextIntlClientProvider>

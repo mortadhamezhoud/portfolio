@@ -77,3 +77,26 @@ html.intro-seen .intro-loader {
 .orbit-float {
   animation: orbit-float var(--float-duration, 6s) ease-in-out var(--float-delay, 0s) infinite;
 }
+
+/* Sidebar width (desktop). Collapsed state is a class on <html>, set before paint by a head script. */
+:root {
+  --sidebar-w: 16rem;
+}
+html.sidebar-collapsed {
+  --sidebar-w: 4.5rem;
+}
+
+/* Sidebar avatar ring: thin cyan ring, spins slowly on hover */
+.avatar-ring {
+  background: conic-gradient(from var(--card-angle), #3ee6c1, #1c2742 45%, #3ee6c1);
+}
+.group:hover .avatar-ring,
+.group:focus-visible .avatar-ring {
+  animation: card-spin 4s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .avatar-ring,
+  .group:focus-visible .avatar-ring {
+    animation: none;
+  }
+}
