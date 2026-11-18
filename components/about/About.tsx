@@ -1,8 +1,9 @@
 import profile from "@/data/profile.json";
-import messages from "@/messages/en.json";
+import { useTranslations } from "next-intl";
 import IdentityCard from "./IdentityCard";
 
 export default function About() {
+  const t = useTranslations("about");
   return (
     <section
       id="about"
@@ -14,7 +15,7 @@ export default function About() {
 
       <div className="flex flex-col gap-8">
         <h2 className="font-display text-4xl font-bold text-text sm:text-5xl">
-          {messages.about.title}
+          {t("title")}
         </h2>
         <p className="max-w-2xl text-lg leading-relaxed text-muted">
           {profile.about}

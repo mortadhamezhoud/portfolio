@@ -1,10 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { markIntroDone, useIntroDone } from "@/lib/intro";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
-import messages from "@/messages/en.json";
 
 const SEEN_KEY = "intro-seen";
 const DURATION = 1500; // ms of counting; fade adds ~0.4s => 2s max
@@ -27,6 +27,7 @@ function rememberIntro(): void {
 
 /** Terminal-style loader, shown once per session. Skipped with prefers-reduced-motion. */
 export default function Loader() {
+  const t = useTranslations("loader");
   const done = useIntroDone();
   const reduced = usePrefersReducedMotion();
   const [progress, setProgress] = useState(0);
@@ -67,19 +68,22 @@ export default function Loader() {
           transition={{ duration: 0.4 }}
         >
           <p className="text-sm sm:text-base">
-            {messages.loader.text}
+            {t("text")}
             <span className="ml-1 animate-pulse">_</span>
           </p>
           <p className="text-4xl tabular-nums sm:text-6xl">{progress}%</p>
           <div className="h-px w-48 bg-border sm:w-72">
-            <div className="h-full bg-accent" style={{ width: `${progress}%` }} />
+            <div
+              className="h-full bg-accent"
+              style={{ width: `${progress}%` }}
+            />
           </div>
           <button
             type="button"
             onClick={skip}
             className="absolute bottom-8 right-8 rounded-lg border border-border px-3 py-1.5 text-xs text-muted transition-colors hover:border-accent hover:text-accent"
           >
-            {messages.loader.skip}
+            {t("skip")}
           </button>
         </motion.div>
       )}

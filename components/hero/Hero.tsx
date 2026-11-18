@@ -1,11 +1,11 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import GlobeBackground from "@/components/hero/GlobeBackground";
 import DecryptText from "@/components/ui/DecryptText";
 import MagneticButton from "@/components/ui/MagneticButton";
 import profile from "@/data/profile.json";
-import messages from "@/messages/en.json";
 import { useIntroDone } from "@/lib/intro";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 
@@ -20,6 +20,7 @@ const item: Variants = {
 };
 
 export default function Hero() {
+  const t = useTranslations("hero");
   const reduced = usePrefersReducedMotion();
   const introDone = useIntroDone();
 
@@ -33,7 +34,10 @@ export default function Hero() {
         initial={reduced ? false : "hidden"}
         animate={introDone ? "show" : "hidden"}
       >
-        <motion.p variants={item} className="font-mono text-xs text-accent sm:text-sm">
+        <motion.p
+          variants={item}
+          className="font-mono text-xs text-accent sm:text-sm"
+        >
           {profile.status}
         </motion.p>
         <h1 className="font-display text-5xl font-bold tracking-tight text-text sm:text-7xl xl:text-8xl">
@@ -45,10 +49,13 @@ export default function Hero() {
         <motion.p variants={item} className="max-w-xl text-muted">
           {profile.tagline}
         </motion.p>
-        <motion.div variants={item} className="mt-4 flex flex-wrap justify-center gap-4 lg:justify-start">
+        <motion.div
+          variants={item}
+          className="mt-4 flex flex-wrap justify-center gap-4 lg:justify-start"
+        >
           <MagneticButton href="#projects">{profile.ctaLabel}</MagneticButton>
           <MagneticButton href="#contact" variant="outline">
-            {messages.hero.contactLabel}
+            {t("contactLabel")}
           </MagneticButton>
         </motion.div>
       </motion.div>

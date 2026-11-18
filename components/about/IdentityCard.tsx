@@ -6,12 +6,12 @@ import {
   useMotionTemplate,
   useTransform,
 } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import DecryptText from "@/components/ui/DecryptText";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 import profile from "@/data/profile.json";
-import messages from "@/messages/en.json";
 import OrbitBadge from "./OrbitBadge";
 import { useCardPointer } from "./useCardPointer";
 
@@ -86,7 +86,7 @@ function DuotoneFilter() {
 
 /** Holographic ID card: portrait, duotone photo that turns to full color on hover. */
 export default function IdentityCard() {
-  const { about } = messages;
+  const t = useTranslations("about");
   const reduced = usePrefersReducedMotion();
   const [phase, setPhase] = useState<Phase>("idle");
   const current: Phase = reduced ? "done" : phase;
@@ -144,13 +144,13 @@ export default function IdentityCard() {
         <div className="relative flex aspect-[4/5] flex-col gap-3 overflow-hidden rounded-[15px] bg-surface p-4">
           {/* Header */}
           <div className="flex items-center justify-between font-mono text-[11px] tracking-wider text-muted">
-            <span>{about.idLabel}</span>
+            <span>{t("idLabel")}</span>
             <span className="flex items-center gap-2 text-green-400">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60 motion-reduce:animate-none" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
               </span>
-              {about.online}
+              {t("online")}
             </span>
           </div>
 
@@ -208,7 +208,7 @@ export default function IdentityCard() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <DecryptText text={about.verified} delay={0} stagger={40} />
+                  <DecryptText text={t("verified")} delay={0} stagger={40} />
                 </motion.p>
               )}
             </AnimatePresence>
@@ -233,9 +233,7 @@ export default function IdentityCard() {
               {profile.name}
             </p>
             <p className="text-sm text-text">{profile.title}</p>
-            <p className="font-mono text-[11px] text-accent">
-              {about.location}
-            </p>
+            <p className="font-mono text-[11px] text-accent">{t("location")}</p>
           </div>
           {/* Holographic reflection following the pointer */}
           <motion.div

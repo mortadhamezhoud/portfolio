@@ -8,7 +8,10 @@ const loadGlobe = () => import("@/components/three/DataGlobe");
 const DataGlobe = dynamic(loadGlobe, { ssr: false });
 
 /** If WebGL is unavailable the hero simply stays text-only. */
-class GlobeErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+class GlobeErrorBoundary extends Component<
+  { children: ReactNode },
+  { failed: boolean }
+> {
   state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
@@ -27,7 +30,9 @@ export default function GlobeBackground() {
   const introDone = useIntroDone();
 
   useEffect(() => {
-    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
+    const idle =
+      window.requestIdleCallback ??
+      ((cb: () => void) => window.setTimeout(cb, 200));
     idle(() => void loadGlobe());
   }, []);
 
