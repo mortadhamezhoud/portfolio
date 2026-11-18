@@ -7,6 +7,7 @@ import type { Profile } from "@/lib/types";
 import NavLink from "./NavLink";
 import SidebarActions from "./SidebarActions";
 import SidebarProfile from "./SidebarProfile";
+import SidebarToggle from "./SidebarToggle";
 
 export type NavProfile = Pick<
   Profile,
@@ -46,6 +47,7 @@ export default function Sidebar({
         className="absolute inset-y-0 -end-px w-0.5 origin-top bg-accent"
         style={{ scaleY: progress }}
       />
+      <SidebarToggle />
       <SidebarProfile profile={profile} />
 
       <nav

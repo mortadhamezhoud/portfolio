@@ -29,7 +29,7 @@ export default function NavLink({
       href={`#${section.id}`}
       aria-current={active ? "true" : undefined}
       title={label}
-      className={`group/link relative isolate flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-[color,translate] duration-200 hover:translate-x-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none rtl:hover:-translate-x-1 ${
+      className={`group/link relative isolate flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-[color,translate] duration-200 hover:translate-x-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none rtl:hover:-translate-x-1 in-[.sidebar-collapsed]:justify-center in-[.sidebar-collapsed]:px-0 ${
         active ? "text-accent" : "text-muted hover:text-text"
       }`}
     >
@@ -45,7 +45,7 @@ export default function NavLink({
             transition={{ type: "spring", stiffness: 400, damping: 34 }}
           />
         ))}
-      <span className="font-mono text-[11px] tabular-nums opacity-70">
+      <span className="font-mono text-[11px] tabular-nums opacity-70 in-[.sidebar-collapsed]:hidden">
         {String(index + 1).padStart(2, "0")}
       </span>
       <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />

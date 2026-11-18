@@ -11,6 +11,7 @@ import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { routing } from "@/i18n/routing";
 import { cvExists } from "@/lib/cv-exists";
 import { getProfile } from "@/lib/content";
+import { RESTORE_SIDEBAR_SCRIPT } from "@/lib/sidebar-state";
 import "../globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -66,7 +67,7 @@ export default async function LocaleLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem("intro-seen")==="1")document.documentElement.classList.add("intro-seen")}catch(e){}`,
+            __html: `try{if(sessionStorage.getItem("intro-seen")==="1")document.documentElement.classList.add("intro-seen")}catch(e){}${RESTORE_SIDEBAR_SCRIPT}`,
           }}
         />
       </head>
