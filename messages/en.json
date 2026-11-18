@@ -9,5 +9,12 @@
   "loader": {
     "text": "> initializing portfolio...",
     "skip": "Skip"
+  },
+  "about": {
+    "title": "About",
+    "idLabel": "ID · MM-2026",
+    "online": "ONLINE",
+    "location": "Based in Tunis · Open worldwide",
+    "verified": "IDENTITY VERIFIED ✓"
   }
 }

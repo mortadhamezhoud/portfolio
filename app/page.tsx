@@ -1,3 +1,4 @@
+import About from "@/components/about/About";
 import Hero from "@/components/hero/Hero";
 import messages from "@/messages/en.json";
 
@@ -5,6 +6,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <About />
       {/* Temporary placeholder sections so the hero buttons have a target */}
       <section id="projects" className="flex min-h-screen items-center justify-center px-6">
         <h2 className="font-display text-4xl text-text">{messages.sections.projects}</h2>

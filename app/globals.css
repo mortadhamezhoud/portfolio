@@ -35,3 +35,31 @@ html.intro-seen .intro-loader {
     display: none;
   }
 }
+
+/* Identity card: rotating cyan border */
+@property --card-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes card-spin {
+  to {
+    --card-angle: 360deg;
+  }
+}
+.card-border {
+  background: conic-gradient(
+    from var(--card-angle),
+    #1c2742 0%,
+    #1c2742 55%,
+    #3ee6c1 78%,
+    #5b8cff 88%,
+    #1c2742 100%
+  );
+  animation: card-spin 8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-border {
+    animation: none;
+  }
+}
