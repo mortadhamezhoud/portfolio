@@ -1,6 +1,18 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import DecryptText from "@/components/ui/DecryptText";
+import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 import profile from "@/data/profile.json";
 import messages from "@/messages/en.json";
+
+const SCAN_MS = 1200;
+const VERIFIED_HOLD_MS = 2000;
+const VERIFIED_DECRYPT_MS = 1200;
+
+type Phase = "idle" | "scan" | "verified" | "done";
 
 const PHOTO_SIZES = "(min-width: 1024px) 420px, 85vw";
 const DUOTONE_FILTER = "url(#mm-duotone)";
@@ -8,7 +20,13 @@ const DUOTONE_FILTER = "url(#mm-duotone)";
 /** SVG duotone: shadows -> #05070D, highlights -> a softened cyan (keeps white backgrounds calm). */
 function DuotoneFilter() {
   return (
-    <svg width="0" height="0" aria-hidden="true" focusable="false" className="absolute">
+    <svg
+      width="0"
+      height="0"
+      aria-hidden="true"
+      focusable="false"
+      className="absolute"
+    >
       <filter id="mm-duotone" colorInterpolationFilters="sRGB">
         <feColorMatrix
           type="matrix"
@@ -27,9 +45,33 @@ function DuotoneFilter() {
 /** Holographic ID card: portrait, duotone photo that turns to full color on hover. */
 export default function IdentityCard() {
   const { about } = messages;
+  const reduced = usePrefersReducedMotion();
+  const [phase, setPhase] = useState<Phase>("idle");
+  const current: Phase = reduced ? "done" : phase;
+
+  // Scan -> "identity verified" -> fade out
+  useEffect(() => {
+    if (phase === "scan") {
+      const t = setTimeout(() => setPhase("verified"), SCAN_MS);
+      return () => clearTimeout(t);
+    }
+    if (phase === "verified") {
+      const t = setTimeout(
+        () => setPhase("done"),
+        VERIFIED_DECRYPT_MS + VERIFIED_HOLD_MS,
+      );
+      return () => clearTimeout(t);
+    }
+  }, [phase]);
+
+  const revealed = current !== "idle";
 
   return (
-    <div className="card-border group w-full rounded-2xl p-px">
+    <motion.div
+      className="card-border group w-full rounded-2xl p-px"
+      onViewportEnter={() => setPhase((p) => (p === "idle" ? "scan" : p))}
+      viewport={{ once: true, amount: 0.4 }}
+    >
       <DuotoneFilter />
       <div className="relative flex aspect-[4/5] flex-col gap-3 overflow-hidden rounded-[15px] bg-surface p-4">
         {/* Header */}
@@ -46,25 +88,62 @@ export default function IdentityCard() {
 
         {/* Photo frame */}
         <div className="relative min-h-0 flex-1 overflow-hidden rounded-xl border border-border bg-bg">
-          <Image
-            src={profile.photo}
-            alt={profile.photoAlt}
-            fill
-            sizes={PHOTO_SIZES}
-            priority={false}
-            className="object-cover object-[50%_20%]"
-          />
-          {/* Duotone layer: fades out on hover (hidden with reduced motion: real colors) */}
-          <Image
-            src={profile.photo}
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes={PHOTO_SIZES}
-            priority={false}
-            style={{ filter: DUOTONE_FILTER }}
-            className="object-cover object-[50%_20%] transition-opacity duration-[600ms] group-hover:opacity-0 motion-reduce:hidden"
-          />
+          <motion.div
+            className="absolute inset-0"
+            initial={reduced ? false : { clipPath: "inset(0 0 100% 0)" }}
+            animate={{
+              clipPath: revealed ? "inset(0 0 0% 0)" : "inset(0 0 100% 0)",
+            }}
+            transition={{
+              duration: reduced ? 0 : SCAN_MS / 1000,
+              ease: "linear",
+            }}
+          >
+            <Image
+              src={profile.photo}
+              alt={profile.photoAlt}
+              fill
+              sizes={PHOTO_SIZES}
+              priority={false}
+              className="object-cover object-[50%_20%]"
+            />
+            {/* Duotone layer: fades out on hover (hidden with reduced motion: real colors) */}
+            <Image
+              src={profile.photo}
+              alt=""
+              aria-hidden="true"
+              fill
+              sizes={PHOTO_SIZES}
+              priority={false}
+              style={{ filter: DUOTONE_FILTER }}
+              className="object-cover object-[50%_20%] transition-opacity duration-[600ms] group-hover:opacity-0 motion-reduce:hidden"
+            />
+          </motion.div>
+          {/* Scan line, travels down while the photo is revealed */}
+          {current === "scan" && (
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 h-0.5 bg-accent shadow-[0_0_14px_2px_#3EE6C1]"
+              initial={{ top: "0%" }}
+              animate={{ top: "100%" }}
+              transition={{ duration: SCAN_MS / 1000, ease: "linear" }}
+            />
+          )}
+          {/* Verification message */}
+          <AnimatePresence>
+            {current === "verified" && (
+              <motion.p
+                role="status"
+                className="absolute inset-x-0 bottom-3 mx-auto w-fit rounded-md border border-accent/40 bg-bg/80 px-3 py-1 font-mono text-[11px] tracking-wider text-accent"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <DecryptText text={about.verified} delay={0} stagger={40} />
+              </motion.p>
+            )}
+          </AnimatePresence>
           {/* Screen overlays: dot grid + scan lines */}
           <div
             aria-hidden="true"
@@ -82,11 +161,13 @@ export default function IdentityCard() {
 
         {/* Footer */}
         <div className="flex flex-col gap-1">
-          <p className="font-display text-xl font-bold text-text">{profile.name}</p>
+          <p className="font-display text-xl font-bold text-text">
+            {profile.name}
+          </p>
           <p className="text-sm text-text">{profile.title}</p>
           <p className="font-mono text-[11px] text-accent">{about.location}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
