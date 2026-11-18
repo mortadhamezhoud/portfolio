@@ -5,7 +5,7 @@ Contenu du site en anglais par défaut, puis français et arabe.
 
 ## Stack
 Next.js App Router, TypeScript, Tailwind CSS, React Three Fiber + Drei, Framer Motion,
-next-intl (en, fr, ar), Fuse.js pour le chatbot statique. Export statique, déployé sur Vercel.
+next-intl (en, fr, ar), Fuse.js pour le chatbot statique. Export statique (output: "export", sans cacheComponents ni PPR), déployé sur Vercel.
 
 ## Design
 - Thème sombre « data & cyber », sobre et professionnel.
@@ -15,7 +15,7 @@ next-intl (en, fr, ar), Fuse.js pour le chatbot statique. Export statique, dépl
 - Coins arrondis 12 à 16 px, bordures fines, pas d'ombres lourdes, un seul accent fort par écran.
 
 ## Règles
-- Tout le contenu vient de data/*.json et messages/*.json, jamais écrit en dur dans les composants.
+- Tout le contenu vient de data/{en,fr}/*.json et messages/{en,fr}.json, jamais écrit en dur dans les composants. Toute modification de texte se fait dans les deux langues.
 - Les composants 3D sont des Client Components chargés avec next/dynamic et ssr: false.
 - Le texte reste en HTML, jamais en 3D.
 - Mobile : moins de particules, pas de postprocessing. Respecter prefers-reduced-motion.
