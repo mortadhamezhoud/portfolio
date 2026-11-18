@@ -17,11 +17,14 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   return (
     <>
       <Hero profile={profile} />
-      <About profile={profile} />
-      <SectionPlaceholder id="projects" title={t("projects")} />
-      <SectionPlaceholder id="experience" title={t("experience")} />
-      <SectionPlaceholder id="credentials" title={t("credentials")} />
-      <SectionPlaceholder id="contact" title={t("contact")} />
+      {/* Everything after the hero leaves room for the desktop sidebar */}
+      <div className="transition-[margin] duration-300 motion-reduce:transition-none lg:ms-[var(--sidebar-w)]">
+        <About profile={profile} />
+        <SectionPlaceholder id="projects" title={t("projects")} />
+        <SectionPlaceholder id="experience" title={t("experience")} />
+        <SectionPlaceholder id="credentials" title={t("credentials")} />
+        <SectionPlaceholder id="contact" title={t("contact")} />
+      </div>
     </>
   );
 }
