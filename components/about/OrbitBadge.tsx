@@ -30,7 +30,7 @@ export default function OrbitBadge({
   return (
     <motion.div
       aria-hidden="true"
-      className={`pointer-events-none absolute z-20 ${position}`}
+      className={`pointer-events-none absolute z-20 motion-reduce:hidden ${position}`}
       style={{ x, y }}
     >
       <div
