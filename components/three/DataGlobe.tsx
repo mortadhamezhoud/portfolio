@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
+import GlobeEffects from "./GlobeEffects";
 import GlobeScene from "./GlobeScene";
 
 /** Interactive 3D data globe. Loaded with next/dynamic (ssr: false) by GlobeBackground. */
@@ -13,6 +14,7 @@ export default function DataGlobe() {
         gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       >
         <GlobeScene particleCount={2000} particleSize={3.2} animated />
+        <GlobeEffects />
       </Canvas>
     </div>
   );
