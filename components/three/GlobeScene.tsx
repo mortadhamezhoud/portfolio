@@ -200,7 +200,7 @@ export default function GlobeScene({ particleCount, particleSize, animated }: Gl
         mouse.current.active = 1;
       }
     }
-  });
+  }, -1); // negative priority: runs before the particles read sceneState (matters with frameloop="demand")
 
   return (
     <group ref={root}>
