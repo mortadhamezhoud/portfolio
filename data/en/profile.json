@@ -103,40 +103,34 @@
     {
       "id": "data-bi",
       "title": "Data & BI",
-      "description": "I turn scattered data into decisions: ETL with Power Query, data modeling, and Power BI dashboards with DAX measures and KPIs. At GAT Assurances I built the reporting layer that tracks quizzes, trainings, phishing campaigns and vulnerabilities.",
+      "project": "admissity",
       "tools": [
         "Power BI",
         "DAX",
         "Power Query",
-        "Talend",
-        "SSIS",
-        "SQL",
-        "SQL Server"
+        "SQL"
       ]
     },
     {
       "id": "machine-learning",
       "title": "Machine Learning",
-      "description": "I build predictive models that turn data into action. For my final-year project I developed a model that predicts each employee's phishing risk, and for ADMISSITY I built predictive models and KPI dashboards on admissions and alumni data.",
+      "project": "cybersuivi-gat",
       "tools": [
         "Machine Learning",
         "Python",
-        "Power BI"
+        "Predictive models",
+        "AI chatbot"
       ]
     },
     {
       "id": "web",
       "title": "Web Development",
-      "description": "I build full-stack applications from the database to the interface: REST APIs with NestJS and JWT authentication, React frontends with Redux Toolkit and Material UI. I shipped a car rental platform and a real-time news website during my internships at ANYPLI.",
+      "project": "anypli-car-rental-2025",
       "tools": [
         "React",
-        "TypeScript",
         "NestJS",
-        "REST API",
-        "JWT",
-        "TypeORM",
-        "MySQL",
-        "Material UI"
+        "TypeScript",
+        "REST API"
       ]
     }
   ],

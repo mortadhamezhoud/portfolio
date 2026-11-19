@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import type { Profile } from "@/lib/types";
 import IdentityCard from "./IdentityCard";
+import Pillars from "./Pillars";
 
 export default function About({ profile }: { profile: Profile }) {
   const t = useTranslations("about");
@@ -36,6 +37,8 @@ export default function About({ profile }: { profile: Profile }) {
           ))}
         </dl>
       </div>
+
+      <Pillars domains={profile.domains} />
     </section>
   );
 }

@@ -13,8 +13,9 @@ export interface SkillGroup {
 export interface Domain {
   id: string;
   title: string;
-  /** Two sentences, based on real skills and projects. */
-  description: string;
+  /** Slug of the project that proves this domain best. */
+  project: string;
+  /** 3-4 tools shown as tags. */
   tools: string[];
 }
 
@@ -75,7 +76,7 @@ export interface Profile {
   /** Skill names (must exist in `skills`) shown as orbiting badges on the identity card. */
   featuredSkills: string[];
   skills: SkillGroup[];
-  /** The three domains shown in the pinned "What I do" section. */
+  /** The three expertise pillars shown in About. */
   domains: Domain[];
   experience: Experience[];
   education: Education[];
