@@ -99,6 +99,47 @@
       ]
     }
   ],
+  "domains": [
+    {
+      "id": "data-bi",
+      "title": "Data & BI",
+      "description": "Je transforme des données dispersées en décisions : ETL avec Power Query, modélisation de données et tableaux de bord Power BI avec mesures DAX et KPI. Chez GAT Assurances, j'ai construit la couche de reporting qui suit les quiz, les formations, les campagnes de phishing et les vulnérabilités.",
+      "tools": [
+        "Power BI",
+        "DAX",
+        "Power Query",
+        "Talend",
+        "SSIS",
+        "SQL",
+        "SQL Server"
+      ]
+    },
+    {
+      "id": "machine-learning",
+      "title": "Machine Learning",
+      "description": "Je construis des modèles prédictifs qui transforment les données en actions. Pour mon projet de fin d'études, j'ai développé un modèle qui prédit le risque de phishing de chaque employé, et pour ADMISSITY des modèles prédictifs et des tableaux de bord KPI sur les données d'admission et des anciens élèves.",
+      "tools": [
+        "Machine Learning",
+        "Python",
+        "Power BI"
+      ]
+    },
+    {
+      "id": "web",
+      "title": "Développement Web",
+      "description": "Je développe des applications full-stack de la base de données à l'interface : API REST avec NestJS et authentification JWT, frontends React avec Redux Toolkit et Material UI. J'ai livré une plateforme de location de voitures et un site d'actualités en temps réel lors de mes stages chez ANYPLI.",
+      "tools": [
+        "React",
+        "TypeScript",
+        "NestJS",
+        "REST API",
+        "JWT",
+        "TypeORM",
+        "MySQL",
+        "Material UI"
+      ]
+    }
+  ],
   "experience": [
     {
       "id": "gat-pfe",

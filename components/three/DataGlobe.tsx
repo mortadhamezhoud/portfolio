@@ -16,7 +16,6 @@ const MOBILE = { particles: 1200, size: 3.8, dpr: [1, 1.5] as [number, number] }
 export default function DataGlobe() {
   const reduced = usePrefersReducedMotion();
   const compact = useMediaQuery("(max-width: 1023px), (pointer: coarse)");
-  const wide = useMediaQuery("(min-width: 1024px)");
   const config = compact ? MOBILE : DESKTOP;
 
   return (
@@ -31,7 +30,6 @@ export default function DataGlobe() {
           particleCount={config.particles}
           particleSize={config.size}
           animated={!reduced}
-          offsetRight={wide}
         />
         {/* No post-processing on mobile */}
         {!compact && <GlobeEffects minimal={reduced} />}

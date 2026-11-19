@@ -2,6 +2,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import About from "@/components/about/About";
+import WhatIDo from "@/components/what-i-do/WhatIDo";
 import Hero from "@/components/hero/Hero";
 import SectionPlaceholder from "@/components/ui/SectionPlaceholder";
 import { routing } from "@/i18n/routing";
@@ -18,6 +19,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
     <>
       <Hero profile={profile} />
       <About profile={profile} />
+      <WhatIDo domains={profile.domains} />
       <SectionPlaceholder id="experience" title={t("experience")} />
       <SectionPlaceholder id="projects" title={t("projects")} />
       <SectionPlaceholder id="credentials" title={t("credentials")} />

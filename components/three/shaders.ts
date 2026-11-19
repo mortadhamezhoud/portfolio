@@ -1,7 +1,9 @@
 export const particleVertexShader = /* glsl */ `
   uniform float uTime;
   uniform float uProgress;   // intro gather (0 -> 1)
-  uniform float uMorph;      // shape A -> shape B (0 -> 1)
+  uniform float uMorph;      // shape uFrom -> shape uTo (0 -> 1)
+  uniform float uFrom;
+  uniform float uTo;
   uniform float uPixelRatio;
   uniform float uSize;
   uniform float uRef;
@@ -11,9 +13,13 @@ export const particleVertexShader = /* glsl */ `
   attribute vec3 aStart;
   attribute float aRand;
   attribute vec3 aShape1;
+  attribute vec3 aShape2;
+  attribute vec3 aShape3;
   attribute vec3 aColor0;
   attribute vec3 aColor1;
-  attribute vec2 aOrder;
+  attribute vec3 aColor2;
+  attribute vec3 aColor3;
+  attribute vec4 aOrder;
 
   varying float vAlpha;
   varying vec3 vColor;
@@ -22,16 +28,41 @@ export const particleVertexShader = /* glsl */ `
     return x < 0.5 ? 4.0 * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 3.0) / 2.0;
   }
 
+  vec3 shapePos(float i) {
+    if (i < 0.5) return position;
+    if (i < 1.5) return aShape1;
+    if (i < 2.5) return aShape2;
+    return aShape3;
+  }
+  vec3 shapeColor(float i) {
+    if (i < 0.5) return aColor0;
+    if (i < 1.5) return aColor1;
+    if (i < 2.5) return aColor2;
+    return aColor3;
+  }
+  float shapeOrder(float i) {
+    if (i < 0.5) return aOrder.x;
+    if (i < 1.5) return aOrder.y;
+    if (i < 2.5) return aOrder.z;
+    return aOrder.w;
+  }
+
+  // Bright band travelling along an axis (a pulse): 1 at the centre, 0 away from it
+  float band(float x, float centre, float width) {
+    float d = (x - centre) / width;
+    return exp(-d * d);
+  }
+
   void main() {
     // Intro: particles gather from random positions (staggered per particle)
     float delay = aRand * 0.35;
     float t = clamp((uProgress - delay) / 0.65, 0.0, 1.0);
     float intro = 1.0 - pow(1.0 - t, 3.0);
 
-    // Morph: soft easing + per-particle offset (random mixed with the shape's own order)
-    float d = mix(aRand, aOrder.y, 0.65) * 0.45;
+    // Morph: soft easing + per-particle offset (random mixed with the target shape's own order)
+    float d = mix(aRand, shapeOrder(uTo), 0.65) * 0.45;
     float m = easeInOutCubic(clamp((uMorph - d) / 0.55, 0.0, 1.0));
-    vec3 target = mix(position, aShape1, m);
+    vec3 target = mix(shapePos(uFrom), shapePos(uTo), m);
 
     // Particles swing slightly off the straight line while travelling (organic feel)
     vec3 wobble = vec3(sin(aRand * 41.0), cos(aRand * 57.0), sin(aRand * 23.0));
@@ -39,10 +70,16 @@ export const particleVertexShader = /* glsl */ `
 
     vec3 p = mix(aStart, target, intro);
 
+    // Weight of each shape in this particle's current look
+    float wFrom = 1.0 - m;
+    float wTo = m;
+    float wGlobe = (uFrom < 0.5 ? wFrom : 0.0) + (uTo < 0.5 ? wTo : 0.0);
+    float wNeural = (abs(uFrom - 2.0) < 0.5 ? wFrom : 0.0) + (abs(uTo - 2.0) < 0.5 ? wTo : 0.0);
+    float wWeb = (abs(uFrom - 3.0) < 0.5 ? wFrom : 0.0) + (abs(uTo - 3.0) < 0.5 ? wTo : 0.0);
+
     // Particles near the cursor are pushed away slightly (globe only)
-    float globeW = 1.0 - m;
     vec3 dm = p - uMouse;
-    float push = (1.0 - smoothstep(0.0, 0.5, length(dm))) * 0.14 * uMouseActive * globeW;
+    float push = (1.0 - smoothstep(0.0, 0.5, length(dm))) * 0.14 * uMouseActive * wGlobe;
     p += normalize(dm + vec3(1e-5)) * push;
 
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
@@ -50,14 +87,25 @@ export const particleVertexShader = /* glsl */ `
 
     // Gentle pulse of size and brightness
     float pulse = 0.5 + 0.5 * sin(uTime * 1.3 + aRand * 6.2831);
-    gl_PointSize = uSize * uPixelRatio * (0.75 + 0.5 * pulse) * (uRef / -mv.z);
+
+    // Neural network: impulses cross the layers left -> right in a loop
+    float travel = fract(uTime * 0.22);
+    float impulse = band(p.x, mix(-1.9, 1.9, travel), 0.3)
+                  + band(p.x, mix(-1.9, 1.9, fract(travel + 0.5)), 0.3) * 0.8;
+    // Web: packets go up and down between the layers (requests / responses)
+    float ping = abs(fract(uTime * 0.18) * 2.0 - 1.0);
+    float packet = band(p.z, mix(-1.1, 1.1, ping), 0.22)
+                 + band(p.z, mix(1.1, -1.1, ping), 0.22) * 0.6;
+    float glow = wNeural * impulse + wWeb * packet;
+
+    gl_PointSize = uSize * uPixelRatio * (0.75 + 0.5 * pulse + 1.1 * glow) * (uRef / -mv.z);
 
     // Globe: far side is dimmer, which gives depth. Other shapes are evenly lit.
     float facing = normalize(normalMatrix * normalize(position)).z;
     float depthDim = 0.3 + 0.7 * smoothstep(-0.25, 0.7, facing);
-    float shade = mix(depthDim, 1.0, m);
-    vAlpha = shade * (0.55 + 0.45 * pulse) * intro;
-    vColor = mix(aColor0, aColor1, m);
+    float shade = mix(1.0, depthDim, wGlobe);
+    vAlpha = shade * (0.55 + 0.45 * pulse + 1.2 * glow) * intro;
+    vColor = mix(shapeColor(uFrom), shapeColor(uTo), m) + vec3(0.55, 0.7, 0.6) * glow * 0.6;
   }
 `;
 

@@ -4,7 +4,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { sceneState } from "@/lib/scene-state";
-import { createParticleShapes } from "@/lib/shapes";
+import { createParticleShapes, SHAPE_COUNT } from "@/lib/shapes";
 import { particleFragmentShader, particleVertexShader } from "./shaders";
 
 const ENTRY_SECONDS = 1.5;
@@ -28,12 +28,11 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Part
   const material = useRef<THREE.ShaderMaterial>(null);
   const { gl } = useThree();
   const { starts, rands, shapes } = useMemo(() => createParticleShapes(count), [count]);
+  // The per-shape orders are packed in one vec4
   const order = useMemo(() => {
-    const out = new Float32Array(count * 2);
-    for (let i = 0; i < count; i++) {
-      out[i * 2] = shapes[0].order[i];
-      out[i * 2 + 1] = shapes[1].order[i];
-    }
+    const out = new Float32Array(count * SHAPE_COUNT);
+    for (let i = 0; i < count; i++)
+      for (let k = 0; k < SHAPE_COUNT; k++) out[i * SHAPE_COUNT + k] = shapes[k].order[i];
     return out;
   }, [count, shapes]);
   const uniforms = useMemo(
@@ -41,6 +40,8 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Part
       uTime: { value: 0 },
       uProgress: { value: animated ? 0 : 1 },
       uMorph: { value: 0 },
+      uFrom: { value: 0 },
+      uTo: { value: 0 },
       uPixelRatio: { value: 1 },
       uSize: { value: size },
       uRef: { value: 3.5 },
@@ -56,6 +57,8 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Part
     u.uPixelRatio.value = gl.getPixelRatio();
     u.uRef.value = state.camera.position.z;
     u.uMorph.value = sceneState.morph;
+    u.uFrom.value = sceneState.from;
+    u.uTo.value = sceneState.to;
     if (!animated) return;
     u.uTime.value += delta;
     u.uProgress.value = Math.min(u.uProgress.value + delta / ENTRY_SECONDS, 1);
@@ -67,11 +70,17 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Part
   return (
     <points frustumCulled={false}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[shapes[0].positions, 3]} />
-        <bufferAttribute attach="attributes-aShape1" args={[shapes[1].positions, 3]} />
-        <bufferAttribute attach="attributes-aColor0" args={[shapes[0].colors, 3]} />
-        <bufferAttribute attach="attributes-aColor1" args={[shapes[1].colors, 3]} />
-        <bufferAttribute attach="attributes-aOrder" args={[order, 2]} />
+        {shapes.map((shape, k) => (
+          <bufferAttribute
+            key={`pos${k}`}
+            attach={k === 0 ? "attributes-position" : `attributes-aShape${k}`}
+            args={[shape.positions, 3]}
+          />
+        ))}
+        {shapes.map((shape, k) => (
+          <bufferAttribute key={`col${k}`} attach={`attributes-aColor${k}`} args={[shape.colors, 3]} />
+        ))}
+        <bufferAttribute attach="attributes-aOrder" args={[order, SHAPE_COUNT]} />
         <bufferAttribute attach="attributes-aStart" args={[starts, 3]} />
         <bufferAttribute attach="attributes-aRand" args={[rands, 1]} />
       </bufferGeometry>

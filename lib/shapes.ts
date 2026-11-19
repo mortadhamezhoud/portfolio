@@ -13,7 +13,10 @@ export interface ShapeData {
   order: Float32Array;
 }
 
-export const SHAPE_COUNT = 2;
+export const SHAPE_COUNT = 4;
+
+/** Shape indices, in the order used by the shader. */
+export const SHAPE = { globe: 0, bars: 1, neural: 2, web: 3 } as const;
 
 const BLUE = new THREE.Color("#5B8CFF");
 const CYAN = new THREE.Color("#3EE6C1");
@@ -141,6 +144,188 @@ function createBarsShape(count: number, rng: Rng): ShapeData {
   return { positions, colors, order };
 }
 
+// ---------------------------------------------------------------- Machine learning: neural network
+
+const LAYERS = [5, 8, 8, 3];
+const LAYER_GAP = 0.8;
+const NODE_GAP = 0.27;
+
+/** Node positions per layer (slight depth jitter so it reads as 3D). */
+function neuralNodes(): THREE.Vector3[][] {
+  const rng = mulberry32(99);
+  return LAYERS.map((n, l) =>
+    Array.from({ length: n }, (_, k) =>
+      new THREE.Vector3(
+        (l - (LAYERS.length - 1) / 2) * LAYER_GAP,
+        (k - (n - 1) / 2) * NODE_GAP,
+        (rng() - 0.5) * 0.5,
+      ),
+    ),
+  );
+}
+
+function createNeuralShape(count: number, rng: Rng): ShapeData {
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+  const order = new Float32Array(count);
+  const layers = neuralNodes();
+  const nodes = layers.flat();
+  const edges: [THREE.Vector3, THREE.Vector3][] = [];
+  for (let l = 0; l < layers.length - 1; l++)
+    for (const a of layers[l]) for (const b of layers[l + 1]) edges.push([a, b]);
+
+  const nodeCount = Math.round(count * 0.3);
+  const c = new THREE.Color();
+  const v = new THREE.Vector3();
+  const span = (LAYERS.length - 1) * LAYER_GAP;
+  for (let i = 0; i < count; i++) {
+    if (i < nodeCount) {
+      // Dense glowing cluster around each node
+      const n = nodes[i % nodes.length];
+      v.set(rng() * 2 - 1, rng() * 2 - 1, rng() * 2 - 1).normalize().multiplyScalar(0.06 * Math.cbrt(rng()));
+      v.add(n);
+    } else {
+      // Thin line between two nodes of adjacent layers
+      const [a, b] = edges[Math.floor(rng() * edges.length)];
+      v.copy(a).lerp(b, rng());
+    }
+    positions.set([v.x, v.y, v.z], i * 3);
+    const t = (v.x + span / 2) / span; // blue (input) -> cyan (output)
+    c.copy(BLUE).lerp(CYAN, t);
+    if (i >= nodeCount) c.multiplyScalar(0.8);
+    colors.set([c.r, c.g, c.b], i * 3);
+    order[i] = t;
+  }
+  return { positions, colors, order };
+}
+
+// ---------------------------------------------------------------- Web: frontend / API / database
+
+/** Depth of the three layers (the camera looks down -z). */
+export const WEB_Z = { frontend: 0.95, api: 0, database: -0.95 };
+
+function createWebShape(count: number, rng: Rng): ShapeData {
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+  const order = new Float32Array(count);
+  const c = new THREE.Color();
+  type Sampler = () => [number, number, number];
+  const elements: { weight: number; sample: Sampler }[] = [];
+
+  // Frontend: 3 browser windows (outline + header bar + 3 dots)
+  const windows = [
+    { x: -0.5, y: 0.78, w: 0.8, h: 0.55 },
+    { x: 0.5, y: 0.9, w: 0.7, h: 0.48 },
+    { x: 0.0, y: 0.32, w: 0.75, h: 0.5 },
+  ];
+  for (const win of windows) {
+    const z = WEB_Z.frontend;
+    const left = win.x - win.w / 2;
+    const top = win.y + win.h / 2;
+    const bar = top - win.h * 0.2;
+    elements.push({
+      weight: 5,
+      sample: () => {
+        const r = rng();
+        if (r < 0.62) {
+          // Frame
+          const side = Math.floor(rng() * 4);
+          const u = rng();
+          if (side === 0) return [left + u * win.w, top, z];
+          if (side === 1) return [left + u * win.w, top - win.h, z];
+          if (side === 2) return [left, top - u * win.h, z];
+          return [left + win.w, top - u * win.h, z];
+        }
+        if (r < 0.82) return [left + rng() * win.w, bar, z]; // header separator
+        // Three dots in the header, left side
+        const d = Math.floor(rng() * 3);
+        const a = rng() * Math.PI * 2;
+        const rr = 0.022 * Math.sqrt(rng());
+        return [left + 0.07 + d * 0.075 + Math.cos(a) * rr, top - win.h * 0.1 + Math.sin(a) * rr, z];
+      },
+    });
+    // A few content lines inside the window
+    elements.push({
+      weight: 1.5,
+      sample: () => {
+        const line = Math.floor(rng() * 3);
+        const len = [0.7, 0.5, 0.6][line];
+        return [left + 0.08 + rng() * win.w * len, bar - 0.1 - line * 0.1, z];
+      },
+    });
+  }
+
+  // API: ring of 10 nodes + faint ring
+  const apiNodes = 10;
+  const apiR = 0.62;
+  elements.push({
+    weight: 9,
+    sample: () => {
+      const n = Math.floor(rng() * apiNodes);
+      const a = (n / apiNodes) * Math.PI * 2;
+      const q = new THREE.Vector3(rng() * 2 - 1, rng() * 2 - 1, rng() * 2 - 1).normalize().multiplyScalar(0.06 * Math.cbrt(rng()));
+      return [Math.cos(a) * apiR + q.x, Math.sin(a) * apiR * 0.5 + q.y, WEB_Z.api + Math.sin(a) * apiR * 0.5 + q.z];
+    },
+  });
+  elements.push({
+    weight: 3,
+    sample: () => {
+      const a = rng() * Math.PI * 2;
+      return [Math.cos(a) * apiR, Math.sin(a) * apiR * 0.5, WEB_Z.api + Math.sin(a) * apiR * 0.5];
+    },
+  });
+
+  // Database: cylinder (3 stacked discs)
+  const dbR = 0.5;
+  const dbH = 0.7;
+const DB_Y = -0.75;
+  elements.push({
+    weight: 12,
+    sample: () => {
+      const a = rng() * Math.PI * 2;
+      const r = rng();
+      if (r < 0.6) {
+        // Rings at top, middle thirds and bottom
+        const ring = Math.floor(rng() * 4);
+        return [Math.cos(a) * dbR, DB_Y - dbH / 2 + (ring / 3) * dbH, WEB_Z.database + Math.sin(a) * dbR];
+      }
+      const va = (Math.floor(rng() * 8) / 8) * Math.PI * 2; // 8 vertical lines
+      return [Math.cos(va) * dbR, DB_Y - dbH / 2 + rng() * dbH, WEB_Z.database + Math.sin(va) * dbR];
+    },
+  });
+
+  // Requests / responses: vertical links between the layers
+  const linkXs = [-0.42, -0.12, 0.2, 0.45];
+  elements.push({
+    weight: 4,
+    sample: () => {
+      const x = linkXs[Math.floor(rng() * linkXs.length)];
+      const t = rng();
+      return [x, THREE.MathUtils.lerp(DB_Y + 0.3, 0.55, t), THREE.MathUtils.lerp(WEB_Z.database, WEB_Z.frontend, t)];
+    },
+  });
+
+  const total = elements.reduce((s, e) => s + e.weight, 0);
+  for (let i = 0; i < count; i++) {
+    let pick = rng() * total;
+    let el = elements[elements.length - 1];
+    for (const e of elements) {
+      if (pick < e.weight) {
+        el = e;
+        break;
+      }
+      pick -= e.weight;
+    }
+    const [x, y, z] = el.sample();
+    positions.set([x, y, z], i * 3);
+    const t = (z - WEB_Z.database) / (WEB_Z.frontend - WEB_Z.database); // blue (data) -> cyan (front)
+    c.copy(BLUE).lerp(CYAN, t);
+    colors.set([c.r, c.g, c.b], i * 3);
+    order[i] = 1 - t; // front layer builds first
+  }
+  return { positions, colors, order };
+}
+
 // ---------------------------------------------------------------- Public
 
 export interface ParticleShapes {
@@ -159,6 +344,8 @@ export function createParticleShapes(count: number): ParticleShapes {
     shapes: [
       createGlobeShape(count, sphere.rands, sphere.positions),
       createBarsShape(count, mulberry32(1337)),
+      createNeuralShape(count, mulberry32(2024)),
+      createWebShape(count, mulberry32(777)),
     ],
   };
 }

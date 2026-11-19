@@ -10,6 +10,14 @@ export interface SkillGroup {
   items: string[];
 }
 
+export interface Domain {
+  id: string;
+  title: string;
+  /** Two sentences, based on real skills and projects. */
+  description: string;
+  tools: string[];
+}
+
 export interface Experience {
   id: string;
   role: string;
@@ -67,6 +75,8 @@ export interface Profile {
   /** Skill names (must exist in `skills`) shown as orbiting badges on the identity card. */
   featuredSkills: string[];
   skills: SkillGroup[];
+  /** The three domains shown in the pinned "What I do" section. */
+  domains: Domain[];
   experience: Experience[];
   education: Education[];
   languages: Language[];
