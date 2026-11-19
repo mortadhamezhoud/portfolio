@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import About from "@/components/about/About";
 import Projects from "@/components/projects/Projects";
 import Experience from "@/components/experience/Experience";
+import Credentials from "@/components/credentials/Credentials";
 import Skills from "@/components/skills/Skills";
 import Hero from "@/components/hero/Hero";
 import SectionPlaceholder from "@/components/ui/SectionPlaceholder";
@@ -25,7 +26,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <Skills groups={profile.skills} />
       <Projects projects={projects} />
       <Experience items={profile.experience} />
-      <SectionPlaceholder id="credentials" title={t("credentials")} />
+      <Credentials />
       <SectionPlaceholder id="contact" title={t("contact")} />
     </>
   );

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "gat-2026",
+    "file": "gat-2026.webp",
+    "type": "pfe",
+    "company": "GAT Assurances",
+    "logo": "gat",
+    "start": "2026-02-02",
+    "end": "2026-07-31",
+    "title": {
+      "en": "End-of-studies project (PFE) — Digital Transformation Department",
+      "fr": "Projet de fin d'études (PFE) — Direction Transformation Digitale"
+    }
+  },
+  {
+    "id": "anypli-2025",
+    "file": "anypli-2025.webp",
+    "type": "internship",
+    "company": "ANYPLI",
+    "logo": "anypli",
+    "start": "2025-06-30",
+    "end": "2025-08-22",
+    "title": {
+      "en": "Summer internship",
+      "fr": "Stage d'été"
+    }
+  },
+  {
+    "id": "anypli-2024",
+    "file": "anypli-2024.webp",
+    "type": "internship",
+    "company": "ANYPLI",
+    "logo": "anypli",
+    "start": "2024-07-01",
+    "end": "2024-08-09",
+    "title": {
+      "en": "Summer internship",
+      "fr": "Stage d'été"
+    }
+  }
+]

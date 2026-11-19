@@ -54,5 +54,17 @@
     "title": "Expérience",
     "companyTbd": "Entreprise à compléter",
     "datesTbd": "Dates à compléter"
+  },
+  "credentials": {
+    "note": "Ces documents sont confidentiels. Les informations personnelles et sensibles ont été masquées pour protéger la confidentialité.",
+    "onRequest": "Documents originaux disponibles sur demande.",
+    "types": {
+      "pfe": "Projet de fin d'études",
+      "internship": "Stage"
+    },
+    "open": "Voir l'attestation",
+    "close": "Fermer",
+    "missing": "Document bientôt disponible",
+    "imageAlt": "Attestation masquée"
   }
 }

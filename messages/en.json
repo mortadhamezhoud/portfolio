@@ -54,5 +54,17 @@
     "title": "Experience",
     "companyTbd": "Company to be added",
     "datesTbd": "Dates to be added"
+  },
+  "credentials": {
+    "note": "These documents are confidential. Personal and sensitive information has been redacted to protect privacy.",
+    "onRequest": "Original documents available on request.",
+    "types": {
+      "pfe": "End-of-studies project",
+      "internship": "Internship"
+    },
+    "open": "View certificate",
+    "close": "Close",
+    "missing": "Document not available yet",
+    "imageAlt": "Redacted certificate"
   }
 }

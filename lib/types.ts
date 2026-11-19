@@ -143,3 +143,17 @@ export interface GlobeConfig {
   regenerate: { minSeconds: number; maxSeconds: number; fadeSeconds: number };
   regions: GlobeRegion[];
 }
+
+export interface Certificate {
+  id: string;
+  /** File name in public/certificates/ (redacted copy only). */
+  file: string;
+  type: "pfe" | "internship";
+  company: string;
+  /** Logo key: public/logos/{logo}.png. */
+  logo: string;
+  /** ISO dates (YYYY-MM-DD). */
+  start: string;
+  end: string;
+  title: Record<string, string>;
+}
