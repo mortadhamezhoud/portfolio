@@ -19,7 +19,8 @@
     "phone": "+216 90 181 335",
     "whatsapp": "+216 90 181 335",
     "linkedin": "https://www.linkedin.com/in/mortadha-mazhoud-6440a0311",
-    "github": ""
+    "github": "",
+    "location": "Tunis, Tunisia"
   },
   "stats": [
     {
@@ -188,5 +189,20 @@
       "organization": "ISIE electoral staff member",
       "year": "2024"
     }
-  ]
+  ],
+  "openTo": {
+    "roles": [
+      "BI",
+      "Data",
+      "Full-Stack"
+    ],
+    "formats": [
+      "Full-time",
+      "Freelance",
+      "Remote",
+      "On-site",
+      "Relocation"
+    ],
+    "availability": "Immediately"
+  }
 }

@@ -59,6 +59,11 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const profile = getProfile(locale);
+  // Never ship the phone number to client components (it is revealed on click from a token)
+  const headerProfile = {
+    ...profile,
+    contact: { ...profile.contact, phone: "", whatsapp: "" },
+  };
 
   return (
     <html
@@ -78,7 +83,7 @@ export default async function LocaleLayout({
           <Loader />
           <GlobeBackground />
           <SmoothScroll>
-            <Header profile={profile} cvs={getAvailableCvs(profile.cv)} />
+            <Header profile={headerProfile} cvs={getAvailableCvs(profile.cv)} />
             {children}
           </SmoothScroll>
           <CustomCursor />

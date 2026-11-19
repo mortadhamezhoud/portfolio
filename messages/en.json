@@ -66,5 +66,81 @@
     "close": "Close",
     "missing": "Document not available yet",
     "imageAlt": "Redacted certificate"
+  },
+  "contact": {
+    "status": "Open to work",
+    "title": "Let's work together.",
+    "intro": "Looking for my next challenge in BI, Data or Full-Stack — full-time or freelance.",
+    "rolesLabel": "Roles",
+    "formatsLabel": "Formats",
+    "availabilityLabel": "Availability",
+    "openTo": {
+      "roles": {
+        "BI": "BI",
+        "Data": "Data",
+        "Full-Stack": "Full-Stack"
+      },
+      "formats": {
+        "Full-time": "Full-time",
+        "Freelance": "Freelance",
+        "Remote": "Remote",
+        "On-site": "On-site",
+        "Relocation": "Relocation"
+      },
+      "availability": {
+        "Immediately": "Available immediately"
+      }
+    },
+    "cards": {
+      "email": "Email",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "linkedin": "LinkedIn",
+      "linkedinText": "Open my profile",
+      "whatsapp": "WhatsApp",
+      "showNumber": "Show number",
+      "hiddenNumber": "+216 •• ••• •••",
+      "call": "Call",
+      "chat": "Chat on WhatsApp",
+      "location": "Location"
+    },
+    "form": {
+      "title": "Send me a message",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company (optional)",
+      "type": "Opportunity type",
+      "typePlaceholder": "Select…",
+      "types": {
+        "job": "Full-time / Contract job",
+        "freelance": "Freelance project",
+        "internship": "Internship",
+        "other": "Other"
+      },
+      "message": "Message",
+      "budget": "Budget",
+      "budgetPlaceholder": "Select…",
+      "budgets": {
+        "lt500": "< 500 €",
+        "b1": "500 – 2 000 €",
+        "b2": "2 000 – 5 000 €",
+        "gt5000": "> 5 000 €",
+        "unsure": "Not sure yet"
+      },
+      "timeline": "Timeline",
+      "timelinePlaceholder": "e.g. 6 weeks, starting in March",
+      "send": "Send message",
+      "sending": "Sending…",
+      "errors": {
+        "required": "This field is required.",
+        "email": "Enter a valid email address.",
+        "minMessage": "Your message must be at least 20 characters.",
+        "maxMessage": "Your message must be at most 1000 characters."
+      },
+      "success": "Message sent! I'll get back to you within 24 hours.",
+      "error": "Something went wrong, your message was not sent.",
+      "errorFallback": "You can write to me directly at",
+      "noEndpoint": "The form is not configured yet."
+    }
   }
 }

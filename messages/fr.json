@@ -66,5 +66,81 @@
     "close": "Fermer",
     "missing": "Document bientôt disponible",
     "imageAlt": "Attestation masquée"
+  },
+  "contact": {
+    "status": "Disponible",
+    "title": "Travaillons ensemble.",
+    "intro": "À la recherche de mon prochain défi en BI, Data ou Full-Stack — en CDI ou en freelance.",
+    "rolesLabel": "Rôles",
+    "formatsLabel": "Formats",
+    "availabilityLabel": "Disponibilité",
+    "openTo": {
+      "roles": {
+        "BI": "BI",
+        "Data": "Data",
+        "Full-Stack": "Full-Stack"
+      },
+      "formats": {
+        "Full-time": "CDI / Temps plein",
+        "Freelance": "Freelance",
+        "Remote": "Remote",
+        "On-site": "Sur site",
+        "Relocation": "Mobilité internationale"
+      },
+      "availability": {
+        "Immediately": "Disponible immédiatement"
+      }
+    },
+    "cards": {
+      "email": "Email",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "linkedin": "LinkedIn",
+      "linkedinText": "Ouvrir mon profil",
+      "whatsapp": "WhatsApp",
+      "showNumber": "Afficher le numéro",
+      "hiddenNumber": "+216 •• ••• •••",
+      "call": "Appeler",
+      "chat": "Écrire sur WhatsApp",
+      "location": "Localisation"
+    },
+    "form": {
+      "title": "Envoyez-moi un message",
+      "name": "Nom",
+      "email": "Email",
+      "company": "Entreprise (facultatif)",
+      "type": "Type d'opportunité",
+      "typePlaceholder": "Choisir…",
+      "types": {
+        "job": "CDI / Mission",
+        "freelance": "Projet freelance",
+        "internship": "Stage",
+        "other": "Autre"
+      },
+      "message": "Message",
+      "budget": "Budget",
+      "budgetPlaceholder": "Choisir…",
+      "budgets": {
+        "lt500": "< 500 €",
+        "b1": "500 – 2 000 €",
+        "b2": "2 000 – 5 000 €",
+        "gt5000": "> 5 000 €",
+        "unsure": "Pas encore défini"
+      },
+      "timeline": "Délai",
+      "timelinePlaceholder": "ex. 6 semaines, début en mars",
+      "send": "Envoyer le message",
+      "sending": "Envoi…",
+      "errors": {
+        "required": "Ce champ est obligatoire.",
+        "email": "Saisissez une adresse email valide.",
+        "minMessage": "Votre message doit contenir au moins 20 caractères.",
+        "maxMessage": "Votre message doit contenir 1000 caractères au maximum."
+      },
+      "success": "Message envoyé ! Je vous réponds sous 24 heures.",
+      "error": "Une erreur est survenue, votre message n'a pas été envoyé.",
+      "errorFallback": "Vous pouvez m'écrire directement à",
+      "noEndpoint": "Le formulaire n'est pas encore configuré."
+    }
   }
 }

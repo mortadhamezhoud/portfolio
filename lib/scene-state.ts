@@ -70,7 +70,7 @@ export function buildTimeline(): Keyframe[] {
   if (contact !== null) {
     frames.push(
       { y: contact - vh * 0.9, shape: frames[frames.length - 1].shape, zone: 0 },
-      { y: contact - vh * 0.1, shape: SHAPE.globe, zone: 1 },
+      { y: contact - vh * 0.1, shape: SHAPE.globe, zone: 0 },
     );
   }
   // Keep keyframes strictly ordered (sections can overlap on tiny viewports)

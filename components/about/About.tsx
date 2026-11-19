@@ -10,7 +10,15 @@ export default function About({ profile }: { profile: Profile }) {
       className="mx-auto grid overflow-x-clip min-h-screen w-full max-w-6xl items-center gap-12 px-6 py-24 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20 lg:px-16"
     >
       <div className="mx-auto w-[85%] max-w-sm lg:w-full lg:max-w-none">
-        <IdentityCard profile={profile} />
+        <IdentityCard
+          profile={{
+            name: profile.name,
+            title: profile.title,
+            photo: profile.photo,
+            photoAlt: profile.photoAlt,
+            featuredSkills: profile.featuredSkills,
+          }}
+        />
       </div>
 
       <div className="flex flex-col gap-8">

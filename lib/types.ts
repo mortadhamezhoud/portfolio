@@ -51,6 +51,13 @@ export interface Contact {
   whatsapp: string;
   linkedin: string;
   github: string;
+  location: string;
+}
+
+export interface OpenTo {
+  roles: string[];
+  formats: string[];
+  availability: string;
 }
 
 export interface Profile {
@@ -69,6 +76,7 @@ export interface Profile {
   availability: string;
   about: string;
   contact: Contact;
+  openTo: OpenTo;
   stats: Stat[];
   /** Skill names (must exist in `skills`) shown as orbiting badges on the identity card. */
   featuredSkills: string[];
