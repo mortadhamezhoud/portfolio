@@ -4,10 +4,19 @@
     "title": "CyberSuivi GAT",
     "subtitle": "Cybersecurity awareness tracking platform with BI dashboards and phishing-risk prediction",
     "featured": true,
+    "scene": "neural-shield",
     "period": "Feb 2026 – Jul 2026",
     "company": "GAT Assurances",
     "role": "Full-Stack & Data Engineer (Final-year project)",
-    "stack": ["React", "NestJS", "JWT", "Power Query", "Power BI", "DAX", "Machine Learning"],
+    "stack": [
+      "React",
+      "NestJS",
+      "JWT",
+      "Power Query",
+      "Power BI",
+      "DAX",
+      "Machine Learning"
+    ],
     "context": "Final-year engineering project (PFE) carried out at GAT Assurances in Tunis to track cybersecurity awareness across the company.",
     "problem": "Awareness data (quizzes, trainings, phishing campaigns and vulnerabilities) was scattered, and the company could not identify the employees most exposed to phishing.",
     "solution": [
@@ -17,8 +26,17 @@
       "Developed a Machine Learning model that predicts each employee's phishing risk.",
       "Developed an AI-based cybersecurity chatbot and a cyber-watch module."
     ],
+    "pitch": [
+      "Full-stack platform with React, NestJS and JWT role-based access.",
+      "ETL with Power Query and Power BI dashboards with DAX KPIs.",
+      "Machine Learning model that predicts each employee's phishing risk."
+    ],
     "result": "Final-year project graduated with Très Bien (Very Good) honors.",
-    "links": { "demo": "", "github": "", "video": "" },
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
     "images": []
   },
   {
@@ -26,6 +44,7 @@
     "title": "ADMISSITY",
     "subtitle": "BI platform for admissions and graduate employability",
     "featured": false,
+    "scene": "bars",
     "period": "Jan 2025 – May 2025",
     "company": "ESPRIT",
     "role": "",
@@ -37,8 +56,17 @@
       "Built predictive models and KPI dashboards.",
       "Developed a job recommendation feature for graduates, based on CV analysis and LinkedIn scraping."
     ],
+    "pitch": [
+      "Applicant and alumni data centralized in a single platform.",
+      "Predictive models and KPI dashboards.",
+      "Job recommendations from CV analysis and LinkedIn scraping."
+    ],
     "result": "",
-    "links": { "demo": "", "github": "", "video": "" },
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
     "images": []
   },
   {
@@ -46,10 +74,22 @@
     "title": "ANYPLI Car Rental Platform",
     "subtitle": "Car rental platform with a REST API and Power BI dashboards",
     "featured": false,
+    "scene": "fullstack",
     "period": "Jun 2025 – Aug 2025",
     "company": "ANYPLI",
     "role": "Full-Stack Developer Intern",
-    "stack": ["NestJS", "React", "TypeScript", "Material UI", "Redux Toolkit", "RTK Query", "JWT", "MySQL", "TypeORM", "Power BI"],
+    "stack": [
+      "NestJS",
+      "React",
+      "TypeScript",
+      "Material UI",
+      "Redux Toolkit",
+      "RTK Query",
+      "JWT",
+      "MySQL",
+      "TypeORM",
+      "Power BI"
+    ],
     "context": "Summer internship project at ANYPLI in Monastir: design and development of a car rental platform.",
     "problem": "",
     "solution": [
@@ -58,8 +98,17 @@
       "Built a REST API with JWT authentication on a MySQL database using TypeORM.",
       "Created data analysis reports and dashboards with Power BI."
     ],
+    "pitch": [
+      "NestJS backend with a REST API, JWT authentication and MySQL through TypeORM.",
+      "React, TypeScript and Material UI frontend with Redux Toolkit and RTK Query.",
+      "Power BI reports and dashboards for data analysis."
+    ],
     "result": "",
-    "links": { "demo": "", "github": "", "video": "" },
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
     "images": []
   },
   {
@@ -67,10 +116,17 @@
     "title": "ANYPLI Real-Time News Website",
     "subtitle": "Real-time news website organized by category",
     "featured": false,
+    "scene": "news-feed",
     "period": "Jul 2024 – Aug 2024",
     "company": "ANYPLI",
     "role": "Full-Stack Developer Intern",
-    "stack": ["React", "TypeScript", "Redux", "Material UI", "NewsAPI"],
+    "stack": [
+      "React",
+      "TypeScript",
+      "Redux",
+      "Material UI",
+      "NewsAPI"
+    ],
     "context": "Summer internship project at ANYPLI in Monastir.",
     "problem": "Readers had no single place to follow real-time news by category.",
     "solution": [
@@ -78,8 +134,17 @@
       "Integrated NewsAPI and managed application state with Redux.",
       "Designed a responsive interface with Material UI."
     ],
+    "pitch": [
+      "Real-time news website built with React and TypeScript.",
+      "NewsAPI integration with application state managed in Redux.",
+      "Responsive Material UI interface organized by category."
+    ],
     "result": "",
-    "links": { "demo": "", "github": "", "video": "" },
+    "links": {
+      "demo": "",
+      "github": "",
+      "video": ""
+    },
     "images": []
   }
 ]

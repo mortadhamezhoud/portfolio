@@ -14,13 +14,14 @@ const SCROLL_DAMPING = 7;
 
 /**
  * Per-shape pose of the particle group + camera angle/distance (slight cinematic move
- * between shapes). Indexed like SHAPE: globe, bars, neural, web.
+ * between shapes). Indexed like SHAPE: globe, bars, neural, web, news.
  */
 const POSES = [
   { tiltX: BASE_TILT, yaw: 0, camZ: 3.6, camY: 0, camX: 0 },
   { tiltX: 0.36, yaw: -0.4, camZ: 5.2, camY: 0.5, camX: -0.3 },
-  { tiltX: 0.1, yaw: -0.3, camZ: 5.4, camY: 0.15, camX: 0.35 },
+  { tiltX: 0.1, yaw: -0.3, camZ: 6.2, camY: 0.1, camX: 0.35 },
   { tiltX: 0.2, yaw: -0.62, camZ: 5.8, camY: 0.2, camX: -0.35 },
+  { tiltX: 0.1, yaw: -0.3, camZ: 5.6, camY: 0.1, camX: 0.25 },
 ];
 type PoseKey = "tiltX" | "yaw" | "camZ" | "camY" | "camX";
 
@@ -32,6 +33,7 @@ const LAYOUT = {
   },
   mobile: {
     big: { x: 0, y: 0.22, scale: 0.8, opacity: 0.75 },
+    compact: { x: 0, y: 0.5, scale: 0.55, opacity: 1 },
     ambient: { x: 0, y: 0, scale: 0.7, opacity: 0.3 },
   },
 };
@@ -143,7 +145,10 @@ export default function GlobeScene({ particleCount, particleSize, animated }: Gl
     const z = sceneState.zone;
     const halfH = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * camera.position.z;
     const halfW = halfH * aspect;
-    const place = (k: LayoutKey) => THREE.MathUtils.lerp(layout.ambient[k], layout.big[k], z);
+    const compact = mobile ? sceneState.compact : 0;
+    const bigK = (k: LayoutKey) =>
+      mobile ? THREE.MathUtils.lerp(LAYOUT.mobile.big[k], LAYOUT.mobile.compact[k], compact) : layout.big[k];
+    const place = (k: LayoutKey) => THREE.MathUtils.lerp(layout.ambient[k], bigK(k), z);
     root.current.position.set(place("x") * halfW, place("y") * halfH, 0);
     root.current.scale.setScalar(place("scale"));
 

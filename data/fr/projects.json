@@ -4,6 +4,7 @@
     "title": "CyberSuivi GAT",
     "subtitle": "Plateforme de suivi de la sensibilisation à la cybersécurité, avec dashboards BI et prédiction du risque de phishing",
     "featured": true,
+    "scene": "neural-shield",
     "period": "Févr. 2026 – Juil. 2026",
     "company": "GAT Assurances",
     "role": "Ingénieur Full-Stack & Data (Projet de fin d'études)",
@@ -25,6 +26,11 @@
       "Développement d'un modèle de Machine Learning qui prédit le risque de phishing de chaque employé.",
       "Développement d'un chatbot de cybersécurité basé sur l'IA et d'un module de veille cyber."
     ],
+    "pitch": [
+      "Plateforme full-stack avec React, NestJS et accès par rôles via JWT.",
+      "ETL avec Power Query et dashboards Power BI avec KPI en DAX.",
+      "Modèle de Machine Learning qui prédit le risque de phishing de chaque employé."
+    ],
     "result": "Projet de fin d'études validé avec la mention Très Bien.",
     "links": {
       "demo": "",
@@ -38,6 +44,7 @@
     "title": "ADMISSITY",
     "subtitle": "Plateforme BI pour l'admission et l'employabilité des diplômés",
     "featured": false,
+    "scene": "bars",
     "period": "Janv. 2025 – Mai 2025",
     "company": "ESPRIT",
     "role": "",
@@ -48,6 +55,11 @@
       "Centralisation des données des candidats et des anciens élèves sur une seule plateforme.",
       "Développement de modèles prédictifs et de dashboards KPI.",
       "Développement d'une fonctionnalité de recommandation d'emplois pour les diplômés, basée sur l'analyse de CV et le scraping LinkedIn."
+    ],
+    "pitch": [
+      "Données des candidats et des anciens élèves centralisées dans une seule plateforme.",
+      "Modèles prédictifs et dashboards KPI.",
+      "Recommandation d'emplois à partir de l'analyse de CV et du scraping LinkedIn."
     ],
     "result": "",
     "links": {
@@ -62,6 +74,7 @@
     "title": "Plateforme de location de voitures ANYPLI",
     "subtitle": "Plateforme de location de voitures avec API REST et dashboards Power BI",
     "featured": false,
+    "scene": "fullstack",
     "period": "Juin 2025 – Août 2025",
     "company": "ANYPLI",
     "role": "Stagiaire Développeur Full-Stack",
@@ -85,6 +98,11 @@
       "Développement d'une API REST avec authentification JWT sur une base MySQL avec TypeORM.",
       "Création de rapports et de dashboards d'analyse de données avec Power BI."
     ],
+    "pitch": [
+      "Backend NestJS avec API REST, authentification JWT et MySQL via TypeORM.",
+      "Frontend React, TypeScript et Material UI avec Redux Toolkit et RTK Query.",
+      "Rapports et dashboards Power BI pour l'analyse des données."
+    ],
     "result": "",
     "links": {
       "demo": "",
@@ -98,6 +116,7 @@
     "title": "Site d'actualités en temps réel ANYPLI",
     "subtitle": "Site d'actualités en temps réel organisé par catégories",
     "featured": false,
+    "scene": "news-feed",
     "period": "Juil. 2024 – Août 2024",
     "company": "ANYPLI",
     "role": "Stagiaire Développeur Full-Stack",
@@ -114,6 +133,11 @@
       "Développement d'un site d'actualités en temps réel avec React et TypeScript, avec des catégories Sport, Santé, Général, BBC News et BBC Sport.",
       "Intégration de NewsAPI et gestion de l'état de l'application avec Redux.",
       "Conception d'une interface responsive avec Material UI."
+    ],
+    "pitch": [
+      "Site d'actualités en temps réel avec React et TypeScript.",
+      "Intégration de NewsAPI, état de l'application géré avec Redux.",
+      "Interface responsive Material UI organisée par catégorie."
     ],
     "result": "",
     "links": {

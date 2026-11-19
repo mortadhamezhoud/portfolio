@@ -95,6 +95,8 @@ export interface Project {
   title: string;
   subtitle: string;
   featured: boolean;
+  /** 3D scene shown next to the project (key of SCENE_SHAPE in lib/shapes.ts). */
+  scene: string;
   period: string;
   company: string;
   role: string;
@@ -102,6 +104,8 @@ export interface Project {
   context: string;
   problem: string;
   solution: string[];
+  /** Three short points shown in the Projects scrollytelling. */
+  pitch: string[];
   result: string;
   links: ProjectLinks;
   images: string[];

@@ -42,5 +42,13 @@
     "downloadCv": "Download CV",
     "cvMenuLabel": "Choose the CV language",
     "comingSoon": "Coming soon"
+  },
+  "projects": {
+    "label": "Projects",
+    "counter": "Project {current} of {total}",
+    "problem": "Problem",
+    "solution": "Solution",
+    "viewCase": "View case study",
+    "soon": "Coming soon"
   }
 }

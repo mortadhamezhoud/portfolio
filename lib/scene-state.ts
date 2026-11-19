@@ -1,4 +1,4 @@
-import { SHAPE } from "@/lib/shapes";
+import { SHAPE } from "@/lib/scenes";
 
 /**
  * Mutable state shared between the page (scroll) and the 3D scene. It is read in
@@ -13,6 +13,8 @@ export const sceneState = {
   globe: 1,
   /** 1 = big hero-style placement, 0 = small, blurred ambient background. */
   zone: 1,
+  /** Mobile only: 1 puts the shape small at the top of the screen (above the project text). */
+  compact: 0,
   /** Index (0-2) of the domain shown in "What I do", or -1 outside the section. */
   domain: -1,
 };
@@ -22,6 +24,8 @@ export interface Keyframe {
   y: number;
   shape: number;
   zone: number;
+  /** 1 = mobile placement above the project text. */
+  compact?: number;
 }
 
 const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1);
@@ -43,11 +47,29 @@ export function buildTimeline(): Keyframe[] {
   const about = top("about");
   const contact = top("contact");
 
+  // Projects: one keyframe pair per project (arrive / leave), shape read from data-shape
+  const projectEls = Array.from(document.querySelectorAll<HTMLElement>("#projects [data-shape]"));
+  const projectFrames: Keyframe[] = projectEls.flatMap((el) => {
+    const shape = Number(el.dataset.shape);
+    const y = el.getBoundingClientRect().top + scrollY + (el.offsetHeight - vh) / 2;
+    return [
+      { y: y - vh * 0.15, shape, zone: 1, compact: 1 },
+      { y: y + vh * 0.15, shape, zone: 1, compact: 1 },
+    ];
+  });
+  const projectsStart = top("projects");
+  if (projectFrames.length > 0 && projectsStart !== null) {
+    // Ambient globe until just before the first project, then the first shape appears
+    frames.push({ y: projectsStart - vh * 0.7, shape: SHAPE.globe, zone: 0 }, ...projectFrames);
+    const last = projectFrames[projectFrames.length - 1];
+    frames.push({ y: last.y + vh * 0.9, shape: last.shape, zone: 0 });
+  }
+
   if (about !== null) // The globe leaves the text area before About starts
     frames.push({ y: about - vh * 0.55, shape: SHAPE.globe, zone: 1 }, { y: about - vh * 0.05, shape: SHAPE.globe, zone: 0 });
   if (contact !== null) {
     frames.push(
-      { y: contact - vh * 0.9, shape: SHAPE.globe, zone: 0 },
+      { y: contact - vh * 0.9, shape: frames[frames.length - 1].shape, zone: 0 },
       { y: contact - vh * 0.1, shape: SHAPE.globe, zone: 1 },
     );
   }
@@ -68,6 +90,7 @@ export function applyTimeline(frames: Keyframe[], y: number): void {
   sceneState.to = b.shape;
   sceneState.morph = a.shape === b.shape ? 0 : u;
   sceneState.zone = a.zone + (b.zone - a.zone) * u;
+  sceneState.compact = (a.compact ?? 0) + ((b.compact ?? 0) - (a.compact ?? 0)) * u;
   if (a.shape === b.shape) sceneState.to = a.shape;
   const wGlobe =
     (a.shape === SHAPE.globe ? 1 - sceneState.morph : 0) +

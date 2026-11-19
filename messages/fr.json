@@ -42,5 +42,13 @@
     "downloadCv": "Télécharger mon CV",
     "cvMenuLabel": "Choisir la langue du CV",
     "comingSoon": "Bientôt disponible"
+  },
+  "projects": {
+    "label": "Projets",
+    "counter": "Projet {current} sur {total}",
+    "problem": "Problème",
+    "solution": "Solution",
+    "viewCase": "Voir l'étude de cas",
+    "soon": "Bientôt disponible"
   }
 }

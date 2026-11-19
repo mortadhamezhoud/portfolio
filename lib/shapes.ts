@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { NEWS_SCROLL_HEIGHT, SCENE_SHAPE, SHAPE } from "@/lib/scenes";
 import { createSpherePoints, mulberry32, type Rng } from "@/lib/globe";
 
 /**
@@ -19,20 +20,7 @@ export interface ShapeData {
 
 export const SHAPE_COUNT = 5;
 
-/** Shape indices, in the order used by the shader. */
-export const SHAPE = { globe: 0, bars: 1, neural: 2, web: 3, news: 4 } as const;
-
-/** Scene names used in data/projects.json ("scene") -> shape index. */
-export const SCENE_SHAPE: Record<string, number> = {
-  globe: SHAPE.globe,
-  bars: SHAPE.bars,
-  "neural-shield": SHAPE.neural,
-  fullstack: SHAPE.web,
-  "news-feed": SHAPE.news,
-};
-
-/** Height of the scrolling text area of a news window (must match the shader). */
-export const NEWS_SCROLL_HEIGHT = 0.8;
+export { NEWS_SCROLL_HEIGHT, SCENE_SHAPE, SHAPE };
 
 const BLUE = new THREE.Color("#5B8CFF");
 const CYAN = new THREE.Color("#3EE6C1");
