@@ -135,13 +135,16 @@
     {
       "id": "embedded-bachelor",
       "role": "Embedded Systems Intern",
-      "company": "",
+      "company": "Mediwave",
       "location": "",
       "period": "",
       "type": "End-of-studies internship (Bachelor)",
-      "project": "",
-      "logo": "",
-      "highlights": []
+      "project": "Remote-controlled UVC sterilizer",
+      "logo": "mediwave",
+      "highlights": [
+        "Worked on an IoT UVC sterilizer: an embedded device that can be controlled remotely.",
+        "Contributed to the remote control of the device from a mobile application."
+      ]
     }
   ],
   "education": [

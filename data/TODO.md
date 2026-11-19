@@ -7,7 +7,7 @@ Nothing below has been invented. Fill these in when available.
 - [ ] `stats[3]` — currently "3 Languages"; replace with a verifiable CyberSuivi figure (e.g. number of Power BI dashboards) if you have one
 - [ ] `education[1].note` — optional note for the ISIMM degree
 
-- [ ] `experience[3]` (embedded-bachelor, provisional entry) — `company`, `location`, `period`, `project`, `highlights`, and `logo` (key of public/logos/{logo}.png)
+- [ ] `experience[3]` (embedded-bachelor, Mediwave) — still to fill: `location`, `period` (dates), and more precise `highlights` (hardware, firmware, protocols, app stack)
 - [ ] Logos: add `public/logos/esprit.png` and `public/logos/isimm.png` (monograms are used until the files exist; max 200 px wide, transparent PNG)
 
 - [ ] Arabic: nav label for Skills is "المهارات" (add when messages/ar.json exists)

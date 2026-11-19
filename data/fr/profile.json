@@ -135,13 +135,16 @@
     {
       "id": "embedded-bachelor",
       "role": "Stagiaire en systèmes embarqués",
-      "company": "",
+      "company": "Mediwave",
       "location": "",
       "period": "",
       "type": "Stage de fin d'études (Licence)",
-      "project": "",
-      "logo": "",
-      "highlights": []
+      "project": "Stérilisateur UVC commandé à distance",
+      "logo": "mediwave",
+      "highlights": [
+        "Participation à un stérilisateur UVC connecté (IoT) : un dispositif embarqué pilotable à distance.",
+        "Contribution à la commande du dispositif depuis une application mobile."
+      ]
     }
   ],
   "education": [
