@@ -7,6 +7,7 @@ export const particleVertexShader = /* glsl */ `
   uniform float uPixelRatio;
   uniform float uSize;
   uniform float uRef;
+  uniform float uNewsHeight;
   uniform vec3 uMouse;
   uniform float uMouseActive;
 
@@ -15,11 +16,14 @@ export const particleVertexShader = /* glsl */ `
   attribute vec3 aShape1;
   attribute vec3 aShape2;
   attribute vec3 aShape3;
+  attribute vec3 aShape4;
   attribute vec3 aColor0;
   attribute vec3 aColor1;
   attribute vec3 aColor2;
   attribute vec3 aColor3;
-  attribute vec4 aOrder;
+  attribute vec3 aColor4;
+  attribute vec4 aOrder;   // order of shapes 0-3
+  attribute vec4 aExtra;   // news order, shield flag, news line flag, news scroll bottom
 
   varying float vAlpha;
   varying vec3 vColor;
@@ -28,23 +32,37 @@ export const particleVertexShader = /* glsl */ `
     return x < 0.5 ? 4.0 * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 3.0) / 2.0;
   }
 
+  // Position inside the news feed shape: text lines scroll upwards and wrap (fade at the edges)
+  float newsRel = 0.0;
+  vec3 newsPos() {
+    vec3 p = aShape4;
+    if (aExtra.z > 0.5) {
+      float rel = mod(p.y - aExtra.w + uTime * 0.05 + aExtra.w * 1.7, uNewsHeight);
+      newsRel = rel / uNewsHeight;
+      p.y = aExtra.w + rel;
+    }
+    return p;
+  }
   vec3 shapePos(float i) {
     if (i < 0.5) return position;
     if (i < 1.5) return aShape1;
     if (i < 2.5) return aShape2;
-    return aShape3;
+    if (i < 3.5) return aShape3;
+    return newsPos();
   }
   vec3 shapeColor(float i) {
     if (i < 0.5) return aColor0;
     if (i < 1.5) return aColor1;
     if (i < 2.5) return aColor2;
-    return aColor3;
+    if (i < 3.5) return aColor3;
+    return aColor4;
   }
   float shapeOrder(float i) {
     if (i < 0.5) return aOrder.x;
     if (i < 1.5) return aOrder.y;
     if (i < 2.5) return aOrder.z;
-    return aOrder.w;
+    if (i < 3.5) return aOrder.w;
+    return aExtra.x;
   }
 
   // Bright band travelling along an axis (a pulse): 1 at the centre, 0 away from it
@@ -76,6 +94,7 @@ export const particleVertexShader = /* glsl */ `
     float wGlobe = (uFrom < 0.5 ? wFrom : 0.0) + (uTo < 0.5 ? wTo : 0.0);
     float wNeural = (abs(uFrom - 2.0) < 0.5 ? wFrom : 0.0) + (abs(uTo - 2.0) < 0.5 ? wTo : 0.0);
     float wWeb = (abs(uFrom - 3.0) < 0.5 ? wFrom : 0.0) + (abs(uTo - 3.0) < 0.5 ? wTo : 0.0);
+    float wNews = (abs(uFrom - 4.0) < 0.5 ? wFrom : 0.0) + (abs(uTo - 4.0) < 0.5 ? wTo : 0.0);
 
     // Particles near the cursor are pushed away slightly (globe only)
     vec3 dm = p - uMouse;
@@ -104,7 +123,10 @@ export const particleVertexShader = /* glsl */ `
     float facing = normalize(normalMatrix * normalize(position)).z;
     float depthDim = 0.3 + 0.7 * smoothstep(-0.25, 0.7, facing);
     float shade = mix(1.0, depthDim, wGlobe);
-    vAlpha = shade * (0.55 + 0.45 * pulse + 1.2 * glow) * intro;
+    // Shield halo shimmers; news text lines fade in/out at the edges of their scrolling area
+    float shimmer = mix(1.0, 0.45 + 0.55 * sin(uTime * 2.0 + aRand * 20.0 + p.y * 3.0), aExtra.y * wNeural);
+    float newsFade = mix(1.0, smoothstep(0.0, 0.1, newsRel) * smoothstep(1.0, 0.9, newsRel), aExtra.z * wNews);
+    vAlpha = shade * (0.55 + 0.45 * pulse + 1.2 * glow) * intro * shimmer * newsFade;
     vColor = mix(shapeColor(uFrom), shapeColor(uTo), m) + vec3(0.55, 0.7, 0.6) * glow * 0.6;
   }
 `;

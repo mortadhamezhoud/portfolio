@@ -4,7 +4,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { sceneState } from "@/lib/scene-state";
-import { createParticleShapes, SHAPE_COUNT } from "@/lib/shapes";
+import { createParticleShapes, NEWS_SCROLL_HEIGHT } from "@/lib/shapes";
 import { particleFragmentShader, particleVertexShader } from "./shaders";
 
 const ENTRY_SECONDS = 1.5;
@@ -27,12 +27,12 @@ interface ParticlesProps {
 export default function GlobeParticles({ count, size, animated, mouseRef }: ParticlesProps) {
   const material = useRef<THREE.ShaderMaterial>(null);
   const { gl } = useThree();
-  const { starts, rands, shapes } = useMemo(() => createParticleShapes(count), [count]);
-  // The per-shape orders are packed in one vec4
+  const { starts, rands, shapes, extra } = useMemo(() => createParticleShapes(count), [count]);
+  // The orders of shapes 0-3 are packed in one vec4 (shape 4 uses aExtra)
   const order = useMemo(() => {
-    const out = new Float32Array(count * SHAPE_COUNT);
+    const out = new Float32Array(count * 4);
     for (let i = 0; i < count; i++)
-      for (let k = 0; k < SHAPE_COUNT; k++) out[i * SHAPE_COUNT + k] = shapes[k].order[i];
+      for (let k = 0; k < 4; k++) out[i * 4 + k] = shapes[k].order[i];
     return out;
   }, [count, shapes]);
   const uniforms = useMemo(
@@ -42,6 +42,7 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Part
       uMorph: { value: 0 },
       uFrom: { value: 0 },
       uTo: { value: 0 },
+      uNewsHeight: { value: NEWS_SCROLL_HEIGHT },
       uPixelRatio: { value: 1 },
       uSize: { value: size },
       uRef: { value: 3.5 },
@@ -80,7 +81,8 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Part
         {shapes.map((shape, k) => (
           <bufferAttribute key={`col${k}`} attach={`attributes-aColor${k}`} args={[shape.colors, 3]} />
         ))}
-        <bufferAttribute attach="attributes-aOrder" args={[order, SHAPE_COUNT]} />
+        <bufferAttribute attach="attributes-aOrder" args={[order, 4]} />
+        <bufferAttribute attach="attributes-aExtra" args={[extra, 4]} />
         <bufferAttribute attach="attributes-aStart" args={[starts, 3]} />
         <bufferAttribute attach="attributes-aRand" args={[rands, 1]} />
       </bufferGeometry>
