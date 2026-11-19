@@ -18,9 +18,10 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
     <>
       <Hero profile={profile} />
       <About profile={profile} />
-      <SectionPlaceholder id="projects" title={t("projects")} />
       <SectionPlaceholder id="experience" title={t("experience")} />
+      <SectionPlaceholder id="projects" title={t("projects")} />
       <SectionPlaceholder id="credentials" title={t("credentials")} />
+      <SectionPlaceholder id="skills" title={t("skills")} />
       <SectionPlaceholder id="contact" title={t("contact")} />
     </>
   );

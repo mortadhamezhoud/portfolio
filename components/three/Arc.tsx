@@ -4,6 +4,7 @@ import { Line } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { type ComponentRef, useMemo, useRef } from "react";
 import * as THREE from "three";
+import { sceneState } from "@/lib/scene-state";
 import { createArcCurve, type GeoPoint, latLonToVector3 } from "@/lib/globe";
 
 const MAX_OPACITY = 0.8;
@@ -39,8 +40,9 @@ export default function Arc({ from, target, dying, animated }: ArcProps) {
     clock.current += delta;
     opacity.current = THREE.MathUtils.damp(opacity.current, dying ? 0 : MAX_OPACITY, 3, delta);
 
+    const shown = opacity.current * sceneState.globe; // fades out while the globe morphs away
     const material = lineRef.current?.material as THREE.Material | undefined;
-    if (material) material.opacity = opacity.current;
+    if (material) material.opacity = shown;
 
     const head = (clock.current * 0.32 + offset) % 1;
     TRAIL.forEach((lag, i) => {
@@ -50,7 +52,7 @@ export default function Arc({ from, target, dying, animated }: ArcProps) {
       mesh.visible = t > 0;
       if (t > 0) mesh.position.copy(curve.getPoint(t));
       (mesh.material as THREE.MeshBasicMaterial).opacity =
-        (opacity.current / MAX_OPACITY) * (1 - i * 0.3);
+        (shown / MAX_OPACITY) * (1 - i * 0.3);
     });
   });
 

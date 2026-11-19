@@ -3,7 +3,8 @@
 import { useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
-import { createSpherePoints, mulberry32 } from "@/lib/globe";
+import { sceneState } from "@/lib/scene-state";
+import { createParticleShapes } from "@/lib/shapes";
 import { particleFragmentShader, particleVertexShader } from "./shaders";
 
 const ENTRY_SECONDS = 1.5;
@@ -15,31 +16,36 @@ export interface MouseState {
   active: number;
 }
 
-interface GlobeParticlesProps {
+interface ParticlesProps {
   count: number;
   size: number;
   animated: boolean;
   mouseRef: React.RefObject<MouseState>;
 }
 
-export default function GlobeParticles({ count, size, animated, mouseRef }: GlobeParticlesProps) {
+/** The single particle system: every shape is a set of target positions it morphs between. */
+export default function GlobeParticles({ count, size, animated, mouseRef }: ParticlesProps) {
   const material = useRef<THREE.ShaderMaterial>(null);
   const { gl } = useThree();
-  const { positions, starts, rands } = useMemo(
-    () => createSpherePoints(count, mulberry32(42)),
-    [count],
-  );
+  const { starts, rands, shapes } = useMemo(() => createParticleShapes(count), [count]);
+  const order = useMemo(() => {
+    const out = new Float32Array(count * 2);
+    for (let i = 0; i < count; i++) {
+      out[i * 2] = shapes[0].order[i];
+      out[i * 2 + 1] = shapes[1].order[i];
+    }
+    return out;
+  }, [count, shapes]);
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
       uProgress: { value: animated ? 0 : 1 },
+      uMorph: { value: 0 },
       uPixelRatio: { value: 1 },
       uSize: { value: size },
       uRef: { value: 3.5 },
       uMouse: { value: new THREE.Vector3(10, 10, 10) },
       uMouseActive: { value: 0 },
-      uColorA: { value: new THREE.Color("#3EE6C1") },
-      uColorB: { value: new THREE.Color("#5B8CFF") },
     }),
     [animated, size],
   );
@@ -49,6 +55,7 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Glob
     if (!u) return;
     u.uPixelRatio.value = gl.getPixelRatio();
     u.uRef.value = state.camera.position.z;
+    u.uMorph.value = sceneState.morph;
     if (!animated) return;
     u.uTime.value += delta;
     u.uProgress.value = Math.min(u.uProgress.value + delta / ENTRY_SECONDS, 1);
@@ -60,7 +67,11 @@ export default function GlobeParticles({ count, size, animated, mouseRef }: Glob
   return (
     <points frustumCulled={false}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-position" args={[shapes[0].positions, 3]} />
+        <bufferAttribute attach="attributes-aShape1" args={[shapes[1].positions, 3]} />
+        <bufferAttribute attach="attributes-aColor0" args={[shapes[0].colors, 3]} />
+        <bufferAttribute attach="attributes-aColor1" args={[shapes[1].colors, 3]} />
+        <bufferAttribute attach="attributes-aOrder" args={[order, 2]} />
         <bufferAttribute attach="attributes-aStart" args={[starts, 3]} />
         <bufferAttribute attach="attributes-aRand" args={[rands, 1]} />
       </bufferGeometry>

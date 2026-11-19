@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import GlobeBackground from "@/components/hero/GlobeBackground";
 import Loader from "@/components/hero/Loader";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Header from "@/components/layout/Header";
@@ -75,6 +76,7 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <Loader />
+          <GlobeBackground />
           <SmoothScroll>
             <Header profile={profile} cvs={getAvailableCvs(profile.cv)} />
             {children}

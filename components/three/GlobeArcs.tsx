@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type * as THREE from "three";
+import { sceneState } from "@/lib/scene-state";
 import {
   type ArcData,
   generateInitialArcs,
@@ -34,6 +37,7 @@ export default function GlobeArcs({ animated }: GlobeArcsProps) {
     () => latLonToVector3(globeConfig.origin.lat, globeConfig.origin.lon),
     [],
   );
+  const group = useRef<THREE.Group>(null);
   const [arcs, setArcs] = useState<ArcState[]>(() =>
     generateInitialArcs(mulberry32(7)).map((arc) => ({ ...arc, dying: false })),
   );
@@ -71,8 +75,13 @@ export default function GlobeArcs({ animated }: GlobeArcsProps) {
     return () => timers.forEach(clearTimeout);
   }, [animated]);
 
+  // Hidden entirely once the globe has morphed away
+  useFrame(() => {
+    if (group.current) group.current.visible = sceneState.globe > 0.01;
+  });
+
   return (
-    <>
+    <group ref={group}>
       {arcs.map((arc) => (
         <Arc
           key={arc.id}
@@ -86,6 +95,6 @@ export default function GlobeArcs({ animated }: GlobeArcsProps) {
         <sphereGeometry args={[0.022, 16, 16]} />
         <meshBasicMaterial color="#3EE6C1" toneMapped={false} />
       </mesh>
-    </>
+    </group>
   );
 }

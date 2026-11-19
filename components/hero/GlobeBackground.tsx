@@ -22,9 +22,9 @@ class GlobeErrorBoundary extends Component<
 }
 
 /**
- * Globe layer behind the hero text. The chunk is prefetched while the loader runs
+ * Fixed full-screen 3D layer behind the whole page. The chunk is prefetched while the loader runs
  * (after the text has rendered) and the globe mounts once the intro is done.
- * Desktop: right side. Mobile: centered behind the text.
+ * The shape sits on the right on desktop and is centered on mobile.
  */
 export default function GlobeBackground() {
   const introDone = useIntroDone();
@@ -39,7 +39,7 @@ export default function GlobeBackground() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-y-0 left-0 right-0 opacity-75 lg:left-[38%] lg:opacity-100"
+      className="pointer-events-none fixed inset-0 -z-10"
     >
       {introDone && (
         <GlobeErrorBoundary>

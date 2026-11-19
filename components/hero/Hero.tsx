@@ -2,7 +2,6 @@
 
 import { motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
-import GlobeBackground from "@/components/hero/GlobeBackground";
 import DecryptText from "@/components/ui/DecryptText";
 import MagneticButton from "@/components/ui/MagneticButton";
 import type { Profile } from "@/lib/types";
@@ -34,8 +33,6 @@ export default function Hero({ profile }: { profile: HeroProfile }) {
       id="top"
       className="relative flex min-h-screen items-center overflow-hidden px-6 lg:px-16"
     >
-      <GlobeBackground />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg to-transparent" />
       <motion.div
         className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-6 text-center lg:mx-0 lg:max-w-[48%] lg:items-start lg:text-left"
         variants={container}
