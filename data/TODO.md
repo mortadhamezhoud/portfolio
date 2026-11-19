@@ -3,7 +3,6 @@
 Nothing below has been invented. Fill these in when available.
 
 ## data/en/profile.json and data/fr/profile.json (keep both in sync)
-- [ ] `contact.github` — GitHub URL
 - [ ] `stats[3]` — currently "3 Languages"; replace with a verifiable CyberSuivi figure (e.g. number of Power BI dashboards) if you have one
 - [ ] `education[1].note` — optional note for the ISIMM degree
 

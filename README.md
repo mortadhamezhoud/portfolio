@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mortadha Mazhoud — Portfolio
 
-## Getting Started
+Personal portfolio of Mortadha Mazhoud, a BI, Data and Full-Stack engineer based in Tunis. It presents projects, experience, skills and certificates, and lets recruiters and clients get in touch.
 
-First, run the development server:
+## Features
+
+- **Interactive 3D background**: a data globe with animated arcs that morphs into different shapes as you scroll (React Three Fiber, custom shaders, post-processing).
+- **Bilingual (EN / FR)**: routes `/en` and `/fr` with `next-intl`; all texts live in `messages/` and all content in `data/`.
+- **Rich sections**: About, Skills, Projects (scrollytelling with a featured BI/ML case study), Experience, Credentials (redacted certificates) and Contact.
+- **Contact form**: validated with React Hook Form and delivered through Formspree, with a honeypot anti-spam field, an "Open to work" status and a WhatsApp number that is only revealed on click.
+- **Polished UX**: smooth scrolling, keyboard shortcuts, custom cursor, reduced-motion support and accessible form errors.
+- **Static export**: no server needed, deployable on Vercel or any static host.
+
+## Tech stack
+
+Next.js 16 (App Router, static export) · React 19 · TypeScript · Tailwind CSS 4 · Framer Motion · Three.js / React Three Fiber / drei · Lenis · next-intl · React Hook Form · Formspree · Lucide
+
+## Getting started
+
+Requirements: Node.js 20+ and npm.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev    # http://localhost:3000 (create .env.local first, see below)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file (it is git-ignored):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
+```
 
-## Learn More
+Without it the contact form shows a fallback message with a direct email link.
 
-To learn more about Next.js, take a look at the following resources:
+### Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command          | Description                                   |
+| ---------------- | --------------------------------------------- |
+| `npm run dev`    | Start the development server                  |
+| `npm run build`  | Build the static site into `out/`             |
+| `npm run lint`   | Run ESLint                                    |
+| `npm run images` | Optimize images placed in `public/`           |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+```
+app/          Routes and layouts (/[locale])
+components/   UI sections, 3D scene, layout
+data/         Content per language (profile, projects, certificates, globe)
+messages/     UI translations (en.json, fr.json)
+lib/          Types, scroll/scene logic, hooks
+public/       Images, logos, CV, redacted certificates
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Import the repository on [Vercel](https://vercel.com) and add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in the project's environment variables (the value is embedded at build time, so redeploy after changing it).
+
+## Contact
+
+[LinkedIn](https://www.linkedin.com/in/mortadha-mazhoud-6440a0311) · [GitHub](https://github.com/mortadhamezhoud)
