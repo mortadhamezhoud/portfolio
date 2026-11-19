@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import SectionLink from "@/components/nav/SectionLink";
+import { TOP_ID } from "@/lib/sections";
 import type { Profile } from "@/lib/types";
 
 export type BrandProfile = Pick<Profile, "name" | "photo" | "photoAlt">;
@@ -10,7 +10,8 @@ export default function HeaderBrand({ profile }: { profile: BrandProfile }) {
   const t = useTranslations("nav");
 
   return (
-    <SectionLink
+    <a
+      href={`#${TOP_ID}`}
       aria-label={t("backToTop")}
       title={t("backToTop")}
       className="group flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
@@ -42,6 +43,6 @@ export default function HeaderBrand({ profile }: { profile: BrandProfile }) {
       <span className="hidden font-display text-sm font-semibold text-text xl:block">
         {profile.name}
       </span>
-    </SectionLink>
+    </a>
   );
 }

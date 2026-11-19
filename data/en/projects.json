@@ -10,16 +10,24 @@
     "logo": "gat",
     "role": "Full-Stack & Data Engineer (Final-year project)",
     "stack": [
-      "React",
-      "NestJS",
-      "JWT",
-      "Power Query",
       "Power BI",
       "DAX",
-      "Machine Learning"
+      "Power Query",
+      "Python",
+      "Flask",
+      "Random Forest",
+      "SHAP",
+      "pandas",
+      "React",
+      "NestJS",
+      "PostgreSQL",
+      "JWT",
+      "Groq API",
+      "Llama 3.3",
+      "NewsAPI"
     ],
     "context": "Final-year engineering project (PFE) carried out at GAT Assurances in Tunis to track cybersecurity awareness across the company.",
-    "problem": "Awareness data (quizzes, trainings, phishing campaigns and vulnerabilities) was scattered, and the company could not identify the employees most exposed to phishing.",
+    "problem": "Before CyberSuivi, awareness data lived in scattered Excel files: the company had no view of its overall security posture and no way to spot the employees most at risk of phishing.",
     "solution": [
       "Built a full-stack platform with React and NestJS, including JWT authentication and role-based access control.",
       "Designed the ETL with Power Query and the data model behind the reporting layer.",
@@ -27,18 +35,78 @@
       "Developed a Machine Learning model that predicts each employee's phishing risk.",
       "Developed an AI-based cybersecurity chatbot and a cyber-watch module."
     ],
-    "pitch": [
-      "Full-stack platform with React, NestJS and JWT role-based access.",
-      "ETL with Power Query and Power BI dashboards with DAX KPIs.",
-      "Machine Learning model that predicts each employee's phishing risk."
-    ],
     "result": "Final-year project graduated with Très Bien (Very Good) honors.",
     "links": {
       "demo": "",
       "github": "",
       "video": ""
     },
-    "images": []
+    "images": [],
+    "showcase": {
+      "tagline": "A cybersecurity awareness platform that turns training, quiz and phishing data into strategic decisions and individual risk predictions.",
+      "department": "Digital Transformation Department",
+      "badge": "Graded \"Très Bien\" (highest honours)",
+      "kpis": [
+        {
+          "value": 250,
+          "suffix": "+",
+          "decimals": 0,
+          "label": "employees monitored"
+        },
+        {
+          "value": 4,
+          "suffix": "",
+          "decimals": 0,
+          "label": "tracking axes (quizzes, trainings, phishing, vulnerability)"
+        },
+        {
+          "value": 0.91,
+          "suffix": "",
+          "decimals": 2,
+          "label": "AUC — phishing risk model"
+        },
+        {
+          "value": 2,
+          "suffix": "",
+          "decimals": 0,
+          "label": "tailored experiences (Executive Committee, IT Security team)"
+        }
+      ],
+      "pillars": [
+        {
+          "icon": "bi",
+          "title": "Business Intelligence",
+          "text": "Power BI dashboards to monitor awareness and support decisions."
+        },
+        {
+          "icon": "ml",
+          "title": "Machine Learning",
+          "text": "A model that predicts each employee's phishing risk."
+        },
+        {
+          "icon": "web",
+          "title": "Web Platform",
+          "text": "One secure application that centralises every feature."
+        },
+        {
+          "icon": "ai",
+          "title": "AI Assistant",
+          "text": "CyberBot answers any cybersecurity question instantly."
+        }
+      ],
+      "audiences": [
+        {
+          "id": "executive",
+          "title": "Executive Committee",
+          "text": "A single global dashboard for strategic decisions."
+        },
+        {
+          "id": "security",
+          "title": "IT Security Team",
+          "text": "Full access: cyber threat watch, quiz, training and phishing tracking with a vulnerability score, risk prediction and CyberBot."
+        }
+      ]
+    }
   },
   {
     "slug": "admissity",

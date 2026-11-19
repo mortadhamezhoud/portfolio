@@ -48,21 +48,13 @@
     "counter": "Projet {current} sur {total}",
     "problem": "Problème",
     "solution": "Solution",
-    "viewCase": "Voir l'étude de cas",
-    "soon": "Bientôt disponible"
+    "pillars": "La solution",
+    "audiences": "Deux publics",
+    "synthetic": "Les visuels utilisent des données synthétiques"
   },
   "experience": {
     "title": "Expérience",
     "companyTbd": "Entreprise à compléter",
     "datesTbd": "Dates à compléter"
-  },
-  "caseStudy": {
-    "banner": "Tous les visuels utilisent des données synthétiques — la vraie plateforme contient des informations confidentielles.",
-    "mockupNote": "Données synthétiques",
-    "back": "Tous les projets",
-    "nextProject": "Projet suivant",
-    "contactMe": "Me contacter",
-    "toc": "Sur cette page",
-    "viewCase": "Voir l'étude de cas"
   }
 }

@@ -88,6 +88,23 @@ export interface Profile {
   volunteering: VolunteeringItem[];
 }
 
+export interface ShowcaseKpi {
+  value: number;
+  suffix: string;
+  decimals: number;
+  label: string;
+}
+
+/** Extra content shown for the featured project (larger block in the Projects section). */
+export interface Showcase {
+  tagline: string;
+  department: string;
+  badge: string;
+  kpis: ShowcaseKpi[];
+  pillars: { icon: string; title: string; text: string }[];
+  audiences: { id: string; title: string; text: string }[];
+}
+
 export interface ProjectLinks {
   demo: string;
   github: string;
@@ -111,7 +128,9 @@ export interface Project {
   problem: string;
   solution: string[];
   /** Three short points shown in the Projects scrollytelling. */
-  pitch: string[];
+  pitch?: string[];
+  /** Present only on the featured project. */
+  showcase?: Showcase;
   result: string;
   links: ProjectLinks;
   images: string[];

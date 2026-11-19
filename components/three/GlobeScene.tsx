@@ -4,7 +4,6 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { globeConfig, latLonToVector3 } from "@/lib/globe";
-import { usePathname } from "@/i18n/navigation";
 import { applyTimeline, buildTimeline, type Keyframe, sceneState } from "@/lib/scene-state";
 import GlobeArcs from "./GlobeArcs";
 import GlobeParticles, { type MouseState } from "./GlobeParticles";
@@ -31,13 +30,11 @@ const LAYOUT = {
   desktop: {
     big: { x: 0.36, y: 0, scale: 1, opacity: 1 },
     ambient: { x: 0.98, y: 0, scale: 0.4, opacity: 0.3 },
-    backdrop: { x: 0.45, y: 0, scale: 0.95, opacity: 0.22 },
   },
   mobile: {
     big: { x: 0, y: 0.22, scale: 0.8, opacity: 0.75 },
     compact: { x: 0, y: 0.5, scale: 0.55, opacity: 1 },
     ambient: { x: 0, y: 0, scale: 0.7, opacity: 0.3 },
-    backdrop: { x: 0, y: 0, scale: 0.9, opacity: 0.2 },
   },
 };
 type LayoutKey = "x" | "y" | "scale" | "opacity";
@@ -62,7 +59,6 @@ const START_YAW = -Math.atan2(originVector.x, originVector.z);
 
 export default function GlobeScene({ particleCount, particleSize, animated }: GlobeSceneProps) {
   const { gl, invalidate } = useThree();
-  const pathname = usePathname();
   const root = useRef<THREE.Group>(null);
   const tilt = useRef<THREE.Group>(null);
   const spin = useRef<THREE.Group>(null);
@@ -112,7 +108,7 @@ export default function GlobeScene({ particleCount, particleSize, animated }: Gl
       window.removeEventListener("resize", rebuild);
       window.clearTimeout(late);
     };
-  }, [invalidate, pathname]);
+  }, [invalidate]);
 
   // Reduced motion renders on demand: redraw when the scroll position changes
   useEffect(() => {
@@ -152,9 +148,7 @@ export default function GlobeScene({ particleCount, particleSize, animated }: Gl
     const compact = mobile ? sceneState.compact : 0;
     const bigK = (k: LayoutKey) =>
       mobile ? THREE.MathUtils.lerp(LAYOUT.mobile.big[k], LAYOUT.mobile.compact[k], compact) : layout.big[k];
-    const ambientK = (k: LayoutKey) =>
-      THREE.MathUtils.lerp(layout.ambient[k], layout.backdrop[k], sceneState.backdrop);
-    const place = (k: LayoutKey) => THREE.MathUtils.lerp(ambientK(k), bigK(k), z);
+    const place = (k: LayoutKey) => THREE.MathUtils.lerp(layout.ambient[k], bigK(k), z);
     root.current.position.set(place("x") * halfW, place("y") * halfH, 0);
     root.current.scale.setScalar(place("scale"));
 

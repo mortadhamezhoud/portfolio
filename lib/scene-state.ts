@@ -1,4 +1,4 @@
-import { SCENE_SHAPE, SHAPE } from "@/lib/scenes";
+import { SHAPE } from "@/lib/scenes";
 
 /**
  * Mutable state shared between the page (scroll) and the 3D scene. It is read in
@@ -15,8 +15,6 @@ export const sceneState = {
   zone: 1,
   /** Mobile only: 1 puts the shape small at the top of the screen (above the project text). */
   compact: 0,
-  /** 1 = large, dim, blurred backdrop behind the whole page content. */
-  backdrop: 0,
   /** Index (0-2) of the domain shown in "What I do", or -1 outside the section. */
   domain: -1,
 };
@@ -28,8 +26,6 @@ export interface Keyframe {
   zone: number;
   /** 1 = mobile placement above the project text. */
   compact?: number;
-  /** 1 = large blurred backdrop behind the content (case study pages). */
-  backdrop?: number;
 }
 
 const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1);
@@ -40,16 +36,6 @@ const clamp01 = (v: number) => Math.min(Math.max(v, 0), 1);
  * shape it only moves (a "hold").
  */
 export function buildTimeline(): Keyframe[] {
-  // A page can lock the scene (e.g. a case study): one fixed shape, as a blurred backdrop
-  const locked = document.querySelector<HTMLElement>("[data-scene]");
-  if (locked) {
-    const shape = SCENE_SHAPE[locked.dataset.scene ?? ""] ?? SHAPE.globe;
-    return [
-      { y: 0, shape, zone: 0, backdrop: 1 },
-      { y: 1, shape, zone: 0, backdrop: 1 },
-    ];
-  }
-
   const vh = window.innerHeight;
   const scrollY = window.scrollY;
   const top = (id: string) => {
@@ -104,7 +90,6 @@ export function applyTimeline(frames: Keyframe[], y: number): void {
   sceneState.to = b.shape;
   sceneState.morph = a.shape === b.shape ? 0 : u;
   sceneState.zone = a.zone + (b.zone - a.zone) * u;
-  sceneState.backdrop = (a.backdrop ?? 0) + ((b.backdrop ?? 0) - (a.backdrop ?? 0)) * u;
   sceneState.compact = (a.compact ?? 0) + ((b.compact ?? 0) - (a.compact ?? 0)) * u;
   if (a.shape === b.shape) sceneState.to = a.shape;
   const wGlobe =

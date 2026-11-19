@@ -48,21 +48,13 @@
     "counter": "Project {current} of {total}",
     "problem": "Problem",
     "solution": "Solution",
-    "viewCase": "View case study",
-    "soon": "Coming soon"
+    "pillars": "The solution",
+    "audiences": "Two audiences",
+    "synthetic": "Visuals use synthetic data"
   },
   "experience": {
     "title": "Experience",
     "companyTbd": "Company to be added",
     "datesTbd": "Dates to be added"
-  },
-  "caseStudy": {
-    "banner": "All visuals use synthetic data — the real platform contains confidential information.",
-    "mockupNote": "Synthetic data",
-    "back": "All projects",
-    "nextProject": "Next project",
-    "contactMe": "Contact me",
-    "toc": "On this page",
-    "viewCase": "View case study"
   }
 }

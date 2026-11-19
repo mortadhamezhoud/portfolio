@@ -10,16 +10,24 @@
     "logo": "gat",
     "role": "Ingénieur Full-Stack & Data (Projet de fin d'études)",
     "stack": [
-      "React",
-      "NestJS",
-      "JWT",
-      "Power Query",
       "Power BI",
       "DAX",
-      "Machine Learning"
+      "Power Query",
+      "Python",
+      "Flask",
+      "Random Forest",
+      "SHAP",
+      "pandas",
+      "React",
+      "NestJS",
+      "PostgreSQL",
+      "JWT",
+      "Groq API",
+      "Llama 3.3",
+      "NewsAPI"
     ],
     "context": "Projet de fin d'études (PFE) réalisé chez GAT Assurances à Tunis pour suivre la sensibilisation à la cybersécurité au sein de l'entreprise.",
-    "problem": "Les données de sensibilisation (quiz, formations, campagnes de phishing, vulnérabilités) étaient dispersées, et l'entreprise ne pouvait pas identifier les employés les plus exposés au phishing.",
+    "problem": "Avant CyberSuivi, les données de sensibilisation vivaient dans des fichiers Excel dispersés : l'entreprise n'avait aucune vue d'ensemble de sa posture de sécurité ni moyen d'identifier les employés les plus exposés au phishing.",
     "solution": [
       "Conception d'une plateforme full-stack avec React et NestJS, incluant l'authentification JWT et le contrôle d'accès par rôles.",
       "Conception de l'ETL avec Power Query et du modèle de données qui alimente la couche de reporting.",
@@ -27,18 +35,78 @@
       "Développement d'un modèle de Machine Learning qui prédit le risque de phishing de chaque employé.",
       "Développement d'un chatbot de cybersécurité basé sur l'IA et d'un module de veille cyber."
     ],
-    "pitch": [
-      "Plateforme full-stack avec React, NestJS et accès par rôles via JWT.",
-      "ETL avec Power Query et dashboards Power BI avec KPI en DAX.",
-      "Modèle de Machine Learning qui prédit le risque de phishing de chaque employé."
-    ],
     "result": "Projet de fin d'études validé avec la mention Très Bien.",
     "links": {
       "demo": "",
       "github": "",
       "video": ""
     },
-    "images": []
+    "images": [],
+    "showcase": {
+      "tagline": "Une plateforme de sensibilisation à la cybersécurité qui transforme les données de formations, de quiz et de phishing en décisions stratégiques et en prédictions de risque individuelles.",
+      "department": "Direction de la Transformation Digitale",
+      "badge": "Mention « Très Bien » (la plus haute distinction)",
+      "kpis": [
+        {
+          "value": 250,
+          "suffix": "+",
+          "decimals": 0,
+          "label": "employés suivis"
+        },
+        {
+          "value": 4,
+          "suffix": "",
+          "decimals": 0,
+          "label": "axes de suivi (quiz, formations, phishing, vulnérabilité)"
+        },
+        {
+          "value": 0.91,
+          "suffix": "",
+          "decimals": 2,
+          "label": "AUC — modèle de risque de phishing"
+        },
+        {
+          "value": 2,
+          "suffix": "",
+          "decimals": 0,
+          "label": "expériences sur mesure (Comité de Direction, équipe Sécurité IT)"
+        }
+      ],
+      "pillars": [
+        {
+          "icon": "bi",
+          "title": "Business Intelligence",
+          "text": "Des dashboards Power BI pour suivre la sensibilisation et appuyer les décisions."
+        },
+        {
+          "icon": "ml",
+          "title": "Machine Learning",
+          "text": "Un modèle qui prédit le risque de phishing de chaque employé."
+        },
+        {
+          "icon": "web",
+          "title": "Plateforme Web",
+          "text": "Une application sécurisée unique qui centralise toutes les fonctionnalités."
+        },
+        {
+          "icon": "ai",
+          "title": "Assistant IA",
+          "text": "CyberBot répond instantanément à toute question de cybersécurité."
+        }
+      ],
+      "audiences": [
+        {
+          "id": "executive",
+          "title": "Comité de Direction",
+          "text": "Un seul dashboard global pour les décisions stratégiques."
+        },
+        {
+          "id": "security",
+          "title": "Équipe Sécurité IT",
+          "text": "Accès complet : veille cyber, suivi des quiz, des formations et du phishing avec un score de vulnérabilité, prédiction du risque et CyberBot."
+        }
+      ]
+    }
   },
   {
     "slug": "admissity",

@@ -3,7 +3,7 @@
 import { animate, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
-import type { Kpi } from "@/lib/case-study-types";
+import type { ShowcaseKpi as Kpi } from "@/lib/types";
 
 /** KPI card with a counter that counts up when it scrolls into view. */
 export default function KpiCard({ kpi, locale }: { kpi: Kpi; locale: string }) {
@@ -31,9 +31,9 @@ export default function KpiCard({ kpi, locale }: { kpi: Kpi; locale: string }) {
   return (
     <div
       ref={ref}
-      className="rounded-2xl border border-border bg-surface/80 p-5 backdrop-blur-sm"
+      className="rounded-xl border border-border bg-surface/80 p-4 backdrop-blur-sm"
     >
-      <p className="font-display text-4xl font-bold text-text">
+      <p className="font-display text-3xl font-bold text-text">
         {/* Final value for screen readers and crawlers, the animated one is visual only */}
         <span className="sr-only">
           {new Intl.NumberFormat(locale, {
