@@ -38,33 +38,16 @@ export function buildTimeline(): Keyframe[] {
     const el = document.getElementById(id);
     return el ? el.getBoundingClientRect().top + scrollY : null;
   };
-  const height = (id: string) => document.getElementById(id)?.offsetHeight ?? 0;
 
   const frames: Keyframe[] = [{ y: 0, shape: SHAPE.globe, zone: 1 }];
   const about = top("about");
-  const whatIDo = top("what-i-do");
   const contact = top("contact");
 
   if (about !== null) // The globe leaves the text area before About starts
     frames.push({ y: about - vh * 0.55, shape: SHAPE.globe, zone: 1 }, { y: about - vh * 0.05, shape: SHAPE.globe, zone: 0 });
-  if (whatIDo !== null) {
-    const range = Math.max(height("what-i-do") - vh, 1);
-    const at = (p: number) => whatIDo + range * p;
-    frames.push(
-      { y: whatIDo - vh * 0.7, shape: SHAPE.globe, zone: 0 },
-      { y: at(0.04), shape: SHAPE.bars, zone: 1 },
-      { y: at(0.26), shape: SHAPE.bars, zone: 1 },
-      { y: at(0.40), shape: SHAPE.neural, zone: 1 },
-      { y: at(0.60), shape: SHAPE.neural, zone: 1 },
-      { y: at(0.74), shape: SHAPE.web, zone: 1 },
-      { y: at(0.96), shape: SHAPE.web, zone: 1 },
-    );
-    // After the pinned section: the web shape stays as a small ambient background
-    frames.push({ y: whatIDo + range + vh * 0.6, shape: SHAPE.web, zone: 0 });
-  }
   if (contact !== null) {
     frames.push(
-      { y: contact - vh * 0.9, shape: SHAPE.web, zone: 0 },
+      { y: contact - vh * 0.9, shape: SHAPE.globe, zone: 0 },
       { y: contact - vh * 0.1, shape: SHAPE.globe, zone: 1 },
     );
   }

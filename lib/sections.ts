@@ -1,7 +1,6 @@
 import {
   Award,
   Briefcase,
-  Layers,
   FolderGit2,
   Mail,
   User,
@@ -11,7 +10,6 @@ import {
 
 export type SectionId =
   | "about"
-  | "what-i-do"
   | "experience"
   | "projects"
   | "credentials"
@@ -30,12 +28,11 @@ export interface SectionItem {
 /** Single source of truth for the header menu, the mobile menu and the keyboard shortcuts. */
 export const SECTIONS: readonly SectionItem[] = [
   { id: "about", labelKey: "about", icon: User, shortcut: "1" },
-  { id: "what-i-do", labelKey: "what-i-do", icon: Layers, shortcut: "2" },
-  { id: "experience", labelKey: "experience", icon: Briefcase, shortcut: "3" },
-  { id: "projects", labelKey: "projects", icon: FolderGit2, shortcut: "4" },
-  { id: "credentials", labelKey: "credentials", icon: Award, shortcut: "5" },
-  { id: "skills", labelKey: "skills", icon: Wrench, shortcut: "6" },
-  { id: "contact", labelKey: "contact", icon: Mail, shortcut: "7" },
+  { id: "experience", labelKey: "experience", icon: Briefcase, shortcut: "2" },
+  { id: "projects", labelKey: "projects", icon: FolderGit2, shortcut: "3" },
+  { id: "credentials", labelKey: "credentials", icon: Award, shortcut: "4" },
+  { id: "skills", labelKey: "skills", icon: Wrench, shortcut: "5" },
+  { id: "contact", labelKey: "contact", icon: Mail, shortcut: "6" },
 ];
 
 /** The hero is not in the nav list: it is the page top. */

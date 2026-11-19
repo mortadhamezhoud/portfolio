@@ -13,7 +13,7 @@ function isTypingTarget(target: EventTarget | null): boolean {
   );
 }
 
-/** Keys 1-7 jump to the sections (ignored while typing or with a modifier key). */
+/** Keys 1-6 jump to the sections (ignored while typing or with a modifier key). */
 export function useSectionShortcuts() {
   const reduced = usePrefersReducedMotion();
 
