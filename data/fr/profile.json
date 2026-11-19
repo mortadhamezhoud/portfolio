@@ -55,7 +55,9 @@
         "Power Query",
         "Talend",
         "SSIS",
-        "Machine Learning"
+        "Machine Learning",
+        "Flask",
+        "pandas"
       ]
     },
     {

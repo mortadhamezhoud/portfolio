@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { hasCaseStudy } from "@/lib/case-studies";
 import CompanyLogo from "@/components/ui/CompanyLogo";
 import { SCENE_SHAPE } from "@/lib/scenes";
 import type { Project } from "@/lib/types";
@@ -85,17 +87,27 @@ export default function Projects({ projects }: { projects: Project[] }) {
               </ul>
             )}
             <div className="mt-2 flex items-center gap-3">
-              {/* Case study pages come in the next step */}
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                title={t("soon")}
-                className="cursor-not-allowed rounded-full border border-border px-6 py-3 text-sm font-medium text-muted"
-              >
-                {t("viewCase")}
-              </button>
-              <span className="font-mono text-xs text-muted">{t("soon")}</span>
+              {hasCaseStudy(project.slug) ? (
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-bg transition-transform hover:scale-[1.03] motion-reduce:transition-none"
+                >
+                  {t("viewCase")}
+                </Link>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    disabled
+                    aria-disabled="true"
+                    title={t("soon")}
+                    className="cursor-not-allowed rounded-full border border-border px-6 py-3 text-sm font-medium text-muted"
+                  >
+                    {t("viewCase")}
+                  </button>
+                  <span className="font-mono text-xs text-muted">{t("soon")}</span>
+                </>
+              )}
             </div>
           </div>
         </article>
