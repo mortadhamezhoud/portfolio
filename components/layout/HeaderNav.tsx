@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import SectionLink from "@/components/nav/SectionLink";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 import { SECTIONS, type SectionId } from "@/lib/sections";
 
@@ -24,8 +25,8 @@ export default function HeaderNav({
           const active = activeId === section.id;
           return (
             <li key={section.id}>
-              <a
-                href={`#${section.id}`}
+              <SectionLink
+                id={section.id}
                 aria-current={active ? "true" : undefined}
                 className={`relative block rounded-md px-3 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none ${
                   active
@@ -50,7 +51,7 @@ export default function HeaderNav({
                       }}
                     />
                   ))}
-              </a>
+              </SectionLink>
             </li>
           );
         })}

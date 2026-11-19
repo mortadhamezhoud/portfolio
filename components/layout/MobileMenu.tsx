@@ -8,6 +8,7 @@ import { useScrollControls } from "@/components/providers/SmoothScroll";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/BrandIcons";
 import type { CvOption } from "@/lib/cv-files";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
+import SectionLink from "@/components/nav/SectionLink";
 import { SECTIONS, type SectionId } from "@/lib/sections";
 import type { Profile } from "@/lib/types";
 import CvMenu from "./CvMenu";
@@ -159,8 +160,8 @@ export default function MobileMenu({
                 const active = activeId === section.id;
                 return (
                   <motion.li key={section.id} variants={item}>
-                    <a
-                      href={`#${section.id}`}
+                    <SectionLink
+                      id={section.id}
                       aria-current={active ? "true" : undefined}
                       // Unlock first so the browser (or Lenis) can scroll to the section
                       onClick={() => {
@@ -175,7 +176,7 @@ export default function MobileMenu({
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       {t(section.labelKey)}
-                    </a>
+                    </SectionLink>
                   </motion.li>
                 );
               })}
