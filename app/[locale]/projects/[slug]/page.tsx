@@ -6,6 +6,7 @@ import CaseSection from "@/components/case-study/CaseSection";
 import CaseStudyFooter from "@/components/case-study/CaseStudyFooter";
 import CaseStudyHeader from "@/components/case-study/CaseStudyHeader";
 import CaseToc from "@/components/case-study/CaseToc";
+import { AudiencesSection, FeaturesSection, SolutionSection } from "@/components/case-study/sections/StorySections";
 import ConfidentialityBanner from "@/components/case-study/ConfidentialityBanner";
 import { routing } from "@/i18n/routing";
 import { CASE_STUDY_SLUGS, getCaseStudy } from "@/lib/case-studies";
@@ -85,6 +86,9 @@ export default async function CaseStudyPage({
   ];
   const body: Record<string, React.ReactNode> = {
     problem: <p className="max-w-3xl text-lg leading-relaxed text-muted">{study.problem.text}</p>,
+    solution: <SolutionSection study={study} />,
+    audiences: <AudiencesSection study={study} />,
+    features: <FeaturesSection study={study} />,
     results: <BulletList items={study.results.items} />,
     learned: <BulletList items={study.learned.items} />,
   };
