@@ -118,7 +118,14 @@
     "company": "ESPRIT",
     "logo": "esprit",
     "role": "",
-    "stack": [],
+    "stack": [
+      "Talend",
+      "Power BI",
+      "React",
+      "Flask",
+      "Machine Learning",
+      "Python"
+    ],
     "context": "Projet académique à ESPRIT.",
     "problem": "Les données des candidats et des anciens élèves étaient dispersées, et l'école ne pouvait pas suivre l'employabilité de ses diplômés.",
     "solution": [

@@ -118,7 +118,14 @@
     "company": "ESPRIT",
     "logo": "esprit",
     "role": "",
-    "stack": [],
+    "stack": [
+      "Talend",
+      "Power BI",
+      "React",
+      "Flask",
+      "Machine Learning",
+      "Python"
+    ],
     "context": "Academic project at ESPRIT.",
     "problem": "Applicant and alumni data was scattered, and the school could not track the employability of its graduates.",
     "solution": [
