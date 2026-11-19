@@ -12,10 +12,30 @@
     "period": "Feb 2026 – Jul 2026",
     "badge": "Graded \"Très Bien\" (highest honours)",
     "kpis": [
-      { "value": 250, "suffix": "+", "decimals": 0, "label": "employees monitored" },
-      { "value": 4, "suffix": "", "decimals": 0, "label": "tracking axes (quizzes, trainings, phishing, vulnerability)" },
-      { "value": 0.91, "suffix": "", "decimals": 2, "label": "AUC — phishing risk model" },
-      { "value": 2, "suffix": "", "decimals": 0, "label": "tailored experiences (Executive Committee, IT Security team)" }
+      {
+        "value": 250,
+        "suffix": "+",
+        "decimals": 0,
+        "label": "employees monitored"
+      },
+      {
+        "value": 4,
+        "suffix": "",
+        "decimals": 0,
+        "label": "tracking axes (quizzes, trainings, phishing, vulnerability)"
+      },
+      {
+        "value": 0.91,
+        "suffix": "",
+        "decimals": 2,
+        "label": "AUC — phishing risk model"
+      },
+      {
+        "value": 2,
+        "suffix": "",
+        "decimals": 0,
+        "label": "tailored experiences (Executive Committee, IT Security team)"
+      }
     ]
   },
   "problem": {
@@ -25,10 +45,26 @@
   "solution": {
     "title": "The solution — 4 pillars",
     "pillars": [
-      { "icon": "bi", "title": "Business Intelligence", "text": "Power BI dashboards to monitor awareness and support decisions." },
-      { "icon": "ml", "title": "Machine Learning", "text": "A model that predicts each employee's phishing risk." },
-      { "icon": "web", "title": "Web Platform", "text": "One secure application that centralises every feature." },
-      { "icon": "ai", "title": "AI Assistant", "text": "CyberBot answers any cybersecurity question instantly." }
+      {
+        "icon": "bi",
+        "title": "Business Intelligence",
+        "text": "Power BI dashboards to monitor awareness and support decisions."
+      },
+      {
+        "icon": "ml",
+        "title": "Machine Learning",
+        "text": "A model that predicts each employee's phishing risk."
+      },
+      {
+        "icon": "web",
+        "title": "Web Platform",
+        "text": "One secure application that centralises every feature."
+      },
+      {
+        "icon": "ai",
+        "title": "AI Assistant",
+        "text": "CyberBot answers any cybersecurity question instantly."
+      }
     ]
   },
   "audiences": {
@@ -81,52 +117,127 @@
     "model": {
       "title": "Kimball constellation schema",
       "text": "Kimball methodology, constellation schema with 4 fact tables (quizzes, trainings, phishing, vulnerability) and shared dimensions (employees, departments, quizzes, trainings, campaigns).",
-      "facts": ["Quizzes", "Trainings", "Phishing", "Vulnerability"],
-      "dimensions": ["Employees", "Departments", "Quizzes", "Trainings", "Campaigns"],
+      "facts": [
+        "Quizzes",
+        "Trainings",
+        "Phishing",
+        "Vulnerability"
+      ],
+      "dimensions": [
+        "Employees",
+        "Departments",
+        "Quizzes",
+        "Trainings",
+        "Campaigns"
+      ],
       "factsLabel": "Fact tables",
       "dimensionsLabel": "Shared dimensions"
     },
     "etl": {
       "title": "ETL and refresh",
-      "text": "ETL with Power Query, automated refresh from a shared OneDrive/SharePoint folder."
+      "text": "ETL with Power Query, automated refresh from a shared OneDrive/SharePoint folder.",
+      "steps": [
+        "OneDrive / SharePoint",
+        "Power Query",
+        "Kimball model",
+        "Power BI"
+      ],
+      "refreshLabel": "Automated refresh"
     },
     "score": {
       "title": "Vulnerability score out of 100",
       "text": "One score per employee, built from three axes.",
       "totalLabel": "points",
       "parts": [
-        { "label": "Quizzes", "points": 40 },
-        { "label": "Phishing", "points": 40 },
-        { "label": "Trainings", "points": 20 }
+        {
+          "label": "Quizzes",
+          "points": 40
+        },
+        {
+          "label": "Phishing",
+          "points": 40
+        },
+        {
+          "label": "Trainings",
+          "points": 20
+        }
       ]
     },
     "dax": {
       "title": "DAX measures",
-      "text": "DAX measures for scoring, status and root cause, with dynamic titles."
+      "text": "DAX measures for scoring, status and root cause, with dynamic titles.",
+      "snippet": [
+        "Vulnerability Score =",
+        "    [Quiz Points] + [Phishing Points] + [Training Points]",
+        "",
+        "Status =",
+        "    SWITCH ( TRUE (),",
+        "        [Vulnerability Score] >= 75, \"Critical\",",
+        "        [Vulnerability Score] >= 50, \"High\",",
+        "        \"Low\" )"
+      ],
+      "snippetNote": "Illustrative snippet, not the production code",
+      "chips": [
+        "Scoring",
+        "Status",
+        "Root cause",
+        "Dynamic titles"
+      ]
     }
   },
   "ml": {
     "title": "Machine Learning deep dive",
-    "method": { "label": "Methodology", "value": "CRISP-DM" },
+    "method": {
+      "label": "Methodology",
+      "value": "CRISP-DM",
+      "phases": [
+        "Business understanding",
+        "Data understanding",
+        "Data preparation",
+        "Modeling",
+        "Evaluation",
+        "Deployment"
+      ]
+    },
     "model": {
       "title": "Random Forest classifier",
       "text": "Random Forest classifier predicting phishing click risk.",
       "metrics": [
-        { "label": "accuracy", "value": "~85%" },
-        { "label": "AUC", "value": "0.91" }
-      ]
+        {
+          "label": "accuracy",
+          "value": "~85%"
+        },
+        {
+          "label": "AUC",
+          "value": "0.91"
+        }
+      ],
+      "rocNote": "Illustrative ROC curve"
     },
     "split": {
       "title": "Temporal anti-leakage split",
-      "text": "Features for year N are computed only from previous years, to predict year N+1."
+      "text": "Features for year N are computed only from previous years, to predict year N+1.",
+      "labels": {
+        "features": "Features: years up to N",
+        "target": "Prediction target: year N+1",
+        "years": [
+          "N-2",
+          "N-1",
+          "N",
+          "N+1"
+        ]
+      }
     },
     "shap": {
       "title": "SHAP explainability",
-      "text": "The team can see why an employee is flagged."
+      "text": "The team can see why an employee is flagged.",
+      "note": "Illustrative explanation for one flagged employee"
     },
     "lesson": {
       "title": "Lesson learned",
-      "text": "An early version reached a suspicious 100% accuracy. I diagnosed it as data leakage and redesigned the pipeline around temporal prediction."
+      "text": "An early version reached a suspicious 100% accuracy. I diagnosed it as data leakage and redesigned the pipeline around temporal prediction.",
+      "before": "100%",
+      "after": "~85%"
     }
   },
   "demo": {
@@ -134,12 +245,49 @@
     "intro": "Move the sliders to see how a profile changes the predicted risk.",
     "disclaimer": "Simplified demo with synthetic data — the production model is a Random Forest trained on real (confidential) data.",
     "inputs": [
-      { "id": "quizzes", "label": "Quizzes passed", "min": 0, "max": 4, "step": 1, "value": 2, "unit": "/ 4" },
-      { "id": "trainings", "label": "Trainings completed", "min": 0, "max": 3, "step": 1, "value": 1, "unit": "/ 3" },
-      { "id": "clicks", "label": "Past phishing clicks", "min": 0, "max": 5, "step": 1, "value": 1, "unit": "" },
-      { "id": "days", "label": "Days since last training", "min": 0, "max": 365, "step": 5, "value": 120, "unit": "d" }
+      {
+        "id": "quizzes",
+        "label": "Quizzes passed",
+        "min": 0,
+        "max": 4,
+        "step": 1,
+        "value": 2,
+        "unit": "/ 4"
+      },
+      {
+        "id": "trainings",
+        "label": "Trainings completed",
+        "min": 0,
+        "max": 3,
+        "step": 1,
+        "value": 1,
+        "unit": "/ 3"
+      },
+      {
+        "id": "clicks",
+        "label": "Past phishing clicks",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "value": 1,
+        "unit": ""
+      },
+      {
+        "id": "days",
+        "label": "Days since last training",
+        "min": 0,
+        "max": 365,
+        "step": 5,
+        "value": 120,
+        "unit": "d"
+      }
     ],
-    "levels": { "low": "Low", "medium": "Medium", "high": "High", "critical": "Critical" },
+    "levels": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
     "gaugeLabel": "Predicted risk",
     "factorsTitle": "Main factors",
     "factors": {
@@ -152,20 +300,50 @@
   "architecture": {
     "title": "Architecture",
     "nodes": {
-      "react": { "label": "React", "detail": "Frontend" },
-      "nest": { "label": "NestJS API", "detail": "JWT, RBAC" },
-      "postgres": { "label": "PostgreSQL", "detail": "Database" },
-      "flask": { "label": "Flask ML service", "detail": "Python, Random Forest, SHAP" },
-      "groq": { "label": "Groq API", "detail": "CyberBot" },
-      "news": { "label": "NewsAPI", "detail": "Threat watch" },
-      "powerbi": { "label": "Power BI", "detail": "Kimball model" }
+      "react": {
+        "label": "React",
+        "detail": "Frontend"
+      },
+      "nest": {
+        "label": "NestJS API",
+        "detail": "JWT, RBAC"
+      },
+      "postgres": {
+        "label": "PostgreSQL",
+        "detail": "Database"
+      },
+      "flask": {
+        "label": "Flask ML service",
+        "detail": "Python, Random Forest, SHAP"
+      },
+      "groq": {
+        "label": "Groq API",
+        "detail": "CyberBot"
+      },
+      "news": {
+        "label": "NewsAPI",
+        "detail": "Threat watch"
+      },
+      "powerbi": {
+        "label": "Power BI",
+        "detail": "Kimball model"
+      }
     },
     "powerbiNote": "Embedded in the platform with Row-Level Security",
     "methodologiesLabel": "Methodology",
     "methodologies": [
-      { "label": "Scrum", "scope": "the project" },
-      { "label": "Kimball", "scope": "BI" },
-      { "label": "CRISP-DM", "scope": "ML" }
+      {
+        "label": "Scrum",
+        "scope": "the project"
+      },
+      {
+        "label": "Kimball",
+        "scope": "BI"
+      },
+      {
+        "label": "CRISP-DM",
+        "scope": "ML"
+      }
     ],
     "stackLabel": "Stack",
     "stack": [

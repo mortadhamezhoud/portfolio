@@ -48,22 +48,31 @@ export interface CaseStudy {
       factsLabel: string;
       dimensionsLabel: string;
     };
-    etl: { title: string; text: string };
+    etl: { title: string; text: string; steps: string[]; refreshLabel: string };
     score: {
       title: string;
       text: string;
       totalLabel: string;
       parts: { label: string; points: number }[];
     };
-    dax: { title: string; text: string };
+    dax: { title: string; text: string; snippet: string[]; snippetNote: string; chips: string[] };
   };
   ml: {
     title: string;
-    method: { label: string; value: string };
-    model: { title: string; text: string; metrics: { label: string; value: string }[] };
-    split: { title: string; text: string };
-    shap: { title: string; text: string };
-    lesson: { title: string; text: string };
+    method: { label: string; value: string; phases: string[] };
+    model: {
+      title: string;
+      text: string;
+      metrics: { label: string; value: string }[];
+      rocNote: string;
+    };
+    split: {
+      title: string;
+      text: string;
+      labels: { features: string; target: string; years: string[] };
+    };
+    shap: { title: string; text: string; note: string };
+    lesson: { title: string; text: string; before: string; after: string };
   };
   demo: {
     title: string;

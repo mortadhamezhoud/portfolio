@@ -7,6 +7,7 @@ import CaseStudyFooter from "@/components/case-study/CaseStudyFooter";
 import CaseStudyHeader from "@/components/case-study/CaseStudyHeader";
 import CaseToc from "@/components/case-study/CaseToc";
 import { AudiencesSection, FeaturesSection, SolutionSection } from "@/components/case-study/sections/StorySections";
+import { BiSection, MlSection } from "@/components/case-study/sections/DeepDives";
 import ConfidentialityBanner from "@/components/case-study/ConfidentialityBanner";
 import { routing } from "@/i18n/routing";
 import { CASE_STUDY_SLUGS, getCaseStudy } from "@/lib/case-studies";
@@ -89,6 +90,8 @@ export default async function CaseStudyPage({
     solution: <SolutionSection study={study} />,
     audiences: <AudiencesSection study={study} />,
     features: <FeaturesSection study={study} />,
+    bi: <BiSection study={study} />,
+    ml: <MlSection study={study} />,
     results: <BulletList items={study.results.items} />,
     learned: <BulletList items={study.learned.items} />,
   };
