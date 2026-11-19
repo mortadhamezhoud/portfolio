@@ -50,5 +50,10 @@
     "solution": "Solution",
     "viewCase": "View case study",
     "soon": "Coming soon"
+  },
+  "experience": {
+    "title": "Experience",
+    "companyTbd": "Company to be added",
+    "datesTbd": "Dates to be added"
   }
 }

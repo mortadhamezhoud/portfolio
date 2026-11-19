@@ -142,6 +142,8 @@
       "location": "Tunis, Tunisia",
       "period": "Feb 2026 – Jul 2026",
       "type": "Final-year project (PFE)",
+      "project": "CyberSuivi GAT",
+      "logo": "gat",
       "highlights": [
         "Built a full-stack platform to track cybersecurity awareness with React and NestJS, including JWT authentication and role-based access control.",
         "Designed a Data/BI solution: ETL with Power Query, data modeling, Power BI dashboards, and DAX measures and KPIs covering quizzes, trainings, phishing campaigns and vulnerabilities.",
@@ -156,6 +158,8 @@
       "location": "Monastir, Tunisia",
       "period": "Jun 2025 – Aug 2025",
       "type": "Summer internship",
+      "project": "Car Rental Platform",
+      "logo": "anypli",
       "highlights": [
         "Designed and developed a car rental platform: backend with NestJS, frontend with React, TypeScript and Material UI, and state managed through Redux Toolkit and RTK Query.",
         "Built a REST API with JWT authentication on a MySQL database using TypeORM.",
@@ -169,11 +173,24 @@
       "location": "Monastir, Tunisia",
       "period": "Jul 2024 – Aug 2024",
       "type": "Summer internship",
+      "project": "Real-Time News Website",
+      "logo": "anypli",
       "highlights": [
         "Built a real-time news website with React and TypeScript, organized by category (Sport, Health, General, BBC News, BBC Sport).",
         "Integrated NewsAPI and managed application state with Redux.",
         "Designed a responsive interface with Material UI."
       ]
+    },
+    {
+      "id": "embedded-bachelor",
+      "role": "Embedded Systems Intern",
+      "company": "",
+      "location": "",
+      "period": "",
+      "type": "End-of-studies internship (Bachelor)",
+      "project": "",
+      "logo": "",
+      "highlights": []
     }
   ],
   "education": [

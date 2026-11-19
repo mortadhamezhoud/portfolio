@@ -142,6 +142,8 @@
       "location": "Tunis, Tunisie",
       "period": "Févr. 2026 – Juil. 2026",
       "type": "Projet de fin d'études (PFE)",
+      "project": "CyberSuivi GAT",
+      "logo": "gat",
       "highlights": [
         "Conception d'une plateforme full-stack de suivi de la sensibilisation à la cybersécurité avec React et NestJS, incluant l'authentification JWT et le contrôle d'accès par rôles.",
         "Conception d'une solution Data/BI : ETL avec Power Query, modélisation, dashboards Power BI, mesures DAX et KPI couvrant les quiz, les formations, les campagnes de phishing et les vulnérabilités.",
@@ -156,6 +158,8 @@
       "location": "Monastir, Tunisie",
       "period": "Juin 2025 – Août 2025",
       "type": "Stage d'été",
+      "project": "Plateforme de location de voitures",
+      "logo": "anypli",
       "highlights": [
         "Conception et développement d'une plateforme de location de voitures : backend avec NestJS, frontend avec React, TypeScript et Material UI, état géré avec Redux Toolkit et RTK Query.",
         "Développement d'une API REST avec authentification JWT sur une base MySQL avec TypeORM.",
@@ -169,11 +173,24 @@
       "location": "Monastir, Tunisie",
       "period": "Juil. 2024 – Août 2024",
       "type": "Stage d'été",
+      "project": "Site d'actualités en temps réel",
+      "logo": "anypli",
       "highlights": [
         "Développement d'un site d'actualités en temps réel avec React et TypeScript, organisé par catégories (Sport, Santé, Général, BBC News, BBC Sport).",
         "Intégration de NewsAPI et gestion de l'état de l'application avec Redux.",
         "Conception d'une interface responsive avec Material UI."
       ]
+    },
+    {
+      "id": "embedded-bachelor",
+      "role": "Stagiaire en systèmes embarqués",
+      "company": "",
+      "location": "",
+      "period": "",
+      "type": "Stage de fin d'études (Licence)",
+      "project": "",
+      "logo": "",
+      "highlights": []
     }
   ],
   "education": [

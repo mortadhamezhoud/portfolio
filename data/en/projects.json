@@ -7,6 +7,7 @@
     "scene": "neural-shield",
     "period": "Feb 2026 – Jul 2026",
     "company": "GAT Assurances",
+    "logo": "gat",
     "role": "Full-Stack & Data Engineer (Final-year project)",
     "stack": [
       "React",
@@ -47,6 +48,7 @@
     "scene": "bars",
     "period": "Jan 2025 – May 2025",
     "company": "ESPRIT",
+    "logo": "esprit",
     "role": "",
     "stack": [],
     "context": "Academic project at ESPRIT.",
@@ -77,6 +79,7 @@
     "scene": "fullstack",
     "period": "Jun 2025 – Aug 2025",
     "company": "ANYPLI",
+    "logo": "anypli",
     "role": "Full-Stack Developer Intern",
     "stack": [
       "NestJS",
@@ -119,6 +122,7 @@
     "scene": "news-feed",
     "period": "Jul 2024 – Aug 2024",
     "company": "ANYPLI",
+    "logo": "anypli",
     "role": "Full-Stack Developer Intern",
     "stack": [
       "React",

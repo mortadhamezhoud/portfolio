@@ -50,5 +50,10 @@
     "solution": "Solution",
     "viewCase": "Voir l'étude de cas",
     "soon": "Bientôt disponible"
+  },
+  "experience": {
+    "title": "Expérience",
+    "companyTbd": "Entreprise à compléter",
+    "datesTbd": "Dates à compléter"
   }
 }

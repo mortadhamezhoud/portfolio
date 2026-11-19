@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import CompanyLogo from "@/components/ui/CompanyLogo";
 import { SCENE_SHAPE } from "@/lib/scenes";
 import type { Project } from "@/lib/types";
 import ProjectProgress from "./ProjectProgress";
@@ -29,13 +30,20 @@ export default function Projects({ projects }: { projects: Project[] }) {
             className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-bg/75 to-transparent lg:bg-gradient-to-r lg:from-bg/85 lg:via-bg/40 lg:to-transparent"
           />
           <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-5 rounded-2xl bg-bg/85 p-5 lg:mx-0 lg:max-w-[44%] lg:bg-transparent lg:p-0">
-            <p className="font-mono text-sm text-accent">
-              {String(index + 1).padStart(2, "0")}
-              <span className="text-muted">
-                {" "}
-                · {project.company} · {project.period}
-              </span>
-            </p>
+            <div className="flex items-center gap-3">
+              <CompanyLogo
+                logo={project.logo}
+                fallback={project.company}
+                alt={project.company}
+              />
+              <p className="font-mono text-sm text-accent">
+                {String(index + 1).padStart(2, "0")}
+                <span className="text-muted">
+                  {" "}
+                  · {project.company} · {project.period}
+                </span>
+              </p>
+            </div>
             <h3 className="font-display text-3xl font-bold text-text sm:text-5xl">
               {project.title}
             </h3>

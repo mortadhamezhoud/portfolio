@@ -26,6 +26,10 @@ export interface Experience {
   location: string;
   period: string;
   type: string;
+  /** Name of the project carried out during this experience (empty if unknown). */
+  project: string;
+  /** Logo key: public/logos/{logo}.png (monogram fallback when the file does not exist). */
+  logo: string;
   highlights: string[];
 }
 
@@ -99,6 +103,8 @@ export interface Project {
   scene: string;
   period: string;
   company: string;
+  /** Logo key: public/logos/{logo}.png (monogram fallback). */
+  logo: string;
   role: string;
   stack: string[];
   context: string;
