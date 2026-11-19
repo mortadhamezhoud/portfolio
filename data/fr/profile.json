@@ -48,21 +48,13 @@
   ],
   "skills": [
     {
-      "group": "BI & Data",
+      "id": "data-bi",
+      "group": "Data & BI",
       "items": [
         "Power BI",
-        "DAX",
         "Power Query",
         "Talend",
         "SSIS",
-        "Machine Learning",
-        "Flask",
-        "pandas"
-      ]
-    },
-    {
-      "group": "Bases de données",
-      "items": [
         "SQL",
         "PL/SQL",
         "MySQL",
@@ -71,68 +63,24 @@
       ]
     },
     {
-      "group": "Backend",
+      "id": "machine-learning",
+      "group": "Machine Learning",
       "items": [
-        "NestJS",
-        ".NET",
-        "REST API",
-        "JWT",
-        "TypeORM"
+        "Python",
+        "Machine Learning"
       ]
     },
     {
-      "group": "Frontend",
-      "items": [
-        "React",
-        "Angular",
-        "Redux Toolkit",
-        "RTK Query",
-        "Material UI"
-      ]
-    },
-    {
-      "group": "Langages",
+      "id": "development",
+      "group": "Développement",
       "items": [
         "JavaScript",
-        "TypeScript",
-        "Python",
         "Java",
-        "C"
-      ]
-    }
-  ],
-  "domains": [
-    {
-      "id": "data-bi",
-      "title": "Data & BI",
-      "project": "admissity",
-      "tools": [
-        "Power BI",
-        "DAX",
-        "Power Query",
-        "SQL"
-      ]
-    },
-    {
-      "id": "machine-learning",
-      "title": "Machine Learning",
-      "project": "cybersuivi-gat",
-      "tools": [
-        "Machine Learning",
-        "Python",
-        "Modèles prédictifs",
-        "Chatbot IA"
-      ]
-    },
-    {
-      "id": "web",
-      "title": "Développement Web",
-      "project": "anypli-car-rental-2025",
-      "tools": [
+        "C",
         "React",
+        "Angular",
         "NestJS",
-        "TypeScript",
-        "REST API"
+        ".NET"
       ]
     }
   ],

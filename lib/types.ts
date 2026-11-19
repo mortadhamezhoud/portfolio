@@ -6,17 +6,10 @@ export interface Stat {
 }
 
 export interface SkillGroup {
+  /** Used to pick the icon: data-bi, machine-learning or development. */
+  id: string;
   group: string;
   items: string[];
-}
-
-export interface Domain {
-  id: string;
-  title: string;
-  /** Slug of the project that proves this domain best. */
-  project: string;
-  /** 3-4 tools shown as tags. */
-  tools: string[];
 }
 
 export interface Experience {
@@ -80,8 +73,6 @@ export interface Profile {
   /** Skill names (must exist in `skills`) shown as orbiting badges on the identity card. */
   featuredSkills: string[];
   skills: SkillGroup[];
-  /** The three expertise pillars shown in About. */
-  domains: Domain[];
   experience: Experience[];
   education: Education[];
   languages: Language[];
