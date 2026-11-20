@@ -81,7 +81,7 @@ export default function Skills({ groups }: { groups: SkillGroup[] }) {
   return (
     <section
       id="skills"
-      className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-24 lg:px-16"
+      className="mx-auto flex w-full max-w-6xl flex-col justify-center px-6 py-16 lg:min-h-dvh lg:py-24 lg:px-16"
     >
       <h2 className="font-display text-4xl font-bold text-text sm:text-5xl">{t("skills")}</h2>
       <ul className="mt-12 grid gap-5 lg:grid-cols-3">

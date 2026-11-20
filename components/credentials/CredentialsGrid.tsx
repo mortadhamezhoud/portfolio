@@ -109,10 +109,10 @@ export default function CredentialsGrid({ items }: { items: CredentialItem[] }) 
           if (e.target === dialog.current) close();
         }}
         aria-label={open ? `${open.company} — ${open.title[locale] ?? open.title.en}` : undefined}
-        className="m-auto max-h-[92vh] w-[min(92vw,56rem)] overflow-hidden rounded-2xl border border-border bg-bg p-0 text-text backdrop:bg-black/80 backdrop:backdrop-blur-sm"
+        className="m-auto max-h-[92dvh] w-[min(92vw,56rem)] overflow-hidden rounded-2xl border border-border bg-bg p-0 text-text backdrop:bg-black/80 backdrop:backdrop-blur-sm"
       >
         {open && (
-          <div className="flex max-h-[92vh] flex-col">
+          <div className="flex max-h-[92dvh] flex-col">
             <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3">
               <div className="min-w-0">
                 <p className="truncate font-display text-lg font-bold">{open.company}</p>

@@ -90,7 +90,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
             id={`project-${project.slug}`}
             data-project=""
             data-shape={SCENE_SHAPE[project.scene] ?? 0}
-            className="relative flex min-h-screen items-end px-4 pb-12 pt-[42vh] lg:items-start lg:px-16 lg:py-28"
+            className="relative flex items-end px-4 py-8 lg:min-h-dvh lg:items-start lg:px-16 lg:py-28"
           >
             {/* Dark veil so the text stays readable over the 3D */}
             <div

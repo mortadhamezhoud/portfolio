@@ -12,7 +12,7 @@ export default function Experience({ items }: { items: ExperienceItem[] }) {
   return (
     <section
       id="experience"
-      className="mx-auto min-h-screen w-full max-w-5xl px-6 py-28 lg:px-16"
+      className="mx-auto w-full max-w-5xl px-6 py-16 lg:min-h-dvh lg:py-28 lg:px-16"
     >
       <h2 className="font-display text-5xl font-bold text-text sm:text-6xl">
         {t("title")}

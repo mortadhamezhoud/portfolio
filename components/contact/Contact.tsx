@@ -35,7 +35,7 @@ export default function Contact({ openTo, email, linkedin, location, phoneToken 
   return (
     <section
       id="contact"
-      className="mx-auto grid min-h-screen w-full max-w-6xl items-center gap-12 px-6 py-24 lg:grid-cols-2 lg:gap-16 lg:px-16"
+      className="mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] items-center gap-10 px-6 py-16 lg:min-h-dvh lg:grid-cols-2 lg:gap-16 lg:px-16"
     >
       <Reveal className="flex flex-col gap-6">
         <span className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/40 bg-surface px-4 py-1.5 font-mono text-xs text-accent">

@@ -7,7 +7,7 @@ export default function About({ profile }: { profile: Profile }) {
   return (
     <section
       id="about"
-      className="mx-auto grid overflow-x-clip min-h-screen w-full max-w-6xl items-center gap-12 px-6 py-24 lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20 lg:px-16"
+      className="mx-auto grid overflow-x-clip w-full max-w-6xl items-center gap-10 px-6 py-16 lg:min-h-dvh lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-20 lg:px-16"
     >
       <div className="mx-auto w-[85%] max-w-sm lg:w-full lg:max-w-none">
         <IdentityCard
