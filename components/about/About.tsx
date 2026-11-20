@@ -22,7 +22,7 @@ export default function About({ profile }: { profile: Profile }) {
       </div>
 
       <div className="flex flex-col gap-8">
-        <h2 className="font-display text-4xl font-bold text-text sm:text-5xl">
+        <h2 className="font-display font-bold text-text text-[clamp(1.875rem,9vw,2.25rem)] sm:text-5xl">
           {t("title")}
         </h2>
         <p className="max-w-2xl text-lg leading-relaxed text-muted">

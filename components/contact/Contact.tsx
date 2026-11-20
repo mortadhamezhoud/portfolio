@@ -45,7 +45,7 @@ export default function Contact({ openTo, email, linkedin, location, phoneToken 
           </span>
           {t("status")}
         </span>
-        <h2 className="font-display text-4xl font-bold text-text sm:text-5xl">{t("title")}</h2>
+        <h2 className="font-display font-bold text-text text-[clamp(1.875rem,9vw,2.25rem)] sm:text-5xl">{t("title")}</h2>
         <p className="max-w-md text-lg text-muted">{t("intro")}</p>
         <div className="flex flex-col gap-3">
           <TagGroup

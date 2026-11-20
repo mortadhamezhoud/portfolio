@@ -118,7 +118,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
               <h3
                 className={`font-display font-bold text-text ${
-                  showcase ? "text-4xl sm:text-6xl" : "text-3xl sm:text-5xl"
+                  showcase ? "text-[clamp(1.875rem,9vw,2.25rem)] sm:text-6xl" : "text-3xl sm:text-5xl"
                 }`}
               >
                 {project.title}

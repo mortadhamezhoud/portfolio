@@ -104,3 +104,13 @@ section#top {
     animation: none;
   }
 }
+
+/* Phones: body copy never below 16 px, small labels/tags 13 px (Tailwind sizes read these variables) */
+@media (max-width: 1023px) {
+  :root {
+    --text-sm: 1rem;
+    --text-sm--line-height: 1.5rem;
+    --text-xs: 0.8125rem;
+    --text-xs--line-height: 1.25rem;
+  }
+}

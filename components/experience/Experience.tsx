@@ -14,7 +14,7 @@ export default function Experience({ items }: { items: ExperienceItem[] }) {
       id="experience"
       className="mx-auto w-full max-w-5xl px-6 py-16 lg:min-h-dvh lg:py-28 lg:px-16"
     >
-      <h2 className="font-display text-5xl font-bold text-text sm:text-6xl">
+      <h2 className="font-display font-bold text-text text-[clamp(2rem,10vw,3rem)] sm:text-6xl">
         {t("title")}
       </h2>
 

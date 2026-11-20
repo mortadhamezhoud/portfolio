@@ -10,7 +10,7 @@ const cardClass =
 const iconClass =
   "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border bg-bg text-accent";
 const smallBtn =
-  "rounded-lg border border-border bg-bg px-3 py-1.5 font-mono text-xs text-text transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-accent";
+  "flex min-h-11 items-center rounded-lg border border-border bg-bg px-3 py-1.5 font-mono text-xs text-text transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-accent";
 
 interface Props {
   email: string;
@@ -50,7 +50,7 @@ export default function ContactCards({ email, linkedin, location, phoneToken }: 
         </span>
         <div className="min-w-0 flex-1">
           <p className="font-mono text-xs text-muted">{t("email")}</p>
-          <a href={`mailto:${email}`} className="block truncate text-text hover:text-accent">
+          <a href={`mailto:${email}`} className="flex min-h-11 items-center truncate text-text hover:text-accent">
             {email}
           </a>
         </div>

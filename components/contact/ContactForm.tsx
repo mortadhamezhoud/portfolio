@@ -24,7 +24,7 @@ interface FormValues {
 }
 
 const fieldClass =
-  "w-full rounded-lg border border-border bg-bg px-3.5 py-2.5 text-text outline-none transition-colors placeholder:text-muted/60 focus:border-accent aria-[invalid=true]:border-red-400";
+  "w-full rounded-lg text-base border border-border bg-bg px-3.5 py-2.5 text-text outline-none transition-colors placeholder:text-muted/60 focus:border-accent aria-[invalid=true]:border-red-400";
 const labelClass = "mb-1.5 block font-mono text-xs text-muted";
 
 function Field({

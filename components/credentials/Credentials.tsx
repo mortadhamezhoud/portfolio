@@ -26,15 +26,15 @@ export default function Credentials() {
       id="credentials"
       className="mx-auto w-full max-w-6xl px-6 py-16 lg:min-h-dvh lg:py-28 lg:px-16"
     >
-      <h2 className="font-display text-5xl font-bold text-text sm:text-6xl">
+      <h2 className="font-display font-bold text-text text-[clamp(2rem,10vw,3rem)] sm:text-6xl">
         {t("credentials")}
       </h2>
       <p className="mt-5 flex max-w-3xl items-start gap-2 font-mono text-xs leading-relaxed text-[#8B97B3]">
         <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         {c("note")}
       </p>
-      <p className="mt-2 pl-[1.375rem] font-mono text-xs">
-        <a href="#contact" className="text-accent underline-offset-2 hover:underline">
+      <p className="mt-1 pl-[1.375rem] font-mono text-xs">
+        <a href="#contact" className="inline-flex min-h-11 items-center text-accent underline-offset-2 hover:underline">
           {c("onRequest")}
         </a>
       </p>

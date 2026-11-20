@@ -45,7 +45,7 @@ export default function Hero({ profile }: { profile: HeroProfile }) {
         >
           {profile.status}
         </motion.p>
-        <h1 className="font-display text-5xl font-bold tracking-tight text-text sm:text-7xl xl:text-8xl">
+        <h1 className="font-display text-[clamp(2.25rem,12vw,3rem)] font-bold tracking-tight text-text sm:text-7xl xl:text-8xl">
           <DecryptText text={profile.name} start={introDone} />
         </h1>
         <motion.p variants={item} className="text-lg text-text sm:text-2xl">
