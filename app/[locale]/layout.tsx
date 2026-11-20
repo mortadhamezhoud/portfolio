@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/providers/SmoothScroll";
@@ -87,6 +88,7 @@ export default async function LocaleLayout({
             {children}
           </SmoothScroll>
           <CustomCursor />
+          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>
