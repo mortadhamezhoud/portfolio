@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 
 const BUTTON_BASE =
-  "flex items-center gap-1.5 rounded-lg px-2 py-1.5 font-mono text-[11px] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-2.5 sm:text-xs";
+  "flex min-h-11 items-center gap-1.5 rounded-lg px-2 py-1.5 lg:min-h-0 font-mono text-[11px] uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:px-2.5 sm:text-xs";
 
 /**
  * EN · FR · AR. EN and FR switch the site language (next-intl); AR is shown but disabled

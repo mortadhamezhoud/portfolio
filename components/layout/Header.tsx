@@ -72,7 +72,7 @@ export default function Header({ profile, cvs }: HeaderProps) {
               aria-haspopup="dialog"
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-text transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-border text-text transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:hidden"
             >
               <Menu className="h-5 w-5" aria-hidden="true" />
             </button>

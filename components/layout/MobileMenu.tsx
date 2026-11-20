@@ -120,7 +120,7 @@ export default function MobileMenu({
           aria-label={t("menuTitle")}
           // Lenis must not hijack wheel/touch events inside the menu
           data-lenis-prevent
-          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-bg px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4 lg:hidden"
+          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-bg px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4 lg:hidden"
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={reduced ? { opacity: 1 } : { opacity: 0 }}
@@ -139,7 +139,7 @@ export default function MobileMenu({
               type="button"
               onClick={onClose}
               aria-label={t("closeMenu")}
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-border text-text transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-border text-text transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -194,7 +194,7 @@ export default function MobileMenu({
                       href={href}
                       aria-label={t(key)}
                       title={t(key)}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      className="flex h-11 w-11 items-center justify-center rounded-lg border border-border text-muted transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                       {...(external
                         ? { target: "_blank", rel: "noopener noreferrer" }
                         : {})}

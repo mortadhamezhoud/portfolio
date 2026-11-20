@@ -7,7 +7,7 @@ import Flag from "@/components/ui/Flags";
 import type { CvOption } from "@/lib/cv-files";
 
 const BUTTON_CLASS =
-  "flex items-center justify-center gap-2 rounded-lg bg-accent px-2.5 py-2 text-xs font-semibold text-bg transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:px-3 lg:py-1.5";
+  "flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-lg bg-accent px-2.5 py-2 lg:min-h-0 lg:min-w-0 text-xs font-semibold text-bg transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:px-3 lg:py-1.5";
 
 /**
  * "Download CV" button. With several CV languages it opens a menu (current site language first);
@@ -138,7 +138,7 @@ export default function CvMenu({
               tabIndex={-1}
               lang={option.locale}
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-text transition-colors hover:bg-bg hover:text-accent focus-visible:bg-bg focus-visible:text-accent focus-visible:outline-none"
+              className="flex items-center gap-2.5 rounded-lg px-3 py-3 text-base text-text lg:py-2 lg:text-sm transition-colors hover:bg-bg hover:text-accent focus-visible:bg-bg focus-visible:text-accent focus-visible:outline-none"
             >
               <Flag locale={option.locale} />
               {tLang(option.locale)} ({option.locale.toUpperCase()})

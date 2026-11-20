@@ -14,7 +14,7 @@ export default function HeaderBrand({ profile }: { profile: BrandProfile }) {
       href={`#${TOP_ID}`}
       aria-label={t("backToTop")}
       title={t("backToTop")}
-      className="group flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      className="group flex min-h-11 items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
     >
       <span
         dir="ltr"

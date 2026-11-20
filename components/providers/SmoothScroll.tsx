@@ -49,9 +49,11 @@ export default function SmoothScroll({
       lock: () => {
         lenisRef.current?.stop();
         document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden"; // iOS Safari ignores overflow on <html> alone
       },
       unlock: () => {
         document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
         lenisRef.current?.start();
       },
     }),

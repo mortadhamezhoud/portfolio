@@ -30,8 +30,9 @@ export default function MagneticButton({
   const sx = useSpring(x, { stiffness: 220, damping: 18, mass: 0.4 });
   const sy = useSpring(y, { stiffness: 220, damping: 18, mass: 0.4 });
 
-  const onMove = (e: React.MouseEvent) => {
-    if (reduced || !ref.current) return;
+  const onMove = (e: React.PointerEvent) => {
+    // Touch taps also emit mouse events: only a real mouse makes the button drift
+    if (reduced || e.pointerType !== "mouse" || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     x.set((e.clientX - (rect.left + rect.width / 2)) * STRENGTH);
     y.set((e.clientY - (rect.top + rect.height / 2)) * STRENGTH);
@@ -46,8 +47,8 @@ export default function MagneticButton({
       ref={ref}
       href={href}
       style={{ x: sx, y: sy }}
-      onMouseMove={onMove}
-      onMouseLeave={reset}
+      onPointerMove={onMove}
+      onPointerLeave={reset}
       className={`inline-block rounded-xl px-6 py-3 font-medium transition-colors ${VARIANTS[variant]}`}
     >
       {children}
