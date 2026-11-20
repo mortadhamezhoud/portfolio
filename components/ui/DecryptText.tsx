@@ -59,6 +59,7 @@ export default function DecryptText({
 
   return (
     <span
+      data-decrypt=""
       className={`${className ?? ""} ${reduced || ready ? "" : "invisible"}`}
       aria-label={text}
     >

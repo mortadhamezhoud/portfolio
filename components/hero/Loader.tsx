@@ -33,7 +33,9 @@ export default function Loader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (reduced || hasSeenIntro()) {
+    // Phones skip the 2 s intro: it only delays the first content
+    const phone = window.matchMedia("(max-width: 1023px), (pointer: coarse)").matches;
+    if (reduced || phone || hasSeenIntro()) {
       markIntroDone();
       return;
     }

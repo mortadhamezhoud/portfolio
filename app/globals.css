@@ -114,3 +114,28 @@ section#top {
     --text-xs--line-height: 1.25rem;
   }
 }
+
+/* Phone-only background layers (present in the server HTML, shown by CSS) */
+.mobile-globe {
+  display: none;
+}
+@media (max-width: 1023px), (pointer: coarse) {
+  .mobile-globe {
+    display: block;
+  }
+}
+
+/* Phones: no loader and no entrance animation, so the first paint already shows the Hero */
+@media (max-width: 1023px), (pointer: coarse) {
+  .intro-loader {
+    display: none !important;
+  }
+  [data-hero],
+  [data-hero] * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  [data-decrypt] {
+    visibility: visible !important;
+  }
+}

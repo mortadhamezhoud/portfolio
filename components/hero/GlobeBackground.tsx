@@ -22,6 +22,7 @@ function StaticGlobe({ mobile }: { mobile: boolean }) {
       width={640}
       height={640}
       decoding="async"
+      fetchPriority={mobile ? "high" : "auto"}
       className={
         mobile
           ? "absolute left-1/2 top-[44%] w-[92vw] max-w-[28rem] -translate-x-1/2 -translate-y-1/2 opacity-70"
@@ -58,41 +59,65 @@ export default function GlobeBackground() {
   const detected = useGlobeMode(mobile, reduced);
   const [lost, setLost] = useState(false);
   const onLost = useCallback(() => setLost(true), []);
+  // Phones: the static image is shown first; the live globe starts on the first touch or after 6 s, if the Hero is still on screen
+  const [liveOk, setLiveOk] = useState(false);
+  const [ready, setReady] = useState(false);
+  const onReady = useCallback(() => setReady(true), []);
+  useEffect(() => {
+    if (!mobile || detected !== "3d") return;
+    // Only worth starting while the Hero (the only place the globe is visible) is still on screen
+    const start = () => {
+      if (window.scrollY < window.innerHeight * 0.5) setLiveOk(true);
+    };
+    const timer = window.setTimeout(start, 6000);
+    const events = ["touchstart", "scroll", "pointerdown"] as const;
+    events.forEach((e) => window.addEventListener(e, start, { once: true, passive: true }));
+    return () => {
+      window.clearTimeout(timer);
+      events.forEach((e) => window.removeEventListener(e, start));
+    };
+  }, [mobile, detected]);
   const mode = lost ? "static" : detected;
 
   useEffect(() => {
-    if (mode !== "3d") return;
+    if (mode !== "3d" || (mobile && !liveOk)) return;
     const idle =
       window.requestIdleCallback ??
       ((cb: () => void) => window.setTimeout(cb, 200));
     idle(() => void (mobile ? loadMobileGlobe() : loadGlobe()));
-  }, [mode, mobile]);
+  }, [mode, mobile, liveOk]);
 
-  const fallback = <StaticGlobe mobile={mobile} />;
+  const liveMobile = mobile && mode === "3d" && liveOk;
 
   return (
     <>
-      {mobile && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(ellipse_at_50%_0%,rgba(62,230,193,0.07),transparent_55%),linear-gradient(180deg,#05070d,#080d1a_60%,#05070d)]"
-        />
-      )}
+      {/* Phones: gradient + static globe are in the server HTML (CSS decides who sees them), so the
+          globe image is the first paint and no JS is needed to show it. */}
       <div
         aria-hidden="true"
-        className={
-          mobile
-            ? "pointer-events-none absolute inset-x-0 top-0 -z-10 h-dvh overflow-hidden"
-            : "pointer-events-none fixed inset-0 -z-10"
-        }
+        className="mobile-globe pointer-events-none fixed inset-0 -z-20 bg-[radial-gradient(ellipse_at_50%_0%,rgba(62,230,193,0.07),transparent_55%),linear-gradient(180deg,#05070d,#080d1a_60%,#05070d)]"
+      />
+      <div
+        aria-hidden="true"
+        className="mobile-globe pointer-events-none absolute inset-x-0 top-0 -z-10 h-dvh overflow-hidden"
       >
-        {introDone && mode === "static" && fallback}
-        {introDone && mode === "3d" && (
-          <GlobeErrorBoundary fallback={fallback}>
-            {mobile ? <MobileGlobe onLost={onLost} /> : <DataGlobe onLost={onLost} />}
+        {!(mobile && ready && mode === "3d") && <StaticGlobe mobile />}
+        {liveMobile && (
+          <GlobeErrorBoundary fallback={null}>
+            <MobileGlobe onLost={onLost} onReady={onReady} />
           </GlobeErrorBoundary>
         )}
       </div>
+      {!mobile && (
+        <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+          {introDone && mode === "static" && <StaticGlobe mobile={false} />}
+          {introDone && mode === "3d" && (
+            <GlobeErrorBoundary fallback={<StaticGlobe mobile={false} />}>
+              <DataGlobe onLost={onLost} />
+            </GlobeErrorBoundary>
+          )}
+        </div>
+      )}
     </>
   );
 }

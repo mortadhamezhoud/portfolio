@@ -34,6 +34,7 @@ export default function Hero({ profile }: { profile: HeroProfile }) {
       className="relative flex min-h-dvh items-center overflow-hidden px-6 lg:px-16"
     >
       <motion.div
+        data-hero=""
         className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-6 text-center lg:mx-0 lg:max-w-[48%] lg:items-start lg:text-left"
         variants={container}
         initial={reduced ? false : "hidden"}

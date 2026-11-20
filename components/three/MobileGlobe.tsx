@@ -63,7 +63,7 @@ function Globe() {
  * Phone version of the globe: one simple, slowly spinning globe. No scroll morphing, no
  * post-processing, 800 particles, pixel ratio capped at 1.5, 30 fps.
  */
-export default function MobileGlobe({ onLost }: { onLost: () => void }) {
+export default function MobileGlobe({ onLost, onReady }: { onLost: () => void; onReady?: () => void }) {
   return (
     <Canvas
       dpr={[1, 1.5]}
@@ -71,6 +71,7 @@ export default function MobileGlobe({ onLost }: { onLost: () => void }) {
       camera={{ position: [0, 0, 4.4], fov: 45 }}
       gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
       style={{ opacity: 0.75 }}
+      onCreated={() => requestAnimationFrame(() => onReady?.())}
     >
       <FrameDriver onLost={onLost} />
       <Globe />
