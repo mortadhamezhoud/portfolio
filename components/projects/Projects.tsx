@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import CompanyLogo from "@/components/ui/CompanyLogo";
+import ProjectArt from "./ProjectArt";
 import { SCENE_SHAPE } from "@/lib/scenes";
 import type { Project } from "@/lib/types";
 import KpiCard from "./KpiCard";
@@ -102,6 +103,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                 showcase ? "lg:max-w-[50%]" : "lg:max-w-[44%] lg:self-center"
               }`}
             >
+              <ProjectArt scene={project.scene} />
               <div className="flex items-center gap-3">
                 <CompanyLogo logo={project.logo} fallback={project.company} alt={project.company} />
                 <p className="font-mono text-sm text-accent">

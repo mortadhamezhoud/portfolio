@@ -29,7 +29,7 @@ export default function ProjectProgress({ total }: { total: number }) {
 
   const pad = (n: number) => String(n).padStart(2, "0");
   return (
-    <div className="pointer-events-none sticky top-0 z-20 h-0">
+    <div className="pointer-events-none sticky top-0 z-20 hidden h-0 lg:block">
       <p
         aria-label={t("counter", { current: active + 1, total })}
         className="absolute right-6 top-24 font-mono text-sm text-muted lg:right-16"
