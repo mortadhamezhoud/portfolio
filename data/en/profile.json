@@ -68,7 +68,12 @@
       "group": "Machine Learning",
       "items": [
         "Python",
-        "Machine Learning"
+        "Machine Learning",
+        "pandas",
+        "scikit-learn",
+        "Random Forest",
+        "XGBoost",
+        "SHAP"
       ]
     },
     {
