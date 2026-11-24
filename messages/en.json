@@ -68,24 +68,16 @@
     "imageAlt": "Redacted certificate"
   },
   "contact": {
-    "status": "Open to work",
-    "title": "Let's work together.",
-    "intro": "Looking for my next challenge in BI, Data or Full-Stack — full-time or freelance.",
+    "status": "Open to opportunities",
+    "title": "Let's work together",
+    "intro": "Recently graduated engineer, motivated and passionate about BI, Data and Full-Stack development, I'm open to new opportunities. A job offer, an interview or a freelance project? Feel free to reach out — I'll get back to you quickly.",
     "rolesLabel": "Roles",
-    "formatsLabel": "Formats",
     "availabilityLabel": "Availability",
     "openTo": {
       "roles": {
         "BI": "BI",
         "Data": "Data",
         "Full-Stack": "Full-Stack"
-      },
-      "formats": {
-        "Full-time": "Full-time",
-        "Freelance": "Freelance",
-        "Remote": "Remote",
-        "On-site": "On-site",
-        "Relocation": "Relocation"
       },
       "availability": {
         "Immediately": "Available immediately"
@@ -109,26 +101,15 @@
       "name": "Name",
       "email": "Email",
       "company": "Company (optional)",
-      "type": "Opportunity type",
+      "type": "Reason for your request",
       "typePlaceholder": "Select…",
       "types": {
-        "job": "Full-time / Contract job",
+        "job": "Job offer",
+        "interview": "Interview request",
         "freelance": "Freelance project",
-        "internship": "Internship",
         "other": "Other"
       },
       "message": "Message",
-      "budget": "Budget",
-      "budgetPlaceholder": "Select…",
-      "budgets": {
-        "lt500": "< 500 €",
-        "b1": "500 – 2 000 €",
-        "b2": "2 000 – 5 000 €",
-        "gt5000": "> 5 000 €",
-        "unsure": "Not sure yet"
-      },
-      "timeline": "Timeline",
-      "timelinePlaceholder": "e.g. 6 weeks, starting in March",
       "send": "Send message",
       "sending": "Sending…",
       "errors": {
@@ -140,7 +121,8 @@
       "success": "Message sent! I'll get back to you within 24 hours.",
       "error": "Something went wrong, your message was not sent.",
       "errorFallback": "You can write to me directly at",
-      "noEndpoint": "The form is not configured yet."
+      "noEndpoint": "The form is not configured yet.",
+      "messagePlaceholder": "Tell me about the role or the project…"
     }
   }
 }

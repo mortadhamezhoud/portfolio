@@ -7,8 +7,8 @@
   "photoCutout": "",
   "photoAlt": "Portrait of Mortadha Mazhoud",
   "cv": {
-    "en": "/cv/Mortadha-Mazhoud-CV-EN.pdf",
-    "fr": "/cv/Mortadha-Mazhoud-CV-FR.pdf"
+    "en": "/cv/CV_Mortadha_Mazhoud_EN.pdf",
+    "fr": "/cv/CV_Mortadha_Mazhoud_FR.pdf"
   },
   "tagline": "I design BI, Data and Web solutions.",
   "location": "Ariana, Tunis, Tunisia",
@@ -203,13 +203,6 @@
       "BI",
       "Data",
       "Full-Stack"
-    ],
-    "formats": [
-      "Full-time",
-      "Freelance",
-      "Remote",
-      "On-site",
-      "Relocation"
     ],
     "availability": "Immediately"
   }

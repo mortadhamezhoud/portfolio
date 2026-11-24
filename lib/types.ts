@@ -56,7 +56,6 @@ export interface Contact {
 
 export interface OpenTo {
   roles: string[];
-  formats: string[];
   availability: string;
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -9,8 +9,7 @@ import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 
 const ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 const MAX = 1000;
-const TYPES = ["job", "freelance", "internship", "other"] as const;
-const BUDGETS = ["lt500", "b1", "b2", "gt5000", "unsure"] as const;
+const TYPES = ["job", "interview", "freelance", "other"] as const;
 
 interface FormValues {
   name: string;
@@ -18,8 +17,6 @@ interface FormValues {
   company: string;
   type: string;
   message: string;
-  budget: string;
-  timeline: string;
   _gotcha: string;
 }
 
@@ -64,9 +61,7 @@ export default function ContactForm({ email }: { email: string }) {
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({ defaultValues: { type: "" } });
 
-  const type = watch("type");
   const length = watch("message")?.length ?? 0;
-  const isFreelance = type === "freelance";
 
   const aria = (name: keyof FormValues) => ({
     "aria-invalid": errors[name] ? (true as const) : undefined,
@@ -82,11 +77,6 @@ export default function ContactForm({ email }: { email: string }) {
     const payload = {
       ...values,
       type: t(`types.${values.type as (typeof TYPES)[number]}`),
-      budget:
-        isFreelance && values.budget
-          ? t(`budgets.${values.budget as (typeof BUDGETS)[number]}`)
-          : undefined,
-      timeline: isFreelance ? values.timeline : undefined,
     };
     try {
       const res = await fetch(ENDPOINT, {
@@ -195,44 +185,11 @@ export default function ContactForm({ email }: { email: string }) {
         </select>
       </Field>
 
-      <AnimatePresence initial={false}>
-        {isFreelance && (
-          <motion.div
-            key="freelance"
-            initial={reduced ? false : { height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="grid gap-5 sm:grid-cols-2">
-              <Field id="budget" label={t("budget")}>
-                <select id="budget" className={fieldClass} {...register("budget")}>
-                  <option value="">{t("budgetPlaceholder")}</option>
-                  {BUDGETS.map((k) => (
-                    <option key={k} value={k}>
-                      {t(`budgets.${k}`)}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-              <Field id="timeline" label={t("timeline")}>
-                <input
-                  id="timeline"
-                  placeholder={t("timelinePlaceholder")}
-                  className={fieldClass}
-                  {...register("timeline")}
-                />
-              </Field>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <Field id="message" label={t("message")} error={errors.message?.message}>
         <textarea
           id="message"
           rows={5}
+          placeholder={t("messagePlaceholder")}
           maxLength={MAX}
           className={`${fieldClass} resize-y`}
           {...aria("message")}

@@ -68,24 +68,16 @@
     "imageAlt": "Attestation masquée"
   },
   "contact": {
-    "status": "Disponible",
-    "title": "Travaillons ensemble.",
-    "intro": "À la recherche de mon prochain défi en BI, Data ou Full-Stack — en CDI ou en freelance.",
+    "status": "Ouvert aux opportunités",
+    "title": "Travaillons ensemble",
+    "intro": "Jeune ingénieur fraîchement diplômé, motivé et passionné par la BI, la Data et le développement Full-Stack, je suis ouvert à de nouvelles opportunités. Une proposition de poste, un entretien ou une mission freelance ? N'hésitez pas à me contacter, je vous réponds rapidement.",
     "rolesLabel": "Rôles",
-    "formatsLabel": "Formats",
     "availabilityLabel": "Disponibilité",
     "openTo": {
       "roles": {
         "BI": "BI",
         "Data": "Data",
         "Full-Stack": "Full-Stack"
-      },
-      "formats": {
-        "Full-time": "CDI / Temps plein",
-        "Freelance": "Freelance",
-        "Remote": "Remote",
-        "On-site": "Sur site",
-        "Relocation": "Mobilité internationale"
       },
       "availability": {
         "Immediately": "Disponible immédiatement"
@@ -109,26 +101,15 @@
       "name": "Nom",
       "email": "Email",
       "company": "Entreprise (facultatif)",
-      "type": "Type d'opportunité",
+      "type": "Objet de votre demande",
       "typePlaceholder": "Choisir…",
       "types": {
-        "job": "CDI / Mission",
-        "freelance": "Projet freelance",
-        "internship": "Stage",
+        "job": "Proposition de poste",
+        "interview": "Demande d'entretien",
+        "freelance": "Mission freelance",
         "other": "Autre"
       },
       "message": "Message",
-      "budget": "Budget",
-      "budgetPlaceholder": "Choisir…",
-      "budgets": {
-        "lt500": "< 500 €",
-        "b1": "500 – 2 000 €",
-        "b2": "2 000 – 5 000 €",
-        "gt5000": "> 5 000 €",
-        "unsure": "Pas encore défini"
-      },
-      "timeline": "Délai",
-      "timelinePlaceholder": "ex. 6 semaines, début en mars",
       "send": "Envoyer le message",
       "sending": "Envoi…",
       "errors": {
@@ -140,7 +121,8 @@
       "success": "Message envoyé ! Je vous réponds sous 24 heures.",
       "error": "Une erreur est survenue, votre message n'a pas été envoyé.",
       "errorFallback": "Vous pouvez m'écrire directement à",
-      "noEndpoint": "Le formulaire n'est pas encore configuré."
+      "noEndpoint": "Le formulaire n'est pas encore configuré.",
+      "messagePlaceholder": "Parlez-moi du poste ou du projet…"
     }
   }
 }

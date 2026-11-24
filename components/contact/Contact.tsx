@@ -53,10 +53,6 @@ export default function Contact({ openTo, email, linkedin, location, phoneToken 
             tags={openTo.roles.map((r) => tk(`openTo.roles.${r}`))}
           />
           <TagGroup
-            label={t("formatsLabel")}
-            tags={openTo.formats.map((f) => tk(`openTo.formats.${f}`))}
-          />
-          <TagGroup
             label={t("availabilityLabel")}
             tags={[tk(`openTo.availability.${openTo.availability}`)]}
           />
